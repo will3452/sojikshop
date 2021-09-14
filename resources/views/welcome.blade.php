@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <title>
         Sojickshop
@@ -44,6 +46,7 @@
     </style>
 </head>
 <body>
+    {!! nova_get_setting('facebook_scripts') !!}
     <div class="container">
         <div>
             <img src="/logo/square.png" alt="logo of shop">
@@ -53,5 +56,6 @@
             COMMING SOON
         </h1>
     </div>
-    {!! nova_get_setting('facebook_scripts') !!}
+    
 </body>
+</html>
