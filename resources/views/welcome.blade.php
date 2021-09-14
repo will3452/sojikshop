@@ -53,4 +53,5 @@
             COMMING SOON
         </h1>
     </div>
+    {!! nova_get_setting('facebook_scripts') !!}
 </body>
