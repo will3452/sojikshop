@@ -2,9 +2,13 @@
 
 namespace App\Providers;
 
+use Bolechen\NovaActivitylog\NovaActivitylog;
 use Illuminate\Support\Facades\Gate;
+use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
+use NumaxLab\NovaCKEditor5Classic\CKEditor5Classic;
+use OptimistDigital\NovaSettings\NovaSettings;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -16,6 +20,39 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function boot()
     {
         parent::boot();
+
+        NovaSettings::addSettingsFields([
+            CKEditor5Classic::make('Data Privacy')
+                ->options([
+                    'toolbar' => [
+                        'heading',
+                        '|',
+                        'bold',
+                        'italic',
+                        'link',
+                        'bulletedList',
+                        'numberedList',
+                        'blockQuote',
+                    ],
+                ]),
+
+            CKEditor5Classic::make('Terms and Conditions')
+                ->options([
+                    'toolbar' => [
+                        'heading',
+                        '|',
+                        'bold',
+                        'italic',
+                        'link',
+                        'bulletedList',
+                        'numberedList',
+                        'blockQuote',
+                    ],
+                ]),
+
+            Code::make('Facebook scripts'),
+        ]);
+
     }
 
     /**
@@ -76,7 +113,10 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     public function tools()
     {
-        return [];
+        return [
+            new NovaSettings,
+            new NovaActivitylog(),
+        ];
     }
 
     /**

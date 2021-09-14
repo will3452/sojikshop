@@ -9,6 +9,8 @@ use Laravel\Nova\Fields\Textarea;
 
 class Category extends Resource
 {
+
+    public static $group = "Data Management";
     /**
      * The model the resource corresponds to.
      *
