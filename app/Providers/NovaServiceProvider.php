@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Nova\Metrics\NumberOfBanners;
+use App\Nova\Metrics\NumberOfCategories;
+use App\Nova\Metrics\NumberOfProducts;
+use App\Nova\Metrics\NumberOfUsers;
 use Bolechen\NovaActivitylog\NovaActivitylog;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Fields\Code;
@@ -92,7 +96,10 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function cards()
     {
         return [
-
+            NumberOfProducts::make(),
+            NumberOfCategories::make(),
+            NumberOfBanners::make(),
+            NumberOfUsers::make(),
         ];
     }
 
