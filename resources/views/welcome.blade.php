@@ -17,13 +17,30 @@
             background: #30326E;
         }
         .container img {
-            width: 20vw;
-            height: 20vw;
+            width: 50vw;
+            height: 50vw;
+            animation-name: rotateMe;
+            animation-duration: 10s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+        @keyframes rotateMe{
+            100% {
+                transform: rotate(360deg);
+            }
         }
         h1{
             font-family: sans-serif;
             color: #B7FBE1;
         }
+
+        @media screen and (min-width:600px){
+            .container img {
+                width:20vw;
+                height:20vw;
+            }
+        }
+        
     </style>
 </head>
 <body>
@@ -33,7 +50,7 @@
             
         </div>
         <h1>
-            UNDER DEVELOPMENT
+            COMMING SOON
         </h1>
     </div>
 </body>
