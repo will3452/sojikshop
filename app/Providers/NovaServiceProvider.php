@@ -9,6 +9,7 @@ use App\Nova\Metrics\NumberOfUsers;
 use Bolechen\NovaActivitylog\NovaActivitylog;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Fields\Code;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
 use NumaxLab\NovaCKEditor5Classic\CKEditor5Classic;
@@ -55,6 +56,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 ]),
 
             Code::make('Facebook scripts'),
+
+            Text::make('Copyright'),
         ]);
 
     }
