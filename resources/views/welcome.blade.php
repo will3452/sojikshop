@@ -1,61 +1,121 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zxx">
 <head>
-    <title>
-        Sojickshop
-    </title>
-    <style>
-        body,html {
-            margin: 0px;
-            padding: 0px;
-        }
-        .container {
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            background: #30326E;
-        }
-        .container img {
-            width: 50vw;
-            height: 50vw;
-            animation-name: rotateMe;
-            animation-duration: 10s;
-            animation-iteration-count: infinite;
-            animation-timing-function: linear;
-        }
-        @keyframes rotateMe{
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-        h1{
-            font-family: sans-serif;
-            color: #B7FBE1;
-        }
+	<!-- Meta Tag -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name='copyright' content=''>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Title Tag  -->
+    <title>SojiKshop</title>
+	<!-- Favicon -->
+	<link rel="icon" type="image/png" href="images/favicon.png">
+	<!-- Web Font -->
+	<link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+	
+	<!-- StyleSheet -->
+	
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="/css/bootstrap.css">
+	<!-- Magnific Popup -->
+    <link rel="stylesheet" href="/css/magnific-popup.min.css">
+	<!-- Font Awesome -->
+    <link rel="stylesheet" href="/css/font-awesome.css">
+	<!-- Fancybox -->
+	<link rel="stylesheet" href="/css/jquery.fancybox.min.css">
+	<!-- Themify Icons -->
+    <link rel="stylesheet" href="/css/themify-icons.css">
+	<!-- Nice Select CSS -->
+    <link rel="stylesheet" href="/css/niceselect.css">
+	<!-- Animate CSS -->
+    <link rel="stylesheet" href="/css/animate.css">
+	<!-- Flex Slider CSS -->
+    <link rel="stylesheet" href="/css/flex-slider.min.css">
+	<!-- Owl Carousel -->
+    <link rel="stylesheet" href="/css/owl-carousel.css">
+	<!-- Slicknav -->
+    <link rel="stylesheet" href="/css/slicknav.min.css">
+	
+	<!-- Eshop StyleSheet -->
+	<link rel="stylesheet" href="/css/reset.css">
+	<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
 
-        @media screen and (min-width:600px){
-            .container img {
-                width:20vw;
-                height:20vw;
-            }
-        }
-        
-    </style>
+	
+	
 </head>
-<body>
-    {!! nova_get_setting('facebook_scripts') !!}
-    <div class="container">
-        <div>
-            <img src="/logo/square.png" alt="logo of shop">
-            
-        </div>
-        <h1>
-            COMMING SOON
-        </h1>
-    </div>
+<body class="js">
+	
+	
+	<x-preloader/>
+	
+	<x-header/>
+
+    <x-main-slider></x-main-slider>
+	
+	<x-small-banner-container>
+        <x-small-banner></x-small-banner>
+        <x-small-banner></x-small-banner>
+        <x-small-banner></x-small-banner>
+    </x-small-banner-container>
+	
+	
+	<x-product-area-container>
+    </x-product-area-container>
+	
+	<x-medium-banner-container>
+        <x-medium-banner></x-medium-banner>
+        <x-medium-banner></x-medium-banner>
+    </x-medium-banner-container>
+	
+	<x-product-area-container>
+
+    </x-product-area-container>
+	
+    <x-slogan-banner></x-slogan-banner>
+	
+	<x-shop-list-container>
+        <x-shop-list></x-shop-list>
+        <x-shop-list></x-shop-list>
+        <x-shop-list></x-shop-list>
+    </x-shop-list-container>
     
+    <x-service-area></x-service-area>
+	
+	<x-footer></x-footer>
+ 
+	<!-- Jquery -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery-migrate-3.0.0.js"></script>
+	<script src="/js/jquery-ui.min.js"></script>
+	<!-- Popper JS -->
+	<script src="/js/popper.min.js"></script>
+	<!-- Bootstrap JS -->
+	<script src="/js/bootstrap.min.js"></script>
+	<!-- Color JS -->
+	<script src="/js/colors.js"></script>
+	<!-- Slicknav JS -->
+	<script src="/js/slicknav.min.js"></script>
+	<!-- Owl Carousel JS -->
+	<script src="/js/owl-carousel.js"></script>
+	<!-- Magnific Popup JS -->
+	<script src="/js/magnific-popup.js"></script>
+	<!-- Waypoints JS -->
+	<script src="/js/waypoints.min.js"></script>
+	<!-- Countdown JS -->
+	<script src="/js/finalcountdown.min.js"></script>
+	<!-- Nice Select JS -->
+	<script src="/js/nicesellect.js"></script>
+	<!-- Flex Slider JS -->
+	<script src="/js/flex-slider.js"></script>
+	<!-- ScrollUp JS -->
+	<script src="/js/scrollup.js"></script>
+	<!-- Onepage Nav JS -->
+	<script src="/js/onepage-nav.min.js"></script>
+	<!-- Easing JS -->
+	<script src="/js/easing.js"></script>
+	<!-- Active JS -->
+	<script src="/js/active.js"></script>
 </body>
 </html>
