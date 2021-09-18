@@ -30,13 +30,13 @@
 			</div>
 		</div>
 		<!-- End Topbar -->
-		<div class="middle-inner">
+		<div class="middle-inner" >
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-2 col-md-2 col-12">
 						<!-- Logo -->
 						<div class="logo">
-							<a href="index.html"><img src="images/logo.png" alt="logo"></a>
+							<a href="index.html"><img src="/logo/square.png" alt="logo" style="border-radius:50%;width:50px;height:50px;border:2px solid #333333" ></a>
 						</div>
 						<!--/ End Logo -->
 						<!-- Search Form -->
