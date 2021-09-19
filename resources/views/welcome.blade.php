@@ -86,8 +86,8 @@
 	<x-footer></x-footer>
  
 	<!-- Jquery -->
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/jquery-migrate-3.0.0.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    {{-- <script src="/js/jquery-migrate-3.0.0.js"></script> --}}
 	<script src="/js/jquery-ui.min.js"></script>
 	<!-- Popper JS -->
 	<script src="/js/popper.min.js"></script>
@@ -98,7 +98,6 @@
 	<!-- Slicknav JS -->
 	<script src="/js/slicknav.min.js"></script>
 	<!-- Owl Carousel JS -->
-	<script src="/js/owl-carousel.js"></script>
 	<!-- Magnific Popup JS -->
 	<script src="/js/magnific-popup.js"></script>
 	<!-- Waypoints JS -->
