@@ -53,20 +53,7 @@
 						<div class="mobile-nav"></div>
 					</div>
 					<div class="col-lg-8 col-md-7 col-12">
-						<div class="search-bar-top">
-							<div class="search-bar">
-								<select>
-									<option selected="selected">All Category</option>
-									<option>watch</option>
-									<option>mobile</option>
-									<option>kid’s item</option>
-								</select>
-								<form>
-									<input name="search" placeholder="Search Products Here....." type="search">
-									<button class="btnn"><i class="ti-search"></i></button>
-								</form>
-							</div>
-						</div>
+						<x-search-bar></x-search-bar>
 					</div>
 					<div class="col-lg-2 col-md-3 col-12">
 						<div class="right-bar">
@@ -138,17 +125,10 @@
 											<ul class="nav main-menu menu navbar-nav">
 													<li class="active"><a href="#">Home</a></li>
 													<li><a href="#">Product</a></li>												
-													<li><a href="#">Service</a></li>
 													<li><a href="#">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
 														<ul class="dropdown">
 															<li><a href="cart.html">Cart</a></li>
 															<li><a href="checkout.html">Checkout</a></li>
-														</ul>
-													</li>
-													<li><a href="#">Pages</a></li>									
-													<li><a href="#">Blog<i class="ti-angle-down"></i></a>
-														<ul class="dropdown">
-															<li><a href="blog-single-sidebar.html">Blog Single Sidebar</a></li>
 														</ul>
 													</li>
 													<li><a href="contact.html">Contact Us</a></li>
