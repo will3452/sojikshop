@@ -2,7 +2,6 @@
 	<x-search-bar></x-search-bar>
 	<x-banner></x-banner>
 	<x-y-space></x-y-space>
-	
 	<x-y-space></x-y-space>
 	<x-container>
 		<x-title>
@@ -15,4 +14,5 @@
 			@endforeach
 		</div>
 	</x-container>
+	<x-dev-alert></x-dev-alert>
 </x-layout>

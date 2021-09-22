@@ -1,19 +1,29 @@
+@php
+    $banners = \App\Models\Banner::get();
+@endphp
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        @foreach ($banners as $key=>$banner)
+            @if ($loop->first)
+                <li data-target="#carouselExampleIndicators" data-slide-to="{{ $key }}" class="active"></li>
+            @else 
+                <li data-target="#carouselExampleIndicators" data-slide-to="{{ $key }}"></li>
+            @endif
+        @endforeach
     </ol>
     <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="https://picsum.photos/1000/300?random=1" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-            <img src="https://picsum.photos/1000/300?random=2" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-            <img src="https://picsum.photos/1000/300?random=3" class="d-block w-100" alt="...">
-        </div>
+        @foreach ($banners as $key=>$banner)
+            @if ($loop->first)
+               <div class="carousel-item active">
+                    <img src="/storage/{{ $banner->image }}" class="d-block w-100" alt="...">
+                </div>
+            @else 
+                <div class="carousel-item">
+                    <img src="/storage/{{ $banner->image }}" class="d-block w-100" alt="...">
+                </div>
+            @endif
+        @endforeach
+        
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

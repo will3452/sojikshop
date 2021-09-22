@@ -1,3 +1,3 @@
 <script>
-    alert('This is under-maintenance, Backend changes might break the system.')
+    alert('This is under-maintenance, Backend changes might break the system.');
 </script>
