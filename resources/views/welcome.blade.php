@@ -2,7 +2,6 @@
 	<x-search-bar></x-search-bar>
 	<x-banner></x-banner>
 	<x-y-space></x-y-space>
-	<x-y-space></x-y-space>
 	<x-container>
 		<x-title>
 			BROWSE OUR LATEST ITEMS
