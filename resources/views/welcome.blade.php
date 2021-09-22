@@ -4,7 +4,7 @@
 	<x-y-space></x-y-space>
 	<x-container>
 		<x-title>
-			BROWSE OUR LATEST ITEMS
+			NEWEST PRODUCTS
 		</x-title>
 		<div class="row">
 			@foreach (\App\Models\Product::latest()->limit(8)->get() as $product)
