@@ -1,14 +1,15 @@
-<div class="search-bar-top">
-    <div class="search-bar">
-        <select>
-            <option selected="selected">All Category</option>
-            @foreach (\App\Models\Category::get() as $category)
-                <option value="{{ $category->name }}">{{ $category->name }}</option>
-            @endforeach
-        </select>
-        <form>
-            <input name="search" placeholder="Search Products Here....." type="search">
-            <button class="btnn"><i class="ti-search"></i></button>
-        </form>
+<div class="row justify-content-center">
+<div class="col-md-5 px-5">
+<div class="form-group input-group ">
+    <input type="search" id="search-bar" class="form-control " style="border-radius:50px 0px 0px 50px;">
+    <div class="input-group-append">
+        <button
+        class="btn btn-light"
+        style="border-radius:0px 50px 50px 0px"
+        >
+            <i class="fa fa-search"></i>
+        </button>
     </div>
+</div>
+</div>
 </div>

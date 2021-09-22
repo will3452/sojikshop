@@ -1,120 +1,18 @@
-<!DOCTYPE html>
-<html lang="zxx">
-<head>
-	<!-- Meta Tag -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name='copyright' content=''>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- Title Tag  -->
-    <title>SojiKshop</title>
-	<!-- Favicon -->
-	<link rel="icon" type="image/png" href="images/favicon.png">
-	<!-- Web Font -->
-	<link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+<x-layout>
+	<x-search-bar></x-search-bar>
+	<x-banner></x-banner>
+	<x-y-space></x-y-space>
 	
-	<!-- StyleSheet -->
-	
-	<!-- Bootstrap -->
-	<link rel="stylesheet" href="/css/bootstrap.css">
-	<!-- Magnific Popup -->
-    <link rel="stylesheet" href="/css/magnific-popup.min.css">
-	<!-- Font Awesome -->
-    <link rel="stylesheet" href="/css/font-awesome.css">
-	<!-- Fancybox -->
-	<link rel="stylesheet" href="/css/jquery.fancybox.min.css">
-	<!-- Themify Icons -->
-    <link rel="stylesheet" href="/css/themify-icons.css">
-	<!-- Nice Select CSS -->
-    <link rel="stylesheet" href="/css/niceselect.css">
-	<!-- Animate CSS -->
-    <link rel="stylesheet" href="/css/animate.css">
-	<!-- Flex Slider CSS -->
-    <link rel="stylesheet" href="/css/flex-slider.min.css">
-	<!-- Owl Carousel -->
-    <link rel="stylesheet" href="/css/owl-carousel.css">
-	<!-- Slicknav -->
-    <link rel="stylesheet" href="/css/slicknav.min.css">
-	
-	<!-- Eshop StyleSheet -->
-	<link rel="stylesheet" href="/css/reset.css">
-	<link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="/css/responsive.css">
-
-	
-	
-</head>
-<body class="js">
-	
-	
-	<x-preloader/>
-	
-	<x-header/>
-
-    <x-main-slider></x-main-slider>
-	
-	<x-small-banner-container>
-        <x-small-banner></x-small-banner>
-        <x-small-banner></x-small-banner>
-        <x-small-banner></x-small-banner>
-    </x-small-banner-container>
-	
-	
-	<x-product-area-container>
-    </x-product-area-container>
-	
-	<x-medium-banner-container>
-        <x-medium-banner></x-medium-banner>
-        <x-medium-banner></x-medium-banner>
-    </x-medium-banner-container>
-	
-	<x-product-area-container>
-
-    </x-product-area-container>
-	
-    <x-slogan-banner></x-slogan-banner>
-	
-	<x-shop-list-container>
-        <x-shop-list></x-shop-list>
-        <x-shop-list></x-shop-list>
-        <x-shop-list></x-shop-list>
-    </x-shop-list-container>
-    
-    <x-service-area></x-service-area>
-	
-	<x-footer></x-footer>
- 
-	<!-- Jquery -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    {{-- <script src="/js/jquery-migrate-3.0.0.js"></script> --}}
-	<script src="/js/jquery-ui.min.js"></script>
-	<!-- Popper JS -->
-	<script src="/js/popper.min.js"></script>
-	<!-- Bootstrap JS -->
-	<script src="/js/bootstrap.min.js"></script>
-	<!-- Color JS -->
-	<script src="/js/colors.js"></script>
-	<!-- Slicknav JS -->
-	<script src="/js/slicknav.min.js"></script>
-	<!-- Owl Carousel JS -->
-	<!-- Magnific Popup JS -->
-	<script src="/js/magnific-popup.js"></script>
-	<!-- Waypoints JS -->
-	<script src="/js/waypoints.min.js"></script>
-	<!-- Countdown JS -->
-	<script src="/js/finalcountdown.min.js"></script>
-	<!-- Nice Select JS -->
-	<script src="/js/nicesellect.js"></script>
-	<!-- Flex Slider JS -->
-	<script src="/js/flex-slider.js"></script>
-	<!-- ScrollUp JS -->
-	<script src="/js/scrollup.js"></script>
-	<!-- Onepage Nav JS -->
-	<script src="/js/onepage-nav.min.js"></script>
-	<!-- Easing JS -->
-	<script src="/js/easing.js"></script>
-	<!-- Active JS -->
-	<script src="/js/active.js"></script>
-</body>
-</html>
+	<x-y-space></x-y-space>
+	<x-container>
+		<x-title>
+			BROWSE OUR LATEST ITEMS
+		</x-title>
+		<x-y-space></x-y-space>
+		<div class="row">
+			@foreach (\App\Models\Product::latest()->limit(8)->get() as $product)
+				<x-item-card :product="$product"></x-item-card>
+			@endforeach
+		</div>
+	</x-container>
+</x-layout>
