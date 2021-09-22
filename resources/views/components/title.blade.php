@@ -1,5 +1,5 @@
 <div class="text-center">
-    <h2 style="border-bottom:2px solid #222;" class="d-inline">
+    <p style="border-bottom:2px solid #222; font-size:1em;" class="d-inline">
         {{ $slot }}
-    </h2>
+    </p>
 </div>

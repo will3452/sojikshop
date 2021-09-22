@@ -21,17 +21,17 @@
                 <li class="nav-item">
                     <a href="" class="nav-link">
                         <i class="fa fa-shopping-cart"></i>
-                        <span class="badge badge-danger animate__heartBeat animate__infinite">2</span> My Cart
+                        <span class="badge badge-danger animate__heartBeat animate__infinite">2</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="" class="nav-link">
-                        <i class="fa fa-heart"></i> My Wishlist
+                        <i class="fa fa-heart"></i>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="" class="nav-link">
-                        <i class="fa fa-user"></i> My Account
+                        <i class="fa fa-user"></i>
                     </a>
                 </li>
             </ul>
