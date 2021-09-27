@@ -4,7 +4,7 @@
   <x-search-bar></x-search-bar>
   <x-title>Latest Products</x-title>
   <x-product-container>
-    @foreach (\App\Models\Product::latest()->limit(4)->get() as $product)
+    @foreach (\App\Models\Product::latest()->limit(10)->get() as $product)
       <x-product-item :product="$product"></x-product-item>
     @endforeach
   </x-product-container>
