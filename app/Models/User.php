@@ -15,16 +15,7 @@ class User extends Authenticatable
 
     protected static $logAttributes = ['name', 'email'];
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var string[]
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $guarded=[];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -44,4 +35,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function carts(){
+        return $this->hasMany(Cart::class);
+    }
 }

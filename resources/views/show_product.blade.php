@@ -63,8 +63,9 @@
         </div>
     </div>
 
-    <form
-        action=""
+    @if (!$product->carts()->where('user_id', auth()->id())->exists())
+        <form
+        action="/add-to-cart/{{ $product->id }}"
         method="POST"
         class="
         flex
@@ -73,7 +74,6 @@
         "
     >
         @csrf 
-        <input type="hidden" name="product_id" value="{{ $product->id }}">
         <button
         type="submit"
         class="
@@ -95,5 +95,29 @@
         ADD TO CART
         </button>
     </form>
+    @else 
+        <div class="flex justify-center mt-4">
+            <a
+            href="/my-cart"
+            type="submit"
+            class="
+            font-bold
+            text-white
+            flex
+            items-center
+            justify-between
+            py-2
+            px-8
+            bg-blue-600
+            rounded-xl
+            "
+            >
+            <span class="material-icons">
+                view_list
+                </span>
+                CHECK MY CART
+            </a>
+        </div>
+    @endif
     
 </x-layout>
