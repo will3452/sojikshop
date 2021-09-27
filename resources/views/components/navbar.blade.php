@@ -1,39 +1,48 @@
 <!-- navbar -->
-<nav
-  class="
-    sticky
-    top-0
-    md:relative
-    flex
-    justify-between
-    items-center
-    p-2
-    md:p-6
-    bg-purple-500
-    z-50
-  "
->
-  <div>
-    <a href="">
-      <span class="material-icons text-white"> polymer </span>
-    </a>
-  </div>
-  <div>
-    <a href="#" class="px-2">
-      <span class="material-icons text-white"> favorite </span>
-      <span
-        class="inline-block h-2 bg-pink-500 text-white rounded-2xl p-1"
-      ></span>
-    </a>
-    <a href="#" class="px-2">
-      <span class="material-icons text-white"> shopping_cart </span>
-      <span
-        class="inline-block h-2 bg-pink-500 text-white rounded-2xl p-1"
-      ></span>
-    </a>
-    <a href="#" class="px-2">
-      <span class="material-icons text-white"> account_circle </span>
-    </a>
-  </div>
-</nav>
+    <nav
+    x-data="{isShow:false}"
+    class="
+        sticky
+        md:sticky
+        top-0
+        md:relative
+        flex
+        justify-between
+        items-center
+        p-2
+        md:p-6
+        bg-gradient-to-r
+        from-purple-900
+        to-pink-500
+        z-50
+    "
+    >
+    <div>
+        <a href="/">
+        <span class="material-icons text-white"> polymer </span>
+        </a>
+    </div>
+    <div>
+        <a href="#" class="px-2">
+        <span class="material-icons text-white"> favorite </span>
+        <x-dot></x-dot>
+        </a>
+        <a href="#" class="px-2">
+        <span class="material-icons text-white"> shopping_cart </span>
+        <x-dot></x-dot>
+        </a>
+        <a href="#" class="px-2" @click.prevent="isShow = !isShow" x-show="!isShow">
+        <span class="material-icons text-white"> account_circle </span>
+        </a>
+        <a href="#" class="px-2" @click.prevent="isShow = !isShow" x-show="isShow">
+            <span class="material-icons text-yellow-300"> account_circle </span>
+        </a>
+    </div>
+    <div x-show="isShow" class="shadow-2xl bg-white w-2/3 md:w-1/5 z-50 fixed top-11 md:top-20 border-t-4 border-pink-500 right-0 rounded-b-xl text-center uppercase">
+        <a href="" class="block hover:bg-purple-900 hover:text-white py-2">Login</a>
+        <a href="" class="block hover:bg-purple-900 hover:text-white py-2">Register</a>
+    </div>
+    </nav>
+    
+
 <!-- end of navbar -->

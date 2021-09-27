@@ -2,8 +2,10 @@
 <form
     class="
     py-5
-    md:py-8 md:bg-blue-200
-    bg-pink-500
+    md:py-8
+    bg-gradient-to-r
+    from-purple-900
+    to-pink-500
     flex
     items-center
     justify-center
@@ -26,7 +28,7 @@
         md:border-purple-200
     "
     />
-    <button class="py-1 px-3 bg-purple-600 rounded-r-3xl">
+    <button class="py-1 px-3 bg-purple-900 rounded-r-3xl">
         <span class="material-icons text-white"> search </span>
     </button>
 </form>

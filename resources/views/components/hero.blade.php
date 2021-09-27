@@ -1,6 +1,6 @@
 <!-- Featured -->
 <div>
-    <div class="bg-purple-700 text-center p-10 my-4 md:py-10">
+    <div class="bg-gradient-to-r from-purple-900 to-pink-500 text-center p-10 my-4 md:py-10">
       <h2 class="font-bold text-2xl text-white md:text-4xl md:font-thin">
         SOME TEXT HERE
       </h2>

@@ -1,5 +1,4 @@
 <x-layout>
-  <x-navbar></x-navbar>
   <x-banner></x-banner>
   <x-search-bar></x-search-bar>
   <x-title>Latest Products</x-title>
@@ -9,7 +8,6 @@
     @endforeach
   </x-product-container>
   <x-hero></x-hero>
-
   <x-title>
     Products
   </x-title>
@@ -18,5 +16,4 @@
       <x-product-item :product="$product"></x-product-item>
     @endforeach
   </x-product-container-slider>
-  <x-footer></x-footer>
 </x-layout>

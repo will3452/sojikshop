@@ -17,7 +17,7 @@
             $('.slider').hide();
             $(`#slider-${_count}`).fadeIn();
             _count++;
-        }, 2000);
+        }, 5000);
     });
 </script>
 

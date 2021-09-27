@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\LandingController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LandingController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,3 +16,7 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', [LandingController::class, 'index']);
+
+Route::prefix('products')->name('products.')->group(function(){
+    Route::get('/{product}', [ProductController::class, 'show'])->name('show');
+});
