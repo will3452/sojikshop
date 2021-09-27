@@ -38,6 +38,9 @@ Route::middleware('auth')->group(function(){
     Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout');
 
     Route::post('/add-to-cart/{product}', [CartController::class, 'addToCart']);
+    Route::post('/increase-quantity/{cart}', [CartController::class, 'increaseQuantity']);
+    Route::post('/decrease-quantity/{cart}', [CartController::class, 'decreaseQuantity']);
+    Route::delete('/remove-to-cart/{cart}', [CartController::class, 'removeToCart']);
 
     Route::get('/my-cart', [CartController::class, 'myCart']);
 });

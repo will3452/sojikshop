@@ -19,8 +19,44 @@ class CartController extends Controller
         return back();
     }
 
+    public function removeToCart(Cart $cart){
+        $cart->delete();
+        alert('Product has been removed to your Cart!', 'success');
+        return back();
+    }
+
     public function myCart(){
-        $carts = auth()->user()->carts()->latest()->get();
-        return view('cart_list', compact('carts'));
+        $totalCost = 0;
+        $carts = auth()->user()->carts()->with('product')->latest()->get();
+        foreach($carts as $cart){
+            $totalCost += $cart->product->price * $cart->quantity;
+        }
+        return view('cart_list', compact('carts', 'totalCost'));
+    }
+
+    public function increaseQuantity(Cart $cart){
+        $qty = $cart->quantity + 1;
+        if($qty > $cart->product->quantity){
+            alert("Can't Increase Quantity!", 'error');
+            return back();
+        }
+        $cart->update([
+            'quantity'=>$qty
+        ]);
+
+        return redirect('/my-cart#cart'.$cart->id);
+    }
+
+    public function decreaseQuantity(Cart $cart){
+        $qty = $cart->quantity - 1;
+        if($qty <= 0){
+            alert("Can't Increase Quantity!", 'error');
+            return back();
+        }
+        $cart->update([
+            'quantity'=>$qty
+        ]);
+
+        return redirect('/my-cart#cart'.$cart->id);
     }
 }
