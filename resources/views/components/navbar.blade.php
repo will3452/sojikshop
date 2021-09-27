@@ -1,40 +1,39 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-white">
-    <div class="container">
-            <a class="navbar-brand" href="#">SojiKShop</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Category
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        @foreach (\App\Models\Category::get() as $item)
-                            <a href="#" class="dropdown-item">{{ $item->name }}</a>
-                        @endforeach
-                    </div>
-                </li>
-            </ul>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <i class="fa fa-shopping-cart"></i>
-                        <span class="badge badge-danger animate__heartBeat animate__infinite">2</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <i class="fa fa-heart"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <i class="fa fa-user"></i>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
+<!-- navbar -->
+<nav
+  class="
+    sticky
+    top-0
+    md:relative
+    flex
+    justify-between
+    items-center
+    p-2
+    md:p-6
+    bg-purple-500
+    z-50
+  "
+>
+  <div>
+    <a href="">
+      <span class="material-icons text-white"> polymer </span>
+    </a>
+  </div>
+  <div>
+    <a href="#" class="px-2">
+      <span class="material-icons text-white"> favorite </span>
+      <span
+        class="inline-block h-2 bg-pink-500 text-white rounded-2xl p-1"
+      ></span>
+    </a>
+    <a href="#" class="px-2">
+      <span class="material-icons text-white"> shopping_cart </span>
+      <span
+        class="inline-block h-2 bg-pink-500 text-white rounded-2xl p-1"
+      ></span>
+    </a>
+    <a href="#" class="px-2">
+      <span class="material-icons text-white"> account_circle </span>
+    </a>
+  </div>
 </nav>
+<!-- end of navbar -->

@@ -1,5 +1,13 @@
-<div class="text-center">
-    <p style="border-bottom:2px solid #222; font-size:1.9em;" class="d-inline">
-        {{ $slot }}
-    </p>
-</div>
+<!-- title -->
+<h2
+class="
+  text-center text-2xl
+  py-4
+  font-bold
+  text-gray-900
+  md:text-4xl md:py-10 md:font-thin
+"
+>
+{{ $slot }}
+</h2>
+<!-- end of title -->
