@@ -15,7 +15,7 @@ class CartController extends Controller
             'product_id'=>$product->id,
             'user_id'=>auth()->id()
         ]);
-        alert('Producted added your Cart!', 'success');
+        alert('The Product has been added to your Cart!', 'success');
         return back();
     }
 
