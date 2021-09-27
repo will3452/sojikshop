@@ -20,6 +20,6 @@
     <div class="
     bg-gradient-to-r from-purple-400 to-pink-500
     px-2 absolute bottom-0 w-full text-center text-xs font-bold uppercase py-2 text-white">
-        {{ $product->name }}
+        {{ \Str::limit($product->name, 25) }}
     </div>
 </a>
