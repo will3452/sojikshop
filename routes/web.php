@@ -2,8 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LandingController;
+use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AuthenticationController;
 
@@ -18,10 +17,9 @@ use App\Http\Controllers\AuthenticationController;
 |
  */
 
-Route::get('/', [LandingController::class, 'index']);
+Route::get('/', [WelcomeController::class, 'index']);
 
-Route::middleware(['guest'])->group(function(){
-
+Route::middleware(['guest'])->group(function () {
     Route::get('/register', [AuthenticationController::class, 'register'])->name('register');
     Route::get('/login', [AuthenticationController::class, 'login'])->name('login');
 
@@ -29,11 +27,11 @@ Route::middleware(['guest'])->group(function(){
     Route::post('/login', [AuthenticationController::class, 'postLogin']);
 });
 
-Route::prefix('products')->middleware(['auth'])->name('products.')->group(function(){
+Route::prefix('products')->middleware(['auth'])->name('products.')->group(function () {
     Route::get('/{product}', [ProductController::class, 'show'])->name('show');
 });
 
-Route::middleware('auth')->group(function(){
+Route::middleware('auth')->group(function () {
     Route::redirect('/home', '/');
     Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout');
 
@@ -44,5 +42,3 @@ Route::middleware('auth')->group(function(){
 
     Route::get('/my-cart', [CartController::class, 'myCart']);
 });
-
-

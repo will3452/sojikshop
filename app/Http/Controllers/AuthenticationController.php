@@ -55,4 +55,9 @@ class AuthenticationController extends Controller
         Auth::logout();
         return redirect('/');
     }
+
+    public function forgotPassword()
+    {
+        return 'forgot password is under maintenance!';
+    }
 }
