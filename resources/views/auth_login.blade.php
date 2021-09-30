@@ -17,6 +17,12 @@
             <h2 class="text-center uppercase font-bold text-2xl text-pink-700">
                 LOGIN NOW
             </h2>
+            @if(session('error'))
+            <x-error>
+                {{session('error')}}
+            </x-error>
+            @endif
+
             <x-input name="email" required type="email" placeholder="Your Email"></x-input>
             <x-input name="password" type="password" required placeholder="Your Password"></x-input>
             <button
@@ -39,6 +45,10 @@
                     CREATE AN ACCOUNT
                 </a>
             </div>
+            <a class="block text-sm text-gray-400 text-center mt-4 font-bold" href="{{route('forgot.password')}}">
+                forgot password?
+            </a>
         </form>
+
     </div>
 </x-layout>

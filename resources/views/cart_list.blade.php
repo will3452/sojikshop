@@ -6,7 +6,7 @@
         <ul >
             @forelse ($carts as $item)
                 <x-cart-item :cart="$item"></x-cart-item>
-            @empty 
+            @empty
             <div class="w-full h-40 flex items-center justify-center">
                 <div class="text-center">
                     <span class="text-gray-700 font-bold">
@@ -27,13 +27,13 @@
             </h1>
         </div>
         <div class="flex justify-between">
-            <a href="/" class="rounded-lg px-4 m-3 py-2 bg-purple-700 text-white">
+            <a href="/" class="rounded-lg px-4 m-3 py-2 bg-purple-700 text-white text-xs">
                 SHOP MORE
             </a>
-            <button class="rounded-lg px-4 py-2 m-3 bg-green-500 text-white">
+            <button class="rounded-lg px-4 py-2 m-3 bg-green-500 text-white text-xs">
                 PROCEED TO CHECKOUT
             </button>
         </div>
     </div>
-    
+
 </x-layout>

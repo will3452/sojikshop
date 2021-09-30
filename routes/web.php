@@ -25,6 +25,11 @@ Route::middleware(['guest'])->group(function () {
 
     Route::post('/register', [AuthenticationController::class, 'postRegister']);
     Route::post('/login', [AuthenticationController::class, 'postLogin']);
+
+    Route::get('/forgot-password', [AuthenticationController::class, 'forgotPassword'])->name('forgot.password');
+    Route::post('/forgot-password', [AuthenticationController::class, 'sendPasswordResetLink']);
+    Route::get('/password-reset', [AuthenticationController::class, 'passwordReset'])->name('password.reset');
+    Route::post('/password-reset', [AuthenticationController::class, 'postPasswordReset']);
 });
 
 Route::prefix('products')->middleware(['auth'])->name('products.')->group(function () {

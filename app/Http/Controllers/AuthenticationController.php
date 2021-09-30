@@ -2,18 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\PasswordResetLink;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class AuthenticationController extends Controller
 {
-    public function register(){
+    public function register()
+    {
         return view('auth_register');
     }
 
-    public function postRegister(Request $request){
-       $data = $request->validate([
+    public function postRegister(Request $request)
+    {
+        $data = $request->validate([
             'name'=>'required',
             'email'=>'required|unique:users,email',
             'password'=>'required|min:8|confirmed',
@@ -25,7 +29,7 @@ class AuthenticationController extends Controller
         $user = User::create($data);
         alert('Regitered Successfully!');
 
-        if(!$user){
+        if (!$user) {
             alert('Something is wrong!', 'danger');
         }
 
@@ -35,29 +39,81 @@ class AuthenticationController extends Controller
         return back();
     }
 
-    public function login(){
+    public function login()
+    {
         return view('auth_login');
     }
 
-    public function postLogin(Request $request){
+    public function postLogin(Request $request)
+    {
         $data = $request->validate([
             'email'=>'required|email',
             'password'=>'required',
         ]);
 
-        if(Auth::attempt($data)){
+        if (Auth::attempt($data)) {
             return redirect('/');
         }
-        return back();
+        return back()->withError('Account not found!');
     }
 
-    public function logout(){
+    public function logout()
+    {
         Auth::logout();
         return redirect('/');
     }
 
     public function forgotPassword()
     {
-        return 'forgot password is under maintenance!';
+        return view('auth_forgot_password');
+    }
+    public function sendPasswordResetLink()
+    {
+        request()->validate([
+            'email'=>'required|email'
+        ]);
+
+
+        $user = User::where('email', request()->email)->first();
+
+        if (!$user) {
+            alert('Email not found!', 'danger');
+            return back()->withError('Account not found!');
+        }
+        alert("We've sent you an password reset link!", 'success');
+        Mail::to($user)->send(new PasswordResetLink($user));
+        return redirect('/');
+    }
+
+    public function passwordReset()
+    {
+        if (!request()->hasValidSignature()) {
+            abort(401);
+        }
+        return view('password_reset');
+    }
+
+    public function postPasswordReset()
+    {
+        request()->validate([
+            'email'=>'required|email',
+            'password'=>'required|confirmed|min:6'
+        ]);
+        $user = User::where('email', request()->email)->first();
+
+        if(!$user){
+            alert('account not found!', 'danger');
+            return back()->withError('Account not found!');
+        }
+        //change pasword here
+        $user->password = bcrypt(request()->password);
+        $user->save();
+
+        //login user
+        Auth::login($user);
+
+        alert('Password reset!', 'success');
+        //redirect to home
+        return redirect('/');
     }
 }

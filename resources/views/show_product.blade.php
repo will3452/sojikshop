@@ -73,7 +73,7 @@
         my-4
         "
     >
-        @csrf 
+        @csrf
         <button
         type="submit"
         class="
@@ -87,6 +87,7 @@
         bg-pink-600
         rounded-xl
         animate-pulse
+        text-xs
         "
         >
         <span class="material-icons">
@@ -95,7 +96,7 @@
         ADD TO CART
         </button>
     </form>
-    @else 
+    @else
         <div class="flex justify-center mt-4">
             <a
             href="/my-cart"
@@ -110,6 +111,7 @@
             px-8
             bg-blue-600
             rounded-xl
+            text-xs
             "
             >
             <span class="material-icons">
@@ -119,5 +121,5 @@
             </a>
         </div>
     @endif
-    
+
 </x-layout>
