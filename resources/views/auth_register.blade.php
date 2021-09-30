@@ -4,7 +4,7 @@
         action="{{ route('register') }}"
         method="POST"
         class="
-        bg-white 
+        bg-white
         shadow-2xl
         rounded-2xl
         w-full
@@ -20,6 +20,10 @@
             <x-input name="name" required placeholder="Enter your Name"></x-input>
 
             <x-input name="address" type="text" required placeholder="Enter your Complete Address"></x-input>
+
+            <div class="text-xs text-purple-200">
+                The options above are the supported area/region of the application.
+            </div>
 
             <x-input name="mobile" type="number" required placeholder="Enter your mobile"></x-input>
 
