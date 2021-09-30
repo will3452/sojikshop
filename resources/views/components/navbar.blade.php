@@ -25,7 +25,7 @@
     <div>
         <a href="{{route('my.wishlist')}}" class="px-2">
         <span class="material-icons text-white"> favorite </span>
-        <x-dot type="heart!"></x-dot>
+        <x-dot type="heart"></x-dot>
         </a>
         <a href="/my-cart" class="px-2">
         <span class="material-icons text-white"> shopping_cart </span>

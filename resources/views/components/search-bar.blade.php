@@ -1,35 +1,35 @@
-<!-- searbar -->
-<form
-    class="
-    py-5
-    md:py-8
-    bg-gradient-to-r
-    from-purple-900
-    to-pink-500
-    flex
-    items-center
-    justify-center
-    "
->
-    <input
-    type="text"
-    placeholder="K-Pop"
-    class="
-        placeholder-purple-500
-        inline-block
-        w-4/5
-        md:w-2/5
-        bg-white
-        rounded-l-3xl
-        py-1
-        px-4
-        text-lg
-        border-2
-        md:border-purple-200
-    "
-    />
-    <button class="py-1 px-3 bg-purple-900 rounded-r-3xl">
-        <span class="material-icons text-white"> search </span>
-    </button>
-</form>
-<!-- end of searchbar -->
+<div class="h-20 bg-gradient-to-r from-purple-900 to-pink-500 relative">
+    <form action="" class="mx-auto md:w-1/2 md:left-1/4 w-full p-2 absolute -top-6">
+        <input type="text" id="_search_bar" class="w-full p-3 rounded-full focus:bg-yellow-200 focus:outline-none">
+        <button class="absolute right-3 top-3 bg-purple-900 w-10 h-10 text-white rounded-full">
+            <span class="material-icons">
+                search
+            </span>
+        </button>
+    </form>
+    <div class="absolute bottom-3 w-full">
+        <div class="text-center">
+            @foreach (\App\Models\Category::inRandomOrder()->take(3)->get() as $category)
+                <a class="text-xs uppercase p-1 px-2 bg-pink-600 text-white rounded-full cursor-pointer mx-2 border-2 border-white">
+                    {{$category->name}}
+                </a>
+            @endforeach
+
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.0/typed.min.js" integrity="sha512-zKaK6G2LZC5YZTX0vKmD7xOwd1zrEEMal4zlTf5Ved/A1RrnW+qt8pWDfo7oz+xeChECS/P9dv6EDwwPwelFfQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    var typed4 = new Typed('#_search_bar', {
+        strings: [
+            @foreach(\App\Models\Product::inRandomOrder()->take(7)->get() as $product)
+            `{{\Str::limit($product->name,30)}}`,
+            @endforeach
+        ],
+        typeSpeed: 100,
+        backSpeed: 50,
+        attr: 'placeholder',
+        bindInputFocusEvents: true,
+        loop: true
+    });
+</script>

@@ -25,4 +25,10 @@ class WishListController extends Controller
 
         return view('wish_list', compact('wishlists'));
     }
+
+    public function removeWishList(WishList $wishList)
+    {
+        $wishList->delete();
+        return back();
+    }
 }

@@ -53,6 +53,7 @@ Route::middleware('auth')->group(function () {
     //wishlist
     Route::post('add-to-wishlist/{product}', [WishListController::class, 'addToWishList'])->name('add.wishlist');
     Route::get('/my-wishlist', [WishListController::class, 'myWishList'])->name('my.wishlist');
+    Route::get('/remove-wishlist/{wishList}', [WishListController::class, 'removeWishList'])->name('remove.wishlist');
 });
 
 Route::get('/paypal', function () {

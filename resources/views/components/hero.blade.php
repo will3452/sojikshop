@@ -1,21 +1,17 @@
 <!-- Featured -->
 <div>
     <div class="bg-gradient-to-r from-purple-900 to-pink-500 text-center p-10 my-4 md:py-10">
-      <h2 class="font-bold text-2xl text-white md:text-4xl md:font-thin">
-        SOME TEXT HERE
+      <h2 class="font-bold text-2xl text-white md:text-4xl md:font-thin mb-4">
+        SOME SAYINGS GOES HERE!
       </h2>
-      <p class="text-white md:text-2xl md:mt-2">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed quo in
-        enim nisi neque ratione deserunt explicabo blanditiis vitae delectus!
-      </p>
       <button
         class="
           my-4
           bg-pink-500
           text-white
           py-2
-          rounded-lg
-          px-8 md:text-2xl md:py-4
+          rounded-full
+          px-8 md:text-xl md:py-4
         "
       >
         SHOP NOW
