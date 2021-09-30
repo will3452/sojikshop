@@ -5,6 +5,7 @@ class="
   py-4
   font-bold
   text-purple-900
+  uppercase
   md:text-4xl md:py-10 md:font-thin
 "
 >

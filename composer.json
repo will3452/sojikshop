@@ -30,8 +30,7 @@
         "laravel/tinker": "^2.5",
         "numaxlab/nova-ckeditor5-classic": "^1.1",
         "optimistdigital/nova-settings": "^3.2",
-        "realrashid/sweet-alert": "^4.0",
-        "srmklive/paypal": "^3.0"
+        "realrashid/sweet-alert": "^4.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

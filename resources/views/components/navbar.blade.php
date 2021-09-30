@@ -23,7 +23,7 @@
         </a>
     </div>
     <div>
-        <a href="#" class="px-2">
+        <a href="{{route('my.wishlist')}}" class="px-2">
         <span class="material-icons text-white"> favorite </span>
         <x-dot type="heart!"></x-dot>
         </a>
@@ -49,6 +49,6 @@
         @endauth
     </div>
     </nav>
-    
+
 
 <!-- end of navbar -->

@@ -90,9 +90,6 @@
         text-xs
         "
         >
-        <span class="material-icons">
-            add
-        </span>
         ADD TO CART
         </button>
     </form>
@@ -114,10 +111,61 @@
             text-xs
             "
             >
-            <span class="material-icons">
-                view_list
-                </span>
                 CHECK MY CART
+            </a>
+        </div>
+    @endif
+
+    @if (!$product->wishLists()->where('user_id', auth()->id())->exists())
+        <form
+        action="{{route('add.wishlist', ['product'=>$product->id])}}"
+        method="POST"
+        class="
+        flex
+        justify-center
+        my-4
+        "
+    >
+        @csrf
+        <button
+        type="submit"
+        class="
+        font-bold
+        text-white
+        flex
+        items-center
+        justify-between
+        py-2
+        px-5
+        bg-gray-900
+        rounded-xl
+        animate-pulse
+        text-xs
+        "
+        >
+
+        ADD TO WISHLIST
+        </button>
+    </form>
+    @else
+        <div class="flex justify-center mt-4">
+            <a
+            href="{{route('my.wishlist')}}"
+            type="submit"
+            class="
+            font-bold
+            text-black
+            flex
+            items-center
+            justify-between
+            py-2
+            px-5
+            bg-gray-300
+            rounded-xl
+            text-xs
+            "
+            >
+                CHECK MY WISHLIST
             </a>
         </div>
     @endif

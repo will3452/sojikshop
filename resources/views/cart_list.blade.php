@@ -21,19 +21,21 @@
             </div>
             @endforelse
         </ul>
-        <div class="p-3 bg-green-300 mx-2 rounded-lg flex items-center">
-            <h1 class="flex-none text-center font-bold text-2xl text-green-900">
-                TOTAL COST : P {{ number_format($totalCost,2) }}
-            </h1>
-        </div>
-        <div class="flex justify-between">
-            <a href="/" class="rounded-lg px-4 m-3 py-2 bg-purple-700 text-white text-xs">
-                SHOP MORE
-            </a>
-            <button class="rounded-lg px-4 py-2 m-3 bg-green-500 text-white text-xs">
-                PROCEED TO CHECKOUT
-            </button>
-        </div>
+        @if ($totalCost != 0)
+            <div class="p-3 bg-pink-300 mx-2 rounded-lg flex items-center">
+                <h1 class="flex-none text-center font-bold text-2xl text-pink-900">
+                    TOTAL COST : P {{ number_format($totalCost,2) }}
+                </h1>
+            </div>
+            <div class="flex justify-between">
+                <a href="/" class="rounded-lg px-4 m-3 py-2 bg-purple-700 text-white text-xs">
+                    SHOP MORE
+                </a>
+                <a href="#" class="rounded-lg px-4 py-2 m-3 bg-green-500 text-white text-xs">
+                    CHECKOUT WITH PAYPAL
+                </a>
+            </div>
+        @endif
     </div>
 
 </x-layout>

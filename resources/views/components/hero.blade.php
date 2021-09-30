@@ -15,7 +15,7 @@
           text-white
           py-2
           rounded-lg
-          md:px-8 md:text-2xl md:py-4
+          px-8 md:text-2xl md:py-4
         "
       >
         SHOP NOW

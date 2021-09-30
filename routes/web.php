@@ -5,6 +5,8 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\PayPalPaymentController;
+use App\Http\Controllers\WishListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,4 +48,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/remove-to-cart/{cart}', [CartController::class, 'removeToCart']);
 
     Route::get('/my-cart', [CartController::class, 'myCart']);
+
+
+    //wishlist
+    Route::post('add-to-wishlist/{product}', [WishListController::class, 'addToWishList'])->name('add.wishlist');
+    Route::get('/my-wishlist', [WishListController::class, 'myWishList'])->name('my.wishlist');
+});
+
+Route::get('/paypal', function () {
+    return view('paypal');
 });
