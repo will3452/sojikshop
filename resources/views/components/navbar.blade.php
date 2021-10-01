@@ -18,8 +18,8 @@
     "
     >
     <div>
-        <a href="/">
-        <span class="material-icons text-white"> polymer </span>
+        <a href="/" class="transform rotate-90 block">
+        <span class="material-icons text-white "> polymer </span>
         </a>
     </div>
     <div>
