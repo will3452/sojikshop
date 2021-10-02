@@ -1,6 +1,6 @@
 <div class="h-20 bg-gradient-to-r from-purple-900 to-pink-500 relative">
-    <form action="" class="mx-auto md:w-1/2 md:left-1/4 w-full p-2 absolute -top-6">
-        <input type="text" id="_search_bar" class="w-full p-3 rounded-full focus:bg-yellow-200 focus:outline-none">
+    <form action="{{route('search')}}" class="mx-auto md:w-1/2 md:left-1/4 w-full p-2 absolute -top-6">
+        <input type="text" name="keyword" required id="_search_bar" class="w-full p-3 rounded-full focus:bg-yellow-200 focus:outline-none">
         <button class="absolute right-3 top-3 bg-purple-900 w-10 h-10 text-white rounded-full">
             <span class="material-icons">
                 search
@@ -10,7 +10,7 @@
     <div class="absolute bottom-3 w-full">
         <div class="text-center">
             @foreach (\App\Models\Category::inRandomOrder()->take(3)->get() as $category)
-                <a class="text-xs uppercase p-1 px-2 bg-pink-600 text-white rounded-full cursor-pointer mx-2 border-2 border-white">
+                <a href="{{route('search.category', ['category' => $category->name])}}" class="text-xs uppercase p-1 px-2 bg-pink-600 text-white rounded-full cursor-pointer mx-2 border-2 border-white">
                     {{$category->name}}
                 </a>
             @endforeach

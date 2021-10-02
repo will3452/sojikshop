@@ -10,6 +10,7 @@ use App\Http\Controllers\WishListController;
 use App\Http\Controllers\PayPalPaymentController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,6 +71,10 @@ Route::middleware('auth')->group(function () {
 
     //invoice
     Route::get('/invoices/{invoice}', [InvoiceController::class, 'show']);
+
+    //search
+    Route::get('/search', [SearchController::class, 'search'])->name('search');
+    Route::get('search-category', [SearchController::class, 'getCategory'])->name('search.category');
 });
 
 Route::get('/paypal', function () {
