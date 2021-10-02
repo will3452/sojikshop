@@ -2,7 +2,11 @@
 class="bg-gradient-to-r
 from-purple-900
 to-pink-500
-text-center float-right cursor-pointer p-2 fixed right-5 bottom-5 hidden
+text-center
+float-right
+cursor-pointer
+p-2
+fixed right-5 bottom-5 hidden
 z-50
 rounded-full
 w-10

@@ -12,6 +12,9 @@ class OrderSupport
     public static function generateReferenceNumber()
     {
         $lastId = Order::latest()->first()->id ?? 1;
+        if ($lastId != 1) {
+            $lastId += 1;
+        }
         return  "SJKS-". Str::padLeft("$lastId", 8, '0');
     }
 
