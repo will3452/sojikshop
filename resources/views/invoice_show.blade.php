@@ -8,11 +8,11 @@
         <div class="w-full mx-auto shadow rounded-lg overflow-hidden">
             <div class="p-2 bg-purple-900 text-white flex justify-between items-center">
                 Payment Details
-                <button class="block text-center" onclick="savePaymentDetails()">
+                {{-- <button class="block text-center" onclick="savePaymentDetails()">
                     <span class="material-icons">
                     save_alt
                     </span>
-                </button>
+                </button> --}}
             </div>
             <div class="p-2 text-xs text-gray-800" id="payment_details">
                 <div class="flex justify-between  pb-2">
