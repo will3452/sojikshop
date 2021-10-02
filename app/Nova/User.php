@@ -20,7 +20,7 @@ class User extends Resource
 
     public function authorizedToDelete(Request $request)
     {
-        return false;
+        return true;
     }
 
     public static function authorizedToCreate(Request $request)
