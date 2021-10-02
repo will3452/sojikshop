@@ -28,8 +28,15 @@
                     {{-- webhook  --}}
                     {{-- <input type="hidden" name="notify_url" value="{{url('/api/posts')}}"> --}}
 
-                    {{-- custom fields || meta --}}
-                    <input type="hidden" name="user_id" value="{{auth()->id()}}">
+                    <input type="hidden" name="tax_cart" value="{{$vat ?? 0}}">
+
+                    {{-- callback --}}
+                    <input type="hidden" name="callback_url" value="{{url('api/paypal-callback')}}">
+                    <input type="hidden" name="callback_timeout" value="3">
+                    <input type="hiden" name="callback_version" value="1">
+                    <input type="hiden" name="fallback_shipping_option_name_0">
+                    <input type="hiden" name="fallback_shipping_option_amount_0">
+                    <input type="hidden" name="fallback_shipping_option_is_default_0" value="0">
 
                     {{-- button --}}
                     <input type="submit" value="Check Out With Paypal" class="cursor-pointer rounded-lg px-4 py-2 m-3 bg-green-500 text-white text-xs">

@@ -45,6 +45,7 @@
         @endguest
 
         @auth
+        <a href="{{ route('my-orders') }}" class="block hover:bg-purple-900 hover:text-white py-2">Orders</a>
         <a href="{{ route('logout') }}" class="block hover:bg-purple-900 hover:text-white py-2">Logout</a>
         @endauth
     </div>

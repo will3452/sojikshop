@@ -28,12 +28,8 @@ class CartController extends Controller
 
     public function myCart()
     {
-        $totalCost = 0;
         $carts = auth()->user()->carts()->with('product')->latest()->get();
-        foreach ($carts as $cart) {
-            $totalCost += $cart->product->price * $cart->quantity;
-        }
-        return view('cart_list', compact('carts', 'totalCost'));
+        return view('cart_list', compact('carts'));
     }
 
     public function increaseQuantity(Cart $cart)

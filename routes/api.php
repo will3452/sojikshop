@@ -1,6 +1,10 @@
 <?php
 
+use App\Models\Cart;
 use Illuminate\Http\Request;
+use App\Supports\OrderSupport;
+use App\Supports\InvoiceSupport;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,9 +23,19 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/payment-success', function () {
-    dd(request()->all());
+    $userId = request()->uid;
+    $invoice = InvoiceSupport::createInvoice(request(), $userId);
+    if ($invoice != null) {
+        $carts = Cart::where('user_id', $userId)->get();
+        OrderSupport::createOrder($invoice->id, $userId, $carts);
+    }
+    return redirect(route('payment.success'));
 });
 
 Route::post('/payment-cancelled', function () {
     return 'you cancelled your payment';
+});
+
+Route::post('/paypal-callback', function () {
+    Log::info('callback called!');
 });

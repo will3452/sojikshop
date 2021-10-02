@@ -2,11 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\AuthenticationController;
-use App\Http\Controllers\PayPalPaymentController;
+use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\WishListController;
+use App\Http\Controllers\PayPalPaymentController;
+use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\InvoiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +57,19 @@ Route::middleware('auth')->group(function () {
     Route::post('add-to-wishlist/{product}', [WishListController::class, 'addToWishList'])->name('add.wishlist');
     Route::get('/my-wishlist', [WishListController::class, 'myWishList'])->name('my.wishlist');
     Route::get('/remove-wishlist/{wishList}', [WishListController::class, 'removeWishList'])->name('remove.wishlist');
+
+    Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
+
+    //return pyment handler
+    Route::get('/payment-success', function () {
+        return view('payment_success');
+    })->name('payment.success');
+
+    //orders
+    Route::get('my-orders', [OrderController::class, 'myOrders'])->name('my-orders');
+
+    //invoice
+    Route::get('/invoices/{invoice}', [InvoiceController::class, 'show']);
 });
 
 Route::get('/paypal', function () {
