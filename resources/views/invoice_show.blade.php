@@ -44,7 +44,7 @@
 
                 <div class="flex justify-between  pb-2">
                     <div class="font-bold">
-                        Paymet Type
+                        Payment Type
                     </div>
                     <div>
                         {{$invoice->payment_type}} (Paypal)
