@@ -12,7 +12,7 @@ class ApiProductController extends Controller
         $products = Product::get();
 
         if (request()->has('_limit')) {
-            $products = Product::limit(request()->limit)->get();
+            $products = Product::limit(request()->_limit)->get();
         }
 
         return response([
