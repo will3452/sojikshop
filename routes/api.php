@@ -45,3 +45,4 @@ Route::post('/paypal-callback', function () {
 //mobile app api
 
 Route::get('/products', [ApiProductController::class, 'index']);
+Route::get('/products/{id}', [ApiProductController::class, 'show']);
