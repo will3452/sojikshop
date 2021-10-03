@@ -19,4 +19,17 @@ class ApiProductController extends Controller
             'products'=>$products,
         ], 200);
     }
+
+    public function show($id)
+    {
+        $product = Product::find($id);
+        if (!$product) {
+            return response([
+                'product'=>[]
+            ], 400);
+        }
+        return response([
+            'product'=>$product,
+        ], 200);
+    }
 }
