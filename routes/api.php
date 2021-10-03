@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApiProductController;
 use App\Models\Cart;
 use Illuminate\Http\Request;
 use App\Supports\OrderSupport;
@@ -39,3 +40,8 @@ Route::post('/payment-cancelled', function () {
 Route::post('/paypal-callback', function () {
     Log::info('callback called!');
 });
+
+
+//mobile app api
+
+Route::get('/products', [ApiProductController::class, 'index']);
