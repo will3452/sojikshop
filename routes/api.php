@@ -35,6 +35,13 @@ Route::post('/payment-success', function () {
     return redirect(route('payment.success'));
 });
 
+//assets
+Route::get('/logo', function () {
+    return response([
+        'logo_path'=>url('/storage/'.nova_get_setting('logo'))
+    ], 200);
+});
+
 
 //authentication
 Route::post('/login', [ApiAuthenticationController::class, 'login']);

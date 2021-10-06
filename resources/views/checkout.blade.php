@@ -2,6 +2,29 @@
     <x-title>
         checkout
     </x-title>
+    <div class="md:w-1/2 mx-auto shadow">
+        <div class="bg-purple-900 text-white text-left text-sm p-2 font-thin text-sm">
+            Shipping Address
+        </div>
+        <div class="w-11/12 mx-auto">
+            <div class="mx-auto w-full">
+                <input type="text"
+                name=""
+                placeholder="Shipping Address"
+                class="w-full my-2 p-2 bg-yellow-100"
+                value="{{request()->shippingaddress??auth()->user()->address}}">
+            </div>
+            <div class="mx-auto w-full">
+                <select name="" id=""
+                class="w-full my-2 p-2 bg-yellow-100"
+                >
+                @foreach (\App\Models\Area::get() as $area)
+                    <option value="{{$area->Code}}">{{$area->description}} - {{$area->code}}</option>
+                @endforeach
+                </select>
+            </div>
+        </div>
+    </div>
     <div class="p-2 md:w-1/2 mx-auto">
         <table class="w-full">
             <thead>
@@ -15,6 +38,9 @@
                     <th class="p-2 font-thin text-sm">
                         Price
                     </th>
+                    <th class="p-2 font-thin text-sm">
+                        Shipping Fee
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -27,7 +53,10 @@
                             {{$item->quantity}}
                         </td>
                         <td class="text-gray-700 text-xs p-2 border-2">
-                            {{$item->product->price}}
+                            PHP {{$item->product->price}}
+                        </td>
+                        <td class="text-gray-700 text-xs p-2 border-2">
+                            PHP {{$item->product->shipping_fee}}
                         </td>
                     </tr>
                 @endforeach
@@ -37,7 +66,7 @@
                     <td class="border-2 p-2 text-xs text-gray-700 border-top-red-100">
                         Shipping Fee
                     </td>
-                    <td colspan="2" class="border-2 p-2 text-xs text-gray-700 border-top-red-100">
+                    <td colspan="3" class="border-2 p-2 text-xs text-gray-700 border-top-red-100">
                         <span class="text-xs">PHP</span> {{number_format(0, 2)}}
                     </td>
                 </tr>
@@ -45,8 +74,8 @@
                     <td class="border-2 p-2 text-xs text-gray-700 border-top-red-100">
                         VAT
                     </td>
-                    <td colspan="2" class="border-2 p-2 text-xs text-gray-700 border-top-red-100">
-                        {{$vat ?? '1.2%'}}
+                    <td colspan="3" class="border-2 p-2 text-xs text-gray-700 border-top-red-100">
+                        {{nova_get_setting('vat') ?? '1.2%'}}
                     </td>
                 </tr>
                 <tr class="text-gray-500 border-2">
@@ -76,20 +105,21 @@
             <input type="hidden" name="item_name_{{$index}}" value="{{$cart->product->name}}">
             <input type="hidden" name="quantity_{{$index}}" value="{{$cart->quantity}}">
             <input type="hidden" name="amount_{{$index}}" value="{{$cart->product->price}}">
+            <input type="hidden" name="shipping_{{$index}}" value="{{$cart->product->shippig_fee}}">
             @endforeach
             {{-- shipping info --}}
-            <input type="hidden" name="shipping_1" value="2">
+            {{-- <input type="hidden" name="shipping_1" value="2"> --}}
             {{-- <input type="hidden" name="shipping_2" value="2.50"> --}}
 
             {{-- methods and return url --}}
             <input type="hidden" name="rm" value="2">
-            <input type="hidden" NAME="return" value="{{url('/api/payment-success?uid='.auth()->id())}}">
+            <input type="hidden" NAME="return" value="{{url('/api/payment-success?shippingaddress='.request()->shipping_address ?? auth()->user()->address . '&uid='.auth()->id())}}">
             <input type="hidden" name="cancel_return" value="{{url('/api/payment-cancelled')}}">
 
             {{-- webhook  --}}
             {{-- <input type="hidden" name="notify_url" value="{{url('/api/posts')}}"> --}}
 
-            <input type="hidden" name="tax_cart" value="{{$vat ?? 0}}">
+            <input type="hidden" name="tax_cart" value="{{nova_get_setting('vat') ?? 0}}">
 
             {{-- callback --}}
             <input type="hidden" name="callback_url" value="{{url('api/paypal-callback')}}">
@@ -102,7 +132,7 @@
             {{-- button --}}
             <div class="flex justify-between items-center">
                 <a href="/my-cart" class="cursor-pointer rounded-lg px-4 py-2 m-3 bg-gray-900 text-white text-xs">Back To Your Cart</a>
-                <input type="submit" value="Pay With Paypal" class="animate-pulse font-bold cursor-pointer rounded-lg px-4 py-2 m-3 bg-green-500 text-white text-xs">
+                <input type="submit" value="Pay With Paypal" class="font-bold cursor-pointer rounded-lg px-4 py-2 m-3 bg-green-500 text-white text-xs">
             </div>
         </form>
     </div>

@@ -8,6 +8,7 @@ class InvoiceSupport
 {
     public static function createInvoice($request, $userId)
     {
+        dd($request);
         $hasInvoice = Invoice::where('txn_id', $request->txn_id)->first();
 
         if ($hasInvoice) {
