@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApiAuthenticationController;
 use App\Http\Controllers\ApiProductController;
 use App\Models\Cart;
 use Illuminate\Http\Request;
@@ -19,8 +20,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->group(function () {
+    // Route::post('/login', 'Auth');
+    Route::get('/products/{id}', [ApiProductController::class, 'show']);
 });
 
 Route::post('/payment-success', function () {
@@ -33,6 +35,12 @@ Route::post('/payment-success', function () {
     return redirect(route('payment.success'));
 });
 
+
+//authentication
+Route::post('/login', [ApiAuthenticationController::class, 'login']);
+Route::get('/register', [ApiAuthenticationController::class, 'register']);
+
+
 Route::post('/payment-cancelled', function () {
     return 'you cancelled your payment';
 });
@@ -43,6 +51,4 @@ Route::post('/paypal-callback', function () {
 
 
 //mobile app api
-
 Route::get('/products', [ApiProductController::class, 'index']);
-Route::get('/products/{id}', [ApiProductController::class, 'show']);
