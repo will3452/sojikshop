@@ -13,7 +13,8 @@ class ApiAuthenticationController extends Controller
         $token = $user->createToken('my-app');
         return $token->plainTextToken;
     }
-
+    //email, password
+    //user, token
     public function login()
     {
         $data = request()->validate([
@@ -50,9 +51,17 @@ class ApiAuthenticationController extends Controller
             'name'=>'required',
             'address'=>'required',
             'mobile'=>'required',
-            'email'=>'required|unique:users,email',
+            'email'=>'required',
             'password'=>'required',
         ]);
+
+        $isExist = User::where('email', $data['email'])->first();
+
+        if (!is_null($isExist)) {
+            return response([
+                'error'=>'Emal has been taken'
+            ], 404);
+        }
 
         $data['password'] = bcrypt($data['password']);
         $user = User::create($data);
