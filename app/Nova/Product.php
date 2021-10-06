@@ -11,7 +11,6 @@ use Laravel\Nova\Fields\Textarea;
 
 class Product extends Resource
 {
-
     public static $group = "Data Management";
     /**
      * The model the resource corresponds to.
@@ -47,7 +46,8 @@ class Product extends Resource
     {
         return [
             Text::make('Reference Number')
-                ->exceptOnForms(),
+                ->exceptOnForms()
+                ->hideFromIndex(),
 
             Text::make('Name')
                 ->required(),
@@ -56,6 +56,7 @@ class Product extends Resource
                 ->required(),
 
             Image::make('image')
+                ->hideFromIndex()
                 ->required(),
 
             Number::make('Price')
@@ -64,6 +65,13 @@ class Product extends Resource
 
             Number::make('Quantity')
                 ->required(),
+
+            Number::make('Shipping Fee')
+                ->hideFromIndex()
+                ->rules(['required'])
+                ->step(.1)
+                ->required(),
+
 
             BelongsToMany::make('Categories'),
         ];
