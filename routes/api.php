@@ -38,7 +38,7 @@ Route::post('/payment-success', function () {
 
 //authentication
 Route::post('/login', [ApiAuthenticationController::class, 'login']);
-Route::get('/register', [ApiAuthenticationController::class, 'register']);
+Route::post('/register', [ApiAuthenticationController::class, 'register']);
 
 
 Route::post('/payment-cancelled', function () {
