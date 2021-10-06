@@ -22,7 +22,6 @@ class CartController extends Controller
     public function removeToCart(Cart $cart)
     {
         $cart->delete();
-        alert('Product has been removed to your Cart!', 'success');
         return back();
     }
 

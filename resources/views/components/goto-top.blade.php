@@ -1,7 +1,7 @@
 <div id="back2Top"
 class="bg-gradient-to-r
-from-purple-900
-to-pink-500
+from-pink-500
+to-purple-900
 text-center
 float-right
 cursor-pointer

@@ -3,7 +3,7 @@
         Orders
     </x-title>
     <div class="w-full px-4 mx-auto relative mt-5 md:w-1/2 ">
-        <div id="line" class="w-full h-1 bg-gradient-to-r from-purple-900 to-pink-600 rounded">
+        <div id="line" class="w-full h-1 bg-gradient-to-r from-pink-500 to-purple-900 rounded">
         </div>
         <div class="flex w-full relative -top-5 justify-between">
             <a href="{{route('my-orders')}}?active=shipping" class="md:h-12 md:w-12 active block w-8 h-8 border-2 border-purple-900 {{request()->active!= 'shipping'? 'bg-white':'bg-purple-900'}} rounded-full flex items-center justify-center">
@@ -60,7 +60,7 @@
                         @endforeach
                         <a
                         href="{{url('invoices', ['invoice'=>$order->invoice->id])}}"
-                        class="text-xs uppercase font-bold p-2 block bg-gradient-to-r from-purple-900 to-pink-600 text-white text-center mt-2 rounded">
+                        class="text-xs uppercase font-bold p-2 block bg-gradient-to-r from-pink-500 to-purple-900 text-white text-center mt-2 rounded">
                             view invoice
                         </a>
                     </div>

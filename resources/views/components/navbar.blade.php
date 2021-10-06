@@ -12,8 +12,8 @@
         p-2
         md:p-6
         bg-gradient-to-r
-        from-purple-900
-        to-pink-500
+        from-pink-500
+        to-purple-900
         z-50
     "
     >

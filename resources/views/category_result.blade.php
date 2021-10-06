@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="h-5 bg-gradient-to-r from-purple-900 to-pink-500"></div>
+    <div class="h-5 bg-gradient-to-r from-pink-500 to-purple-900"></div>
     <x-search-bar></x-search-bar>
     <x-title>
         {{$category->name}}

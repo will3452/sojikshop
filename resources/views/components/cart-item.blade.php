@@ -45,10 +45,16 @@
                 ">-</button>
             </form>
         </div>
-        <form action="/remove-to-cart/{{ $cart->id }}" method="POST">
+        <form action="/remove-to-cart/{{ $cart->id }}" method="POST" x-data="{isRemove:false}">
             @csrf
             @method('DELETE')
-            <button class="bg-white text-red-500 text-xs text-white p-1 px-2 rounded border-2 border-red-500">
+            <button x-show="!isRemove" x-on:click="isRemove = true" class="bg-white text-red-500 text-xs text-white p-1 px-2 rounded border-2 border-red-500">
+                REMOVE
+            </button>
+            <button x-show="isRemove" class="flex items-center bg-white text-red-500 text-xs text-white p-1 px-2 rounded border-2 border-red-500">
+                <span class="material-icons animate-spin" style="font-size:16px;">
+                    autorenew
+                </span>
                 REMOVE
             </button>
         </form>

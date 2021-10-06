@@ -1,6 +1,6 @@
 <!-- Featured -->
 <div>
-    <div class="bg-gradient-to-r from-purple-900 to-pink-500 text-center p-10 my-4 md:py-10">
+    <div class="bg-gradient-to-r from-pink-500 to-purple-900 text-center p-10 my-4 md:py-10">
       <h2 class="font-bold text-2xl text-white md:text-4xl md:font-thin mb-4">
         SOME SAYINGS GOES HERE!
       </h2>

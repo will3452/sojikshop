@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="h-5 bg-gradient-to-r from-purple-900 to-pink-500"></div>
+    <div class="h-5 bg-gradient-to-r from-pink-500 to-purple-900"></div>
     <x-search-bar></x-search-bar>
     <h2 class="text-center text-gray-600 text-base mt-2">
         Search Keyword : <span class="italic font-bold">"{{request()->keyword}}"</span>
