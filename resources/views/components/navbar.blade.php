@@ -21,7 +21,9 @@
         {{-- <a href="/" class="transform rotate-90 block">
         <span class="material-icons text-white "> polymer </span>
         </a> --}}
-        <img src="/storage/{{nova_get_setting('logo')}}" alt="" class="mx-auto w-10 h-10">
+        <a href="/">
+            <img src="/storage/{{nova_get_setting('logo')}}" alt="" class="mx-auto w-10 h-10">
+        </a>
     </div>
     <div>
         <a href="{{route('my.wishlist')}}" class="px-2">
