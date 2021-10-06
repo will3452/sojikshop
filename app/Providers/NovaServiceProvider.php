@@ -2,18 +2,19 @@
 
 namespace App\Providers;
 
-use App\Nova\Metrics\NumberOfBanners;
-use App\Nova\Metrics\NumberOfCategories;
-use App\Nova\Metrics\NumberOfProducts;
-use App\Nova\Metrics\NumberOfUsers;
-use Bolechen\NovaActivitylog\NovaActivitylog;
-use Illuminate\Support\Facades\Gate;
+use Laravel\Nova\Nova;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Nova;
+use Laravel\Nova\Fields\Image;
+use App\Nova\Metrics\NumberOfUsers;
+use Illuminate\Support\Facades\Gate;
+use App\Nova\Metrics\NumberOfBanners;
+use App\Nova\Metrics\NumberOfProducts;
+use App\Nova\Metrics\NumberOfCategories;
+use Bolechen\NovaActivitylog\NovaActivitylog;
+use OptimistDigital\NovaSettings\NovaSettings;
 use Laravel\Nova\NovaApplicationServiceProvider;
 use NumaxLab\NovaCKEditor5Classic\CKEditor5Classic;
-use OptimistDigital\NovaSettings\NovaSettings;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -27,6 +28,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         parent::boot();
 
         NovaSettings::addSettingsFields([
+            Image::make('Logo'),
+
             CKEditor5Classic::make('Data Privacy')
                 ->options([
                     'toolbar' => [
