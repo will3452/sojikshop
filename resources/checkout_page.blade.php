@@ -15,9 +15,10 @@
                     <input type="hidden" name="item_name_{{$index}}" value="{{$cart->product->name}}">
                     <input type="hidden" name="quantity_{{$index}}" value="{{$cart->quantity}}">
                     <input type="hidden" name="amount_{{$index}}" value="{{$cart->product->price}}">
+                    <input type="hidden" name="shipping_{{$index}}" value="{{$cart->product->shipping_fee}}">
                     @endforeach
                     {{-- shipping info --}}
-                    <input type="hidden" name="shipping_1" value="100.00">
+
                     {{-- <input type="hidden" name="shipping_2" value="2.50"> --}}
 
                     {{-- methods and return url --}}

@@ -18,7 +18,7 @@
                 <select name="" id=""
                 class="w-full my-2 p-2 bg-yellow-100"
                 >
-                @foreach (\App\Models\Area::get() as $area)
+                @foreach ($areas as $area)
                     <option value="{{$area->Code}}">{{$area->description}} - {{$area->code}}</option>
                 @endforeach
                 </select>
@@ -113,7 +113,8 @@
 
             {{-- methods and return url --}}
             <input type="hidden" name="rm" value="2">
-            <input type="hidden" NAME="return" value="{{url('/api/payment-success?shippingaddress='.request()->shipping_address ?? auth()->user()->address . '&uid='.auth()->id())}}">
+            <input type="hidden" NAME="return"
+            value="{{url('/api/payment-success)}}?uid={{auth()->id()}}">
             <input type="hidden" name="cancel_return" value="{{url('/api/payment-cancelled')}}">
 
             {{-- webhook  --}}
@@ -136,6 +137,22 @@
             </div>
         </form>
     </div>
+
+    <script>
+        let returnUrl = "";
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position){
+                    returnUrl = `{{url('/api/payment-success)}}?uid={{auth()->id()}}&lat=${position.coords.latitude}&lon=${position.coords.longitude}`;
+                });
+            } else {
+                console.log("can't get location!");
+            }
+        }
+
+        getLocation();
+
+    </script>
 
 
 </x-layout>
