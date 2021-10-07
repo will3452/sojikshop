@@ -1,29 +1,56 @@
 <x-layout>
     <div class="md:hidden fixed w-full h-12 bottom-0 left-0 right-0 bg-purple-900 flex items-center justify-around px-2">
         @if (!$product->carts()->where('user_id', auth()->id())->exists())
-                <form
-                action="/add-to-cart/{{ $product->id }}"
-                method="POST"
-            >
-                @csrf
-                <button
-                type="submit"
-                class="
-                font-bold
-                text-white
-                flex
-                items-center
-                justify-between
-                py-2
-                px-4
-                bg-pink-600
-                rounded-xl
-                text-xs
-                "
+                @if ($product->quantity != 0)
+                    <form
+                    action="/add-to-cart/{{ $product->id }}"
+                    method="POST"
                 >
-                ADD TO CART
-                </button>
-            </form>
+                    @csrf
+                    <button
+                    type="submit"
+                    class="
+                    font-bold
+                    text-white
+                    flex
+                    items-center
+                    justify-between
+                    py-2
+                    px-4
+                    bg-pink-600
+                    rounded-xl
+                    text-xs
+                    "
+                    >
+                    ADD TO CART
+                    </button>
+                </form>
+                @else
+                <form
+                    action="#pre-order"
+                    method="POST"
+                >
+                    @csrf
+                    <button
+                    type="button"
+                    class="
+                    font-bold
+                    text-white
+                    flex
+                    items-center
+                    justify-between
+                    py-2
+                    px-4
+                    bg-pink-600
+                    rounded-xl
+                    text-xs
+                    uppercase
+                    "
+                    >
+                    Pre-Order
+                    </button>
+                </form>
+                @endif
             @else
             <a
                 href="/my-cart"
@@ -131,32 +158,62 @@
                 </div>
                 <div class="hidden md:block mt-4 md:flex">
                     @if (!$product->carts()->where('user_id', auth()->id())->exists())
+                        @if ($product->quantity != 0)
                             <form
-                            action="/add-to-cart/{{ $product->id }}"
-                            method="POST"
-                            class="
-                            "
-                        >
-                            @csrf
-                            <button
-                            type="submit"
-                            class="
-                            font-bold
-                            text-white
-                            flex
-                            items-center
-                            justify-between
-                            py-2
-                            px-8
-                            bg-pink-600
-                            rounded
-                            text-xs
-                            mr-2
-                            "
+                                action="/add-to-cart/{{ $product->id }}"
+                                method="POST"
+                                class="
+                                "
                             >
-                            ADD TO CART
-                            </button>
-                        </form>
+                                @csrf
+                                <button
+                                type="submit"
+                                class="
+                                font-bold
+                                text-white
+                                flex
+                                items-center
+                                justify-between
+                                py-2
+                                px-8
+                                bg-pink-600
+                                rounded
+                                text-xs
+                                mr-2
+                                "
+                                >
+                                ADD TO CART
+                                </button>
+                            </form>
+                            @else
+                            <form
+                                action="#"
+                                class="
+                                "
+                            >
+                                @csrf
+                                <button
+                                type="button"
+                                class="
+                                uppercase
+                                font-bold
+                                text-white
+                                flex
+                                items-center
+                                justify-between
+                                py-2
+                                px-8
+                                bg-pink-600
+                                rounded
+                                text-xs
+                                mr-2
+                                "
+                                >
+                                Pre-Order
+                                </button>
+                            </form>
+                        @endif
+
                         @else
                             <div class="">
                                 <a
