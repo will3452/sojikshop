@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->group(function () {
     // Route::post('/login', 'Auth');
     Route::get('/products/{id}', [ApiProductController::class, 'show']);
+    Route::post('/logout', [ApiAuthenticationController::class, 'logout']);
 });
 
 Route::post('/payment-success', function () {
@@ -46,7 +47,6 @@ Route::get('/logo', function () {
 //authentication
 Route::post('/login', [ApiAuthenticationController::class, 'login']);
 Route::post('/register', [ApiAuthenticationController::class, 'register']);
-Route::post('/logout', [ApiAuthenticationController::class, 'logout']);
 
 
 Route::post('/payment-cancelled', function () {
