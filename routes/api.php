@@ -46,6 +46,7 @@ Route::get('/logo', function () {
 //authentication
 Route::post('/login', [ApiAuthenticationController::class, 'login']);
 Route::post('/register', [ApiAuthenticationController::class, 'register']);
+Route::post('/logout', [ApiAuthenticationController::class, 'logout']);
 
 
 Route::post('/payment-cancelled', function () {
