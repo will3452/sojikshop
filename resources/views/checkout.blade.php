@@ -2,7 +2,11 @@
     <x-title>
         CHECKOUT
     </x-title>
-    <x-checkout-shipping-set area="{{$area}}" address="{{$address}}"></x-checkout-shipping-set>
+    @if ($step == 0)
+        <x-checkout-shipping-set area="{{$area}}" address="{{$address}}"></x-checkout-shipping-set>
+    @else
+        <x-checkout-shipping-products :carts="$carts"></x-checkout-shipping-products>
+    @endif
 
     <script>
             const long = document.getElementById('long');
@@ -13,12 +17,30 @@
                     navigator.geolocation.getCurrentPosition(({coords})=>{
                         long.value = coords.longitude;
                         lat.value = coords.latitude;
-                        alert('current location found!');
+
+                        reverseGeocoding(coords);
+
                     });
                 } else {
                     console.log('geolocation not supported!');
                 }
             }
-            getLocation();
+
+            function reverseGeocoding({latitude, longitude}){
+                fetch(`http://open.mapquestapi.com/geocoding/v1/reverse?key=YCFvPJOH6YxnFQkpOhJ9fMzNIDd6oeMv&location=${latitude},${longitude}`)
+                    .then(response=>response.json())
+                    .then(({results})=>{
+                        let result = results[0];
+                        let location = result.locations[0];
+                        let street = location.street;
+                        let city = location.adminArea3;
+                        let barangay = location.adminArea5;
+                        let currentAddress = `${street}, ${barangay} ${city}`;
+                        console.log(location)
+                        document.getElementById('address').value = currentAddress;
+                    })
+            }
+
+
     </script>
 </x-layout>

@@ -14,6 +14,12 @@ class CheckoutController extends Controller
 
     public function checkout()
     {
+        $step = null;
+        if (request()->has('step')) {
+            $step = request()->step + 1;
+        } else {
+            $step = 0;
+        }
         //firts step
         $address = null;
         $area = null;
@@ -26,6 +32,6 @@ class CheckoutController extends Controller
 
         $carts = auth()->user()->carts()->with('product')->latest()->get();
 
-        return view('checkout', compact('carts', 'area', 'address'));
+        return view('checkout', compact('step', 'carts', 'area', 'address'));
     }
 }

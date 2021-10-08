@@ -15,6 +15,17 @@ class User extends Authenticatable
 
     protected static $logAttributes = ['name', 'email'];
 
+    public function getFirstNameAttribute()
+    {
+        return explode(' ', $this->name)[0];
+    }
+
+    public function getLastNameAttribute()
+    {
+        $nameArr = explode(' ', $this->name);
+        return $nameArr[count($nameArr) - 1];
+    }
+
     protected $guarded=[];
 
     /**
