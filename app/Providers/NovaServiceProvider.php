@@ -12,6 +12,7 @@ use App\Nova\Metrics\NumberOfBanners;
 use App\Nova\Metrics\NumberOfProducts;
 use App\Nova\Metrics\NumberOfCategories;
 use Bolechen\NovaActivitylog\NovaActivitylog;
+use Laravel\Nova\Fields\Number;
 use OptimistDigital\NovaSettings\NovaSettings;
 use Laravel\Nova\NovaApplicationServiceProvider;
 use NumaxLab\NovaCKEditor5Classic\CKEditor5Classic;
@@ -61,8 +62,13 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             Code::make('Facebook scripts'),
 
             Text::make('Copyright'),
-        ]);
 
+            Number::make('VAT')->placeholder('in %'),
+
+            Text::make('Checkout Vat Note'),
+
+
+        ]);
     }
 
     /**

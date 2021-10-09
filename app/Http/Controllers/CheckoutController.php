@@ -30,8 +30,34 @@ class CheckoutController extends Controller
 
         //second step
 
+
+        $total = 0;
+        $shipping = 0;
+
+        if (request()->has('area')) {
+            $shipping = Area::find(request()->area)->shippingFee->amount;
+        }
+
+
+        // vat
+        $vat = nova_get_setting('vat') ?? 12;
+        $vatRate = $vat / 100;
+
         $carts = auth()->user()->carts()->with('product')->latest()->get();
 
-        return view('checkout', compact('step', 'carts', 'area', 'address'));
+        $productShippingFeeTotal = 0;
+
+        foreach ($carts as $cart) {
+            $total += $cart->product->price * $cart->quantity;
+            $productShippingFeeTotal += $cart->product->shipping_fee * $cart->quantity;
+        }
+
+        $shipping += $productShippingFeeTotal;
+
+        $totalVat = $total * $vatRate;
+
+        $total = $total + $totalVat;
+
+        return view('checkout', compact('total', 'shipping', 'totalVat', 'step', 'carts', 'area', 'address'));
     }
 }

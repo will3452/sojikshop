@@ -1,4 +1,4 @@
-@props(['carts'=>[], 'grandTotal'=>null])
+@props(['carts'=>[], 'shipping'=>0, 'total'=>0, 'totalVat'=>0])
 <div class="text-sm mx-2 shadow-lg rounded overflow-hidden mx-auto md:w-2/3">
     <div class="p-2 bg-purple-900 text-white font-bold uppercase">
         Order Information
@@ -36,7 +36,7 @@
             </tbody>
         </table>
         <div class="p-2 bg-yellow-200 rounded my-2">
-            {{nova_get_setting('vat_note') ?? 'The VAT is already included in the total.'}}
+            {{nova_get_setting('checkout_vat_note') ?? 'The VAT is already included in the total.'}}
         </div>
         <table class="w-full border-2 mt-2">
             <tr class="text-left">
@@ -44,7 +44,7 @@
                     VAT
                 </th>
                 <td class="p-2 border-2">
-                    {{nova_get_setting('vat') ?? '12%'}}
+                    {{nova_get_setting('vat') ?? '12'}}%
                 </td>
             </tr>
             <tr class="text-left">
@@ -52,7 +52,7 @@
                     Total
                 </th>
                 <td class="p-2 border-2">
-                    PHP {{ $grandTotal != null ? number_format($grandTotal, 2):'XXXX' }}
+                    PHP {{ $total != null ? number_format($total, 2):'XXXX' }}
                 </td>
             </tr>
         </table>
@@ -67,7 +67,7 @@
                 {{-- set currencty --}}
                 <input type="hidden" name="currency_code" value="PHP">
                 {{-- business name --}}
-                <input type="hidden" name="business" value="sb-f0lsu6671778@business.example.com">
+                <input type="hidden" name="business" value="sojikshop@business.example.com">
 
                 {{-- product info --}}
                 @foreach ($carts as $key=>$cart)
@@ -77,9 +77,10 @@
                 <input type="hidden" name="item_name_{{$index}}" value="{{$cart->product->name}}">
                 <input type="hidden" name="quantity_{{$index}}" value="{{$cart->quantity}}">
                 <input type="hidden" name="amount_{{$index}}" value="{{$cart->product->price}}">
-                <input type="hidden" name="shipping_{{$index}}" value="{{$cart->product->shippig_fee}}">
                 @endforeach
                 {{-- shipping info --}}
+                <input type="hidden" name="shipping" value="{{$shipping}}">
+                <input type="hidden" name="shipping" value="{{$shipping}}">
                 {{-- <input type="hidden" name="shipping_1" value="2"> --}}
                 {{-- <input type="hidden" name="shipping_2" value="2.50"> --}}
 
@@ -92,7 +93,7 @@
                 {{-- webhook  --}}
                 {{-- <input type="hidden" name="notify_url" value="{{url('/api/posts')}}"> --}}
 
-                <input type="hidden" name="tax_cart" value="{{nova_get_setting('vat') ?? 12}}">
+                <input type="hidden" name="tax_cart" value="{{$totalVat}}">
 
                 {{-- buyer creds --}}
                 <input type="hidden" name="address_override" value="1">

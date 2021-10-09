@@ -5,7 +5,7 @@
     @if ($step == 0)
         <x-checkout-shipping-set area="{{$area}}" address="{{$address}}"></x-checkout-shipping-set>
     @else
-        <x-checkout-shipping-products :carts="$carts"></x-checkout-shipping-products>
+        <x-checkout-shipping-products :totalVat="$totalVat" :carts="$carts" :total="$total" :shipping="$shipping"></x-checkout-shipping-products>
     @endif
 
     <script>
