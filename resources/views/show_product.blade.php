@@ -31,8 +31,8 @@
                     method="POST"
                 >
                     @csrf
-                    <button
-                    type="button"
+                    <a
+                    href="/preorder-set/{{$product->id}}"
                     class="
                     font-bold
                     text-white
@@ -48,7 +48,7 @@
                     "
                     >
                     Pre-Order
-                    </button>
+                </a>
                 </form>
                 @endif
             @else
@@ -192,8 +192,9 @@
                                 "
                             >
                                 @csrf
-                                <button
-                                type="button"
+                                <a
+                                href="/preorder-set/{{$product->id}}"
+
                                 class="
                                 uppercase
                                 font-bold
@@ -210,7 +211,7 @@
                                 "
                                 >
                                 Pre-Order
-                                </button>
+                            </a>
                             </form>
                         @endif
 

@@ -13,6 +13,7 @@ use App\Http\Controllers\WishListController;
 use App\Http\Controllers\Nova\LoginController;
 use App\Http\Controllers\PayPalPaymentController;
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\PreOrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,7 +59,6 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/my-cart', [CartController::class, 'myCart']);
 
-
     //wishlist
     Route::post('add-to-wishlist/{product}', [WishListController::class, 'addToWishList'])->name('add.wishlist');
     Route::get('/my-wishlist', [WishListController::class, 'myWishList'])->name('my.wishlist');
@@ -77,10 +77,14 @@ Route::middleware('auth')->group(function () {
     //invoice
     Route::get('/invoices/{invoice}', [InvoiceController::class, 'show']);
 
-    //search
-    Route::get('/search', [SearchController::class, 'search'])->name('search');
-    Route::get('search-category', [SearchController::class, 'getCategory'])->name('search.category');
+    //pre-ordering
+    Route::get('/preorder-set/{product}', [PreOrderController::class, 'setPreOrder']);
+    Route::get('/preorder-pay', [PreOrderController::class, 'payPreOrder']);
 });
+
+//search
+Route::get('/search', [SearchController::class, 'search'])->name('search');
+Route::get('search-category', [SearchController::class, 'getCategory'])->name('search.category');
 
 Route::get('/paypal', function () {
     return view('paypal');

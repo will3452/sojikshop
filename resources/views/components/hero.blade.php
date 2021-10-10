@@ -14,7 +14,7 @@
           px-8 md:text-xl md:py-4
         "
       >
-        BUY SERVICE
+        BUYING SERVICES
       </button>
     </div>
   </div>

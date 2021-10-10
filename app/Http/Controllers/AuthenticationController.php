@@ -33,7 +33,7 @@ class AuthenticationController extends Controller
             alert('Something is wrong!', 'danger');
         }
 
-        alert('Registered, succssfully');
+        alert('Registered!');
 
         Auth::login($user);
         return back();
@@ -80,7 +80,7 @@ class AuthenticationController extends Controller
             alert('Email not found!', 'danger');
             return back()->withError('Account not found!');
         }
-        alert("We've sent you an password reset link!", 'success');
+        alert("We've sent you a password reset link!", 'success');
         Mail::to($user)->send(new PasswordResetLink($user));
         return redirect('/');
     }

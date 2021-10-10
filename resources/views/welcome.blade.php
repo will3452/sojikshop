@@ -12,7 +12,7 @@
     OTHER PRODUCTS
   </x-title>
   <x-product-container-slider>
-    @foreach (\App\Models\Product::inRandomOrder()->limit(12)->get() as $product)
+    @foreach (\App\Models\Product::where('quantity', '!=', 0)->inRandomOrder()->limit(12)->get() as $product)
       <x-product-item :product="$product"></x-product-item>
     @endforeach
   </x-product-container-slider>

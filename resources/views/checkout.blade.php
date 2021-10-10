@@ -13,7 +13,11 @@
     @if ($step == 0)
         <x-checkout-shipping-set area="{{$area}}" address="{{$address}}"></x-checkout-shipping-set>
     @else
-        <x-checkout-shipping-products :totalVat="$totalVat" :carts="$carts" :total="$total" :shipping="$shipping"></x-checkout-shipping-products>
+        @if (!request()->quantity)
+            <x-checkout-shipping-products :totalVat="$totalVat" :carts="$carts" :total="$total" :shipping="$shipping"></x-checkout-shipping-products>
+        @else
+        <x-checkout-pre-order :totalVat="$totalVat" :product="$product" :total="$total" :shipping="$shipping"></x-checkout-pre-order>
+        @endif
     @endif
 
 
@@ -84,6 +88,11 @@
                     user_id: {{auth()->id()}},
                     lat: '{{request()->lat}}',
                     lng:'{{request()->lng}}',
+                    @if(request()->has('quantity') && request()->has('product_id'))
+                        order_status:'{{\App\Models\Order::STATUS_PRE_ORDER}}',
+                        product_id:{{request()->product_id}},
+                        quantity:{{request()->quantity}},
+                    @endif
                 };
                 //save the transaction to the server using post
                 fetch('/api/create-order', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)})

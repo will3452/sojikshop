@@ -2,8 +2,10 @@
 
 namespace App\Supports;
 
-use App\Models\Invoice as ModelsInvoice;
 use App\Models\User;
+use App\Models\Order;
+use App\Models\Product;
+use App\Models\Invoice as ModelsInvoice;
 
 class Invoice {
 
@@ -27,7 +29,20 @@ class Invoice {
     }
 
     public static function createInvoice($payload){
-        $items = self::getItems($payload->user_id);
+
+        if($payload->order_status == Order::STATUS_PRE_ORDER){
+            $product = Product::find($payload->product_id);
+            $quantity = $payload->quantity;
+            $items[] = [
+                'product_image'=>$product->image,
+                'product_name'=>$product->name,
+                'product_price'=>$product->price,
+                'quantity'=>$quantity,
+            ];
+        }else{
+            $items = self::getItems($payload->user_id);
+        }
+
         $invoice = ModelsInvoice::create([
             'txnid'=>$payload->id,
             'user_id'=>$payload->user_id,

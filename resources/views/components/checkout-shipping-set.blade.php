@@ -7,11 +7,14 @@
         </div>
         <div class="p-2">
             <form action="{{url()->current()}}" method="GET">
+
                 <input type="hidden" name="lat" value="" id="lat">
                 <input type="hidden" name="lng" value="" id="long">
                 <div class="w-full px-2 mb-2">
                     <label for="">Address 1</label>
                     <div class="flex items-center mt-2">
+                        <input type="hidden" name="quantity" value="{{request()->quantity}}">
+                        <input type="hidden" name="product_id" value="{{request()->product_id}}">
                         <input type="hidden" name="step" value="1">
                         <input type="text"
                         id="address"

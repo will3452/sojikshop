@@ -10,6 +10,7 @@ use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Text;
 use App\Models\Order as ModelsOrder;
 use App\Nova\Actions\MarkAsDelivery;
+use App\Nova\Actions\MarkAsPackaging;
 use App\Nova\Actions\MarkAsRereived;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Maatwebsite\LaravelNovaExcel\Actions\DownloadExcel;
@@ -98,6 +99,10 @@ class Order extends Resource
                 ->hideFromIndex(),
 
             Text::make('Status', function($order){
+                if($order->status == ModelsOrder::STATUS_PRE_ORDER){
+                    return "<span class='px-4 py-2 rounded-3xl bg-gray-300 text-gray-900 uppercase font-black text-xs'>Pre-Order</span>";
+                }
+
                 if($order->status == ModelsOrder::STATUS_PACKAGING){
                     return "<span class='px-4 py-2 rounded-3xl bg-blue-300 text-blue-900 uppercase font-black text-xs'>Packaging</span>";
                 }
@@ -167,6 +172,8 @@ class Order extends Resource
     public function actions(Request $request)
     {
         return [
+            MarkAsPackaging::make(),
+
             MarkAsDelivery::make(),
 
             MarkAsRereived::make(),
