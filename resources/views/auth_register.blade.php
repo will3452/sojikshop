@@ -21,10 +21,6 @@
 
             <x-input name="address" type="text" required placeholder="Enter your Complete Address"></x-input>
 
-            <div class="text-xs text-purple-200">
-                The options above are the supported area/region of the application.
-            </div>
-
             <x-input name="mobile" type="number" required placeholder="Enter your mobile"></x-input>
 
             <x-input name="email" type="email" required placeholder="Enter your Email"></x-input>
