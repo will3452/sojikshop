@@ -8,12 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
+
+    const STATUS_PRE_ORDER = 'pre-order';
     const STATUS_PACKAGING = 'packaging';
     const STATUS_DELIVERY = 'delivery';
     const STATUS_FEEDBACK = 'feedback';
-
-    const TYPE_PRE_ORDER = 'pre-order';
-    const TYPE_ORDER ='order';
 
     protected $guarded = [];
 

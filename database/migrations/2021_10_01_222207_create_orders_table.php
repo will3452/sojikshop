@@ -22,7 +22,6 @@ class CreateOrdersTable extends Migration
             $table->json('items');
             $table->json('location');
             $table->string('status')->default(Order::STATUS_PACKAGING);
-            $table->string('type')->default(Order::TYPE_ORDER);
             $table->timestamps();
         });
     }
