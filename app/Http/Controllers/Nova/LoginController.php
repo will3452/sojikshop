@@ -9,6 +9,7 @@ class LoginController extends NovaLoginController
 {
     public function login(Request $request)
     {
+
         $this->validateLogin($request);
 
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
@@ -23,7 +24,7 @@ class LoginController extends NovaLoginController
 
         //admin only
         $admins = ['superadmin@sojikshop.store'];
-        if (in_array($request->user->email, $admins) && $this->attemptLogin($request)) {
+        if (in_array($request->email, $admins) && $this->attemptLogin($request)) {
             return $this->sendLoginResponse($request);
         }
 

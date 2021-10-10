@@ -1,17 +1,18 @@
 <?php
 
+use Laravel\Nova\Nova;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\WishListController;
+use App\Http\Controllers\Nova\LoginController;
 use App\Http\Controllers\PayPalPaymentController;
 use App\Http\Controllers\AuthenticationController;
-use App\Http\Controllers\InvoiceController;
-use App\Http\Controllers\Nova\LoginController;
-use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +28,7 @@ use App\Http\Controllers\SearchController;
 Route::get('/', [WelcomeController::class, 'index']);
 
 //override the default login
-Route::post(Nova::path('/login'), [LoginController::class, 'login'])->name('nova.login');
+Route::post(Nova::path('/login'), [LoginController::class, 'login'])->name('admin.login');
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/register', [AuthenticationController::class, 'register'])->name('register');
