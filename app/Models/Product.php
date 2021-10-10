@@ -31,4 +31,8 @@ class Product extends Model
     {
         return $this->hasMany(OrderProduct::class);
     }
+
+    public function feedbacks(){
+        return $this->hasMany(Feedback::class);
+    }
 }

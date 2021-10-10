@@ -83,6 +83,11 @@
                         class="text-xs uppercase font-bold p-2 block bg-gradient-to-r from-pink-500 to-purple-900 text-white text-center mt-2 rounded">
                             view invoice
                         </a>
+                        <a
+                        href="/write-feedback/{{$order->id}}"
+                        class="text-xs border-2 border-purple-900 uppercase font-bold p-2 block bg-white text-purple-900 text-center mt-2 rounded">
+                            Write Feedback
+                        </a>
                     </div>
                 </li>
             @empty

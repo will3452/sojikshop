@@ -132,22 +132,24 @@
             <div class="text-2xl text-center font-bold text-gray-900 md:text-left">
                 <span class="text-lg">PHP</span> {{$product->price}}
             </div>
-            <div class="flex justify-center md:2 md:my-2 md:justify-start">
-                <span class="material-icons text-yellow-500">
-                    star
-                </span>
-                <span class="material-icons text-yellow-500">
-                    star
-                </span>
-                <span class="material-icons text-yellow-500">
-                    star
-                </span>
-                <span class="material-icons text-yellow-500">
-                    star
-                </span>
-                <span class="material-icons text-yellow-500">
-                    star
-                </span>
+            <div x-data="{star:{{$product->feedbacks()->avg('star') ?? 5}}}" class="my-2 flex justify-center md:justify-start">
+                <div>
+                    <span class="select-none material-icons cursor-pointer" :class="{'text-yellow-500':star >= 1}" >
+                        grade
+                    </span>
+                    <span class="select-none material-icons cursor-pointer" :class="{'text-yellow-500':star >= 2}">
+                        grade
+                    </span>
+                    <span class="select-none material-icons cursor-pointer" :class="{'text-yellow-500':star >= 3}" >
+                        grade
+                    </span>
+                    <span class="select-none material-icons cursor-pointer" :class="{'text-yellow-500':star >= 4}" >
+                        grade
+                    </span>
+                    <span class="select-none material-icons cursor-pointer" :class="{'text-yellow-500':star == 5}">
+                        grade
+                    </span>
+                </div>
             </div>
             <div class="border-t-2 my-2 py-2 md:border-t-0">
                 <div class="text-xs text-gray-500 font-bold ">
@@ -292,8 +294,19 @@
                         @endif
                 </div>
             </div>
-
+        </div>
+    </div>
+    <div class="mt-4 md:w-2/3 md:mx-auto mb-20">
+        <div class="text-2xl font-bold text-gray-400 text-center w-full mb-8">
+            FEEDBACKS
         </div>
 
+        @forelse ($product->feedbacks as $feedback)
+            <x-feedback-pane message="{{$feedback->message}}" userimage="{{$feedback->user->image}}" star="{{$feedback->star}}"></x-feedback-pane>
+        @empty
+            <div class="text-center text-gray-600 font-bold bg-gray-100 p-4 rounded">
+                No Feedback Yet.
+            </div>
+        @endforelse
     </div>
 </x-layout>

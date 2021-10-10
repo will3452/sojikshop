@@ -37,6 +37,7 @@ class Status extends Filter
     public function options(Request $request)
     {
         return [
+            Order::STATUS_PRE_ORDER=>Order::STATUS_PRE_ORDER,
             Order::STATUS_PACKAGING=>Order::STATUS_PACKAGING,
             Order::STATUS_DELIVERY=>Order::STATUS_DELIVERY,
             'completed'=>Order::STATUS_FEEDBACK,

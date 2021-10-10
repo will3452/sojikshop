@@ -14,7 +14,9 @@ use App\Http\Controllers\Nova\LoginController;
 use App\Http\Controllers\PayPalPaymentController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\BuyingServiceController;
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\PreOrderController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,6 +83,13 @@ Route::middleware('auth')->group(function () {
     //pre-ordering
     Route::get('/preorder-set/{product}', [PreOrderController::class, 'setPreOrder']);
     Route::get('/preorder-pay', [PreOrderController::class, 'payPreOrder']);
+
+    //feedback here
+    Route::get('/write-feedback/{order}', [FeedbackController::class, 'writeFeedback']);
+    Route::post('/write-feedback/{order}', [FeedbackController::class, 'saveFeedback']);
+
+    //profile
+    Route::get('/profile', [ProfileController::class, 'myProfile']);
 });
 
 //search
