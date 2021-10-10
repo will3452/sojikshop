@@ -71,7 +71,12 @@
                         value: '{{$total}}',
                         currency:'PHP'
                     }
-                }]
+                }],
+                application_context: {
+                    shipping_preference:'NO_SHIPPING',
+                    brand_name:'{{config('app.name')}}'
+                }
+
             })
         },
         onApprove: function(data, actions){
