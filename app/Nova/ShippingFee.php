@@ -10,6 +10,7 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 
 class ShippingFee extends Resource
 {
+    public static $group = 'shipping Management';
     /**
      * The model the resource corresponds to.
      *

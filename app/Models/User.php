@@ -13,6 +13,9 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, LogsActivity;
 
+    const CUSTOMER = 'customer';
+    const COURIER = 'courier';
+
     protected static $logAttributes = ['name', 'email'];
 
     public function getFirstNameAttribute()
@@ -49,16 +52,20 @@ class User extends Authenticatable
 
     public function carts()
     {
-        return $this->hasMany(Cart::class);
+        return $this->hasMany(Cart::class, 'user_id');
     }
 
     public function wishLists()
     {
-        return $this->hasMany(WishList::class);
+        return $this->hasMany(WishList::class, 'user_id');
     }
 
     public function orders()
     {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(Order::class, 'user_id');
+    }
+
+    public function invoices(){
+        return $this->hasMany(Invoice::class, 'user_id');
     }
 }

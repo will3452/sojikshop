@@ -4,12 +4,14 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Gravatar;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\Text;
 
 class User extends Resource
 {
+    public static $displayInNavigation = false;
     public static $group = "account Management";
     /**
      * The model the resource corresponds to.
@@ -74,6 +76,10 @@ class User extends Resource
                 ->onlyOnForms()
                 ->creationRules('required', 'string', 'min:8')
                 ->updateRules('nullable', 'string', 'min:8'),
+
+            HasMany::make('Invoices'),
+
+            HasMany::make('Orders'),
         ];
     }
 

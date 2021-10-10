@@ -8,11 +8,6 @@
         <div class="w-full mx-auto shadow rounded-lg overflow-hidden">
             <div class="p-2 bg-purple-900 text-white flex justify-between items-center">
                 Payment Details
-                {{-- <button class="block text-center" onclick="savePaymentDetails()">
-                    <span class="material-icons">
-                    save_alt
-                    </span>
-                </button> --}}
             </div>
             <div class="p-2 text-xs text-gray-800" id="payment_details">
                 <div class="flex justify-between  pb-2">
@@ -20,61 +15,34 @@
                         Transaction #
                     </div>
                     <div>
-                        {{$invoice->txn_id}}
+                        {{$invoice->txnid}}
                     </div>
                 </div>
 
                 <div class="flex justify-between  pb-2">
                     <div class="font-bold">
-                        Payer Email
+                        Payer
                     </div>
                     <div>
-                        {{$invoice->payer_email}}
+                        {{auth()->user()->name}}
                     </div>
                 </div>
 
                 <div class="flex justify-between  pb-2">
                     <div class="font-bold">
-                        Payer Name
+                        Total Amount
                     </div>
                     <div>
-                        {{$invoice->payer_first_name}} {{$invoice->payer_last_name}}
-                    </div>
-                </div>
-
-                <div class="flex justify-between  pb-2">
-                    <div class="font-bold">
-                        Payment Type
-                    </div>
-                    <div>
-                        {{$invoice->payment_type}} (Paypal)
-                    </div>
-                </div>
-
-                <div class="flex justify-between  pb-2">
-                    <div class="font-bold">
-                        Shipping Fee
-                    </div>
-                    <div>
-                        PHP {{$invoice->shipping}}
-                    </div>
-                </div>
-
-                <div class="flex justify-between  pb-2">
-                    <div class="font-bold">
-                        Payment Gross
-                    </div>
-                    <div>
-                        PHP {{$invoice->payment_gross}}
+                        PHP {{$invoice->amount}}
                     </div>
                 </div>
 
                 <div class="flex justify-between">
                     <div class="font-bold">
-                        Payment Created At
+                        Created At
                     </div>
                     <div>
-                        {{$invoice->payment_created_at}}
+                        {{$invoice->created_at}}
                     </div>
                 </div>
             </div>
@@ -97,10 +65,26 @@
             <div class="p-2 text-xs text-gray-800">
                 <div class="flex justify-between  pb-2">
                     <div class="font-bold">
-                        Number of Order Items
+                        No. of items
                     </div>
                     <div>
-                        {{$invoice->num_cart_items}}
+                        {{$invoice->number_of_items}}
+                    </div>
+                </div>
+            </div>
+            <div class="p-2 text-xs text-gray-800">
+                <div class="flex justify-between  pb-2">
+                    <div class="font-bold">
+                        Items
+                    </div>
+                    <div>
+                        <ul>
+                            @foreach (json_decode($invoice->items) as $item)
+                                <li>
+                                    - {{$item->product_name}}
+                                </li>
+                            @endforeach
+                        </ul>
                     </div>
                 </div>
             </div>

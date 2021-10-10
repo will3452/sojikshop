@@ -56,4 +56,9 @@ class NumberOfProducts extends Value
     {
         return 'number-of-products';
     }
+
+    public function name()
+    {
+        return "Products";
+    }
 }

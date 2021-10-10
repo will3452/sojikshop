@@ -2,20 +2,26 @@
 
 namespace App\Nova;
 
+use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Textarea;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Banner extends Resource
+class Courier extends Resource
 {
-    public static $group = "data Management";
+    public static $group = 'User Management';
+
+    public static function createButtonLabel()
+    {
+        return 'Register New Courier';
+    }
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Models\Banner::class;
+    public static $model = \App\Models\Courier::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -30,7 +36,9 @@ class Banner extends Resource
      * @var array
      */
     public static $search = [
+        'id',
         'name',
+        'email'
     ];
 
     /**
@@ -43,13 +51,13 @@ class Banner extends Resource
     {
         return [
             Text::make('Name')
-                ->required(),
+                ->rules(['required', 'unique:couriers,name,{{resourceId}}']),
 
-            Textarea::make('Description')
-                ->required(),
+            Text::make('Email')
+                ->rules(['required', 'unique:couriers,email,{{resourceId}}']),
 
-            Image::make('Image')
-                ->required(),
+            Image::make('Picture')
+                ->rules(['required'])
         ];
     }
 

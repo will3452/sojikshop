@@ -56,4 +56,8 @@ class NumberOfBanners extends Value
     {
         return 'number-of-banners';
     }
+
+    public function name(){
+        return 'Banners';
+    }
 }

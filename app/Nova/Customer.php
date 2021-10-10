@@ -2,27 +2,29 @@
 
 namespace App\Nova;
 
+use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Textarea;
+use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\Password;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Banner extends Resource
+class Customer extends Resource
 {
-    public static $group = "data Management";
+    public static $group = 'User Management';
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Models\Banner::class;
+    public static $model = \App\Models\Customer::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'name';
+    public static $title = 'id';
 
     /**
      * The columns that should be searched.
@@ -30,7 +32,7 @@ class Banner extends Resource
      * @var array
      */
     public static $search = [
-        'name',
+        'id',
     ];
 
     /**
@@ -42,14 +44,26 @@ class Banner extends Resource
     public function fields(Request $request)
     {
         return [
+            ID::make()->sortable(),
+
             Text::make('Name')
-                ->required(),
+                ->sortable()
+                ->rules('required', 'max:255'),
 
-            Textarea::make('Description')
-                ->required(),
+            Text::make('Email')
+                ->sortable()
+                ->rules('required', 'email', 'max:254')
+                ->creationRules('unique:users,email')
+                ->updateRules('unique:users,email,{{resourceId}}'),
 
-            Image::make('Image')
-                ->required(),
+            Password::make('Password')
+                ->onlyOnForms()
+                ->creationRules('required', 'string', 'min:8')
+                ->updateRules('nullable', 'string', 'min:8'),
+
+            HasMany::make('Invoices'),
+
+            HasMany::make('Orders'),
         ];
     }
 

@@ -13,6 +13,7 @@ use App\Nova\Metrics\NumberOfProducts;
 use App\Nova\Metrics\NumberOfCategories;
 use Bolechen\NovaActivitylog\NovaActivitylog;
 use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Textarea;
 use OptimistDigital\NovaSettings\NovaSettings;
 use Laravel\Nova\NovaApplicationServiceProvider;
 use NumaxLab\NovaCKEditor5Classic\CKEditor5Classic;
@@ -67,7 +68,15 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
             Text::make('Checkout Vat Note'),
 
+            Text::make('Paypal Client Id'),
 
+            Text::make('Buy Service Message'),
+
+            Textarea::make('Delivery Mail message'),
+
+            Textarea::make('Feedback Mail message'),
+
+            Number::make('Low Stock'),
         ]);
     }
 
@@ -94,9 +103,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function gate()
     {
         Gate::define('viewNova', function ($user) {
-            return in_array($user->email, [
-                'superadmin@sojikshop.store',
-            ]);
+            return $user->email == 'superadmin@sojikshop.store';
         });
     }
 
@@ -111,7 +118,6 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             NumberOfProducts::make(),
             NumberOfCategories::make(),
             NumberOfBanners::make(),
-            NumberOfUsers::make(),
         ];
     }
 

@@ -8,6 +8,7 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Area extends Resource
 {
+    public static $group = 'shipping Management';
     /**
      * The model the resource corresponds to.
      *

@@ -71,7 +71,7 @@ return [
     |
      */
 
-    'guard' => env('NOVA_GUARD', null),
+    'guard' => env('NOVA_GUARD', 'admin'),
 
     /*
     |--------------------------------------------------------------------------
@@ -144,6 +144,6 @@ return [
     |
      */
 
-    'currency' => 'USD',
+    'currency' => 'PHP',
 
 ];

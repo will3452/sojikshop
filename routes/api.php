@@ -3,9 +3,9 @@
 use App\Http\Controllers\ApiAuthenticationController;
 use App\Http\Controllers\ApiProductController;
 use App\Models\Cart;
+use App\Supports\Invoice as InvoiceSupport;
+use App\Supports\Order as OrderSupport;
 use Illuminate\Http\Request;
-use App\Supports\OrderSupport;
-use App\Supports\InvoiceSupport;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
@@ -26,14 +26,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [ApiAuthenticationController::class, 'logout']);
 });
 
-Route::post('/payment-success', function () {
-    $userId = request()->uid;
-    $invoice = InvoiceSupport::createInvoice(request(), $userId);
-    if ($invoice != null) {
-        $carts = Cart::where('user_id', $userId)->get();
-        OrderSupport::createOrder($invoice->id, $userId, $carts);
-    }
-    return redirect(route('payment.success'));
+
+Route::post('/create-order', function () {
+    $invoice = InvoiceSupport::createInvoice(request());
+
+    $order = OrderSupport::createOrder(request(), $invoice->id);
+    return $order;
 });
 
 //assets
@@ -49,7 +47,7 @@ Route::post('/login', [ApiAuthenticationController::class, 'login']);
 Route::post('/register', [ApiAuthenticationController::class, 'register']);
 
 
-Route::post('/payment-cancelled', function () {
+Route::get('/payment-cancelled', function () {
     return 'you cancelled your payment';
 });
 

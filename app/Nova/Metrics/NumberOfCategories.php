@@ -56,4 +56,9 @@ class NumberOfCategories extends Value
     {
         return 'number-of-categories';
     }
+
+    public function name()
+    {
+        return "Categories";
+    }
 }

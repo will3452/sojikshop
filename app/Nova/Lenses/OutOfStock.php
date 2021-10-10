@@ -1,46 +1,35 @@
 <?php
 
-namespace App\Nova;
+namespace App\Nova\Lenses;
 
-use App\Nova\Lenses\LowStock;
-use App\Nova\Lenses\OutOfStock;
+use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\BelongsToMany;
+use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Lenses\Lens;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Number;
-use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
-use Maatwebsite\LaravelNovaExcel\Actions\DownloadExcel;
+use Laravel\Nova\Fields\BelongsToMany;
+use Laravel\Nova\Http\Requests\LensRequest;
 
-class Product extends Resource
+class OutOfStock extends Lens
 {
-    public static $group = "data Management";
     /**
-     * The model the resource corresponds to.
+     * Get the query builder / paginator for the lens.
      *
-     * @var string
+     * @param  \Laravel\Nova\Http\Requests\LensRequest  $request
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return mixed
      */
-    public static $model = \App\Models\Product::class;
+    public static function query(LensRequest $request, $query)
+    {
+        return $request->withOrdering($request->withFilters(
+            $query->whereQuantity(0)
+        ));
+    }
 
     /**
-     * The single value that should be used to represent the resource when being displayed.
-     *
-     * @var string
-     */
-    public static $title = 'name';
-
-    /**
-     * The columns that should be searched.
-     *
-     * @var array
-     */
-    public static $search = [
-        'name',
-        'reference_number',
-    ];
-
-    /**
-     * Get the fields displayed by the resource.
+     * Get the fields available to the lens.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return array
@@ -80,7 +69,7 @@ class Product extends Resource
     }
 
     /**
-     * Get the cards available for the request.
+     * Get the cards available on the lens.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return array
@@ -91,7 +80,7 @@ class Product extends Resource
     }
 
     /**
-     * Get the filters available for the resource.
+     * Get the filters available for the lens.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return array
@@ -102,29 +91,23 @@ class Product extends Resource
     }
 
     /**
-     * Get the lenses available for the resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
-    public function lenses(Request $request)
-    {
-        return [
-            OutOfStock::make(),
-            LowStock::make(),
-        ];
-    }
-
-    /**
-     * Get the actions available for the resource.
+     * Get the actions available on the lens.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function actions(Request $request)
     {
-        return [
-            new DownloadExcel(),
-        ];
+        return parent::actions($request);
+    }
+
+    /**
+     * Get the URI key for the lens.
+     *
+     * @return string
+     */
+    public function uriKey()
+    {
+        return 'out-of-stock';
     }
 }

@@ -2,7 +2,7 @@
 <div>
     <div class="bg-gradient-to-r from-pink-500 to-purple-900 text-center p-10 my-4 md:py-10">
       <h2 class="font-bold text-2xl text-white md:text-4xl md:font-thin mb-4">
-        SOME SAYINGS GOES HERE!
+        {{nova_get_setting('buy_service_message')}}
       </h2>
       <button
         class="
@@ -14,7 +14,7 @@
           px-8 md:text-xl md:py-4
         "
       >
-        SHOP NOW
+        BUY SERVICE
       </button>
     </div>
   </div>

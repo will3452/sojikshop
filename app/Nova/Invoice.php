@@ -2,32 +2,32 @@
 
 namespace App\Nova;
 
-use App\Nova\Lenses\LowStock;
-use App\Nova\Lenses\OutOfStock;
+use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\BelongsToMany;
-use Laravel\Nova\Fields\Image;
-use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Textarea;
+use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Http\Requests\NovaRequest;
 use Maatwebsite\LaravelNovaExcel\Actions\DownloadExcel;
 
-class Product extends Resource
+class Invoice extends Resource
 {
-    public static $group = "data Management";
+    public static $group = "Order Management";
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Models\Product::class;
+    public static $model = \App\Models\Invoice::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'name';
+    public function title(){
+        return "$this->txnid - $this->amount";
+    }
 
     /**
      * The columns that should be searched.
@@ -35,9 +35,20 @@ class Product extends Resource
      * @var array
      */
     public static $search = [
-        'name',
-        'reference_number',
+        'id',
+        'txnid',
+        'user_id',
+        'amount',
+        'items'
     ];
+
+    public function authorizedToUpdate(Request $request)
+    {
+        if($request->has('action')){
+            return true;
+        }
+        return false;
+    }
 
     /**
      * Get the fields displayed by the resource.
@@ -48,34 +59,29 @@ class Product extends Resource
     public function fields(Request $request)
     {
         return [
-            Text::make('Reference Number')
+            Date::make('Date', 'created_at')
+                ->exceptOnForms()
+                ->sortable(),
+
+            Text::make('Transaction #', 'txnid')
+                ->rules(['required', 'unique:invoices,txnid']),
+
+            BelongsTo::make('User'),
+
+            Text::make('Amount')
+                ->rules(['required', 'numeric']),
+
+            Text::make('Items', function($invoice){
+                $list = "<ul>";
+                foreach(json_decode($invoice->items) as $item){
+                    $product = $item->quantity. 'x - '.$item->product_name;
+                    $list .= "<li class='p-2 rounded px-4 mb-2 shadow flex justify-between items-center'><img class='w-10 h-10 rounded-full shadow border-2 border-purple-100' src='/storage/$item->product_image' />$product</li>";
+                }
+                return $list. '</ul>';
+            })
+                ->asHtml()
                 ->exceptOnForms()
                 ->hideFromIndex(),
-
-            Text::make('Name')
-                ->required(),
-
-            Textarea::make('Description')
-                ->required(),
-
-            Image::make('image')
-                ->hideFromIndex()
-                ->required(),
-
-            Number::make('Price')
-                ->step(.1)
-                ->required(),
-
-            Number::make('Quantity')
-                ->required(),
-
-            Number::make('Shipping Fee')
-                ->hideFromIndex()
-                ->rules(['required'])
-                ->step(.1)
-                ->required(),
-
-            BelongsToMany::make('Categories'),
         ];
     }
 
@@ -109,10 +115,7 @@ class Product extends Resource
      */
     public function lenses(Request $request)
     {
-        return [
-            OutOfStock::make(),
-            LowStock::make(),
-        ];
+        return [];
     }
 
     /**

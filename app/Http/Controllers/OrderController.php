@@ -9,9 +9,9 @@ class OrderController extends Controller
 {
     public function myOrders()
     {
-        $statuses = ['shipping', 'delivery', 'feedback'];
+        $statuses = ['packaging', 'delivery', 'feedback'];
         if (!request()->has('active') || !in_array(request()->active, $statuses)) {
-            return redirect(route('my-orders').'?active=shipping');
+            return redirect(route('my-orders').'?active=packaging');
         }
 
         $orders = Order::where([
