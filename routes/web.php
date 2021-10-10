@@ -90,6 +90,7 @@ Route::middleware('auth')->group(function () {
 
     //profile
     Route::get('/profile', [ProfileController::class, 'myProfile']);
+    Route::post('/profile', [ProfileController::class, 'saveProfile']);
 });
 
 //search
