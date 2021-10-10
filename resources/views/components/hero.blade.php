@@ -4,8 +4,10 @@
       <h2 class="font-bold text-2xl text-white md:text-4xl md:font-thin mb-4">
         {{nova_get_setting('buy_service_message')}}
       </h2>
-      <button
+      <a
+      href="/buying-request"
         class="
+        inline-block
           my-4
           bg-pink-500
           text-white
@@ -15,7 +17,7 @@
         "
       >
         BUYING SERVICES
-      </button>
+    </a>
     </div>
   </div>
   <!-- end of Featured -->

@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\BuyingRequest;
 use App\Models\Order;
 use App\Models\Invoice;
 use App\Models\Product;
+use App\Observers\BuyingRequestObserver;
 use App\Observers\OrderObserver;
 use App\Observers\InvoiceObserver;
 use App\Observers\ProductObserver;

@@ -13,6 +13,7 @@ use App\Http\Controllers\WishListController;
 use App\Http\Controllers\Nova\LoginController;
 use App\Http\Controllers\PayPalPaymentController;
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\BuyingServiceController;
 use App\Http\Controllers\PreOrderController;
 
 /*
@@ -85,6 +86,10 @@ Route::middleware('auth')->group(function () {
 //search
 Route::get('/search', [SearchController::class, 'search'])->name('search');
 Route::get('search-category', [SearchController::class, 'getCategory'])->name('search.category');
+
+//buying request
+Route::get('/buying-request', [BuyingServiceController::class, 'showForm']);
+Route::post('/buying-request', [BuyingServiceController::class, 'submitForm']);
 
 Route::get('/paypal', function () {
     return view('paypal');
