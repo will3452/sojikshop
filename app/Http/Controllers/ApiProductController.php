@@ -11,6 +11,13 @@ class ApiProductController extends Controller
     {
         $products = Product::get();
 
+        if(request()->has('keyword')){
+            $keyword = request()->keyword;
+            $products = Product::where('name', 'LIKE', '%'.$keyword.'%')
+                ->orWhere('description', 'LIKE', '%'.$keyword.'%')
+                ->get();
+        }
+
         if (request()->has('_limit')) {
             $products = Product::limit(request()->_limit)->get();
         }
