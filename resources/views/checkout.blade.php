@@ -87,8 +87,9 @@
                     shipping_area_id: '{{request()->area}}',
                     user_id: {{auth()->id()}},
                     lat: '{{request()->lat}}',
-                    lng:'{{request()->lng}}',
+                    lng:'{{request()->lng}}'
                     @if(request()->has('quantity') && request()->has('product_id'))
+                    ,
                         order_status:'{{\App\Models\Order::STATUS_PRE_ORDER}}',
                         product_id:{{request()->product_id}},
                         quantity:{{request()->quantity}},
