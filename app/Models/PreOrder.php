@@ -14,7 +14,7 @@ class PreOrder extends Order
     protected static function booted()
     {
         static::addGlobalScope('pre-order', function (Builder $builder) {
-            $builder->whereType(Order::TYPE_PRE_ORDER);
+            $builder->whereType(Order::STATUS_PRE_ORDER);
         });
     }
 }
