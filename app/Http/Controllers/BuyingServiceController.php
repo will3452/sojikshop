@@ -35,7 +35,7 @@ class BuyingServiceController extends Controller
 
         //generate json
         $productDetails = [
-            'name'=>$data['item_name'],
+            'name'=>$data['item_name'] ?? null,
             'description'=>$data['item_description'],
             'quantity'=>$data['item_quantity'],
             'image'=>$data['item_image']
