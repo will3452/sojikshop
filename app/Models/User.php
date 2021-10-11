@@ -9,7 +9,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable, LogsActivity;
 
@@ -77,5 +77,10 @@ class User extends Authenticatable
     public function feedbacks()
     {
         return $this->hasMany(Feedback::class, 'user_id');
+    }
+
+    public function pins()
+    {
+        return $this->hasMany(Pin::class);
     }
 }

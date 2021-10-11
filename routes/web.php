@@ -1,22 +1,25 @@
 <?php
 
 use Laravel\Nova\Nova;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\WishListController;
-use App\Http\Controllers\Nova\LoginController;
-use App\Http\Controllers\PayPalPaymentController;
-use App\Http\Controllers\AuthenticationController;
-use App\Http\Controllers\BuyingServiceController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\PreOrderController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\WishListController;
+use App\Http\Controllers\Nova\LoginController;
+use App\Http\Controllers\BuyingServiceController;
+use App\Http\Controllers\PayPalPaymentController;
+use App\Http\Controllers\AuthenticationController;
+use App\Mail\VerifyEmail;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,7 +54,45 @@ Route::prefix('products')->middleware(['auth'])->name('products.')->group(functi
     Route::get('/{product}', [ProductController::class, 'show'])->name('show');
 });
 
-Route::middleware('auth')->group(function () {
+
+Route::middleware('auth')->group(function(){
+    Route::get('/verification-notice', function(){
+        return view('email_verification');
+    })->name('verification.notice');
+
+    Route::get('/get-new-code', function(){
+        auth()->user()->pins()->create([
+            'code'=>random_int(111111, 999999),
+        ]);
+
+        Mail::to(auth()->user())->send(new VerifyEmail());
+        return back();
+    });
+
+    Route::post('/check-code', function(){
+        request()->validate([
+            'code'=>'required'
+        ]);
+        $code = implode('', request()->code);
+        $latestPin = auth()->user()->pins()->latest()->first();
+        if($latestPin->code == $code){
+            auth()->user()->email_verified_at = now();
+            auth()->user()->save();
+            alert("You're email has been verified, Enjoy Shopping!", 'success');
+            return redirect('/');
+        }else {
+            alert("Wrong Pin Code", 'danger');
+            return back();
+        }
+    });
+
+});
+
+
+Route::middleware(['auth','verified'])->group(function () {
+
+
+
     Route::redirect('/home', '/');
     Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout');
 
