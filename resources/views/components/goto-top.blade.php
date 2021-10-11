@@ -1,4 +1,4 @@
-<div id="back2Top"
+{{-- <div id="back2Top"
 class="
 bg-green-100
 text-center
@@ -15,4 +15,4 @@ animate-bounce
 <span class="material-icons text-purple-900 ">
     arrow_upward
 </span>
-</div>
+</div> --}}

@@ -20,7 +20,7 @@
     @include('sweetalert::alert')
     <x-navbar></x-navbar>
         {{ $slot }}
-        <script>
+        {{-- <script>
             {
                 const back2Top = document.querySelector('#back2Top');
 
@@ -37,7 +37,7 @@
                     window.scroll({ top:0, left:0, behavior: 'smooth'});
                 });
             }
-        </script>
+        </script> --}}
         {!!nova_get_setting('facebook_scripts')!!}
   </body>
 </html>
