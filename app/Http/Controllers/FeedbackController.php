@@ -23,7 +23,7 @@ class FeedbackController extends Controller
                 'message'=>request()->message[$key]
             ]);
         }
-        return $feedbacks;
+
         $order->update(['status'=>'end']);
 
         alert('Thanks, Your Feedback has been submitted!', 'success');
