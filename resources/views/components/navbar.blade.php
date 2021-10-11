@@ -11,9 +11,7 @@
         items-center
         p-2
         md:p-6
-        bg-gradient-to-r
-        from-pink-500
-        to-purple-900
+        bg-green-200
         z-50
     "
     >
@@ -27,15 +25,15 @@
     </div>
     <div>
         <a href="{{route('my.wishlist')}}" class="px-2">
-        <span class="material-icons text-white"> favorite </span>
+        <span class="material-icons text-purple-900"> favorite </span>
         <x-dot type="heart"></x-dot>
         </a>
         <a href="/my-cart" class="px-2">
-        <span class="material-icons text-white"> shopping_cart </span>
+        <span class="material-icons text-purple-900"> shopping_cart </span>
         <x-dot type="cart"></x-dot>
         </a>
         <a href="#" class="px-2" @click.prevent="isShow = !isShow" x-show="!isShow">
-        <span class="material-icons text-white"> account_circle </span>
+        <span class="material-icons text-purple-900"> account_circle </span>
         </a>
         <a href="#" class="px-2" @click.prevent="isShow = !isShow" x-show="isShow">
             <span class="material-icons text-yellow-300"> account_circle </span>

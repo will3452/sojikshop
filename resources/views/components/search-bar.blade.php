@@ -1,4 +1,4 @@
-<div class="h-20 bg-gradient-to-r from-pink-500 to-purple-900 relative">
+<div class="h-20 bg-green-200 relative">
     <form action="{{route('search')}}" class="mx-auto md:w-1/2 md:left-1/4 w-full p-2 absolute -top-6">
         <input type="text" name="keyword" required id="_search_bar" class="w-full p-3 rounded-full focus:bg-yellow-200 focus:outline-none">
         <button class="absolute right-3 top-3 bg-purple-900 w-10 h-10 text-white rounded-full">

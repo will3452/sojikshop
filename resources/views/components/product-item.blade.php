@@ -31,8 +31,8 @@
                 P {{ number_format($product->price, 2) }}
             </div>
         <div class="
-        bg-gradient-to-r from-pink-600 to-purple-900
-        px-2 absolute bottom-0 w-full text-center text-xs font-bold uppercase py-2 text-white
+        bg-green-200
+        px-2 absolute bottom-0 w-full text-center text-xs font-bold uppercase py-2 text-purple-900
         ">
             {{ \Str::limit($product->name, 25) }}
         </div>

@@ -38,5 +38,6 @@
                 });
             }
         </script>
+        {!!nova_get_setting('facebook_scripts')!!}
   </body>
 </html>
