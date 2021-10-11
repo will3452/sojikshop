@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApiAuthenticationController;
+use App\Http\Controllers\ApiCartController;
 use App\Http\Controllers\ApiProductController;
 use App\Models\Cart;
 use App\Supports\Invoice as InvoiceSupport;
@@ -24,6 +25,9 @@ Route::middleware('auth:sanctum')->group(function () {
     // Route::post('/login', 'Auth');
     Route::get('/products/{id}', [ApiProductController::class, 'show']);
     Route::post('/logout', [ApiAuthenticationController::class, 'logout']);
+
+    // cart
+    Route::get('/my-carts', [ApiCartController::class, 'myCart']);
 });
 
 
