@@ -35,7 +35,7 @@ class BuyingServiceController extends Controller
 
         //generate json
         $productDetails = [
-            'name'=>$data['item_name'] ?? null,
+            'name'=>$data['item_name'],
             'description'=>$data['item_description'],
             'quantity'=>$data['item_quantity'],
             'image'=>$data['item_image']
@@ -48,7 +48,7 @@ class BuyingServiceController extends Controller
         ];
 
         BuyingRequest::create([
-            'user_id'=>$data['user_id'],
+            'user_id'=>$data['user_id'] ?? null,
             'product_details'=>json_encode($productDetails),
             'customer_details'=>json_encode($customerDetails),
         ]);
