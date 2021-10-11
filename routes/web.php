@@ -66,6 +66,7 @@ Route::middleware('auth')->group(function(){
         ]);
 
         Mail::to(auth()->user())->send(new VerifyEmail());
+        alert('New Code has been sent to your email', 'success');
         return back();
     });
 
