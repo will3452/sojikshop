@@ -21,7 +21,7 @@
                         <input type="text"
                         id="address"
                         required
-                        class="w-11/12 p-2 border-2 border-pink-500"
+                        class="w-full md:w-11/12 p-2 border-2 border-pink-500"
                         name="address"
                         value="{{$address ?? auth()->user()->address}}">
                         <button type="button" onclick="getLocation()" class="hidden md:block md:w-1/12 bg-pink-600 p-1 border-2 border-pink-600" >
