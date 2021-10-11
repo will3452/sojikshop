@@ -2,9 +2,9 @@
     <div class="w-full p-2">
         <div class="flex items-center flex-col">
             @if (auth()->user()->image)
-                <img class="w-24 h-24 rounded-full md:w-32 md:h-32" src="/storage/{{auth()->user()->image}}" alt="">
+                <img class="object-fit w-24 h-24 rounded-full md:w-32 md:h-32" src="/storage/{{auth()->user()->image}}" alt="">
             @else
-                <img class="w-24 h-24 rounded-full md:w-32 md:h-32" src="https://cdn5.vectorstock.com/i/thumb-large/45/79/male-avatar-profile-picture-silhouette-light-vector-4684579.jpg" alt="">
+                <img class="object-fit w-24 h-24 rounded-full md:w-32 md:h-32" src="https://cdn5.vectorstock.com/i/thumb-large/45/79/male-avatar-profile-picture-silhouette-light-vector-4684579.jpg" alt="">
             @endif
             <div class="ml-1 text-xs w-full md:w-1/2"  x-data="{editable:false}">
                 {{-- toggle --}}
