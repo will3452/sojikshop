@@ -11,13 +11,12 @@ use Laravel\Nova\Fields\Text;
 use App\Models\Order as ModelsOrder;
 use App\Nova\Actions\MarkAsDelivery;
 use App\Nova\Actions\MarkAsPackaging;
-use App\Nova\Actions\MarkAsRereived;
+use App\Nova\Actions\MarkAsReceived;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Maatwebsite\LaravelNovaExcel\Actions\DownloadExcel;
 
 class Order extends Resource
 {
-
     public static $group = "Order Management";
     /**
      * The model the resource corresponds to.
@@ -31,7 +30,8 @@ class Order extends Resource
      *
      * @var string
      */
-    public function title(){
+    public function title()
+    {
         return "$this->reference_number - $this->status";
     }
 
@@ -70,9 +70,9 @@ class Order extends Resource
             Text::make('reference_number')
                 ->exceptOnForms(),
 
-            Text::make('Items', function($order){
+            Text::make('Items', function ($order) {
                 $list = "<ul>";
-                foreach(json_decode($order->items) as $item){
+                foreach (json_decode($order->items) as $item) {
                     $product = $item->quantity. 'x - '.$item->product_name;
                     $list .= "<li class='p-2 rounded px-4 mb-2 shadow flex justify-between items-center'><img class='w-10 h-10 rounded-full shadow border-2 border-purple-100' src='/storage/$item->product_image' />$product</li>";
                 }
@@ -82,7 +82,7 @@ class Order extends Resource
                 ->exceptOnForms()
                 ->hideFromIndex(),
 
-            Text::make('Location', function($order){
+            Text::make('Location', function ($order) {
                 $location = json_decode($order->location);
                 $shippingArea = Area::find($location->shipping_area_id);
                 $text = "
@@ -98,27 +98,27 @@ class Order extends Resource
                 ->exceptOnForms()
                 ->hideFromIndex(),
 
-            Text::make('Status', function($order){
-                if($order->status == ModelsOrder::STATUS_PRE_ORDER){
+            Text::make('Status', function ($order) {
+                if ($order->status == ModelsOrder::STATUS_PRE_ORDER) {
                     return "<span class='px-4 py-2 rounded-3xl bg-gray-300 text-gray-900 uppercase font-black text-xs'>Pre-Order</span>";
                 }
 
-                if($order->status == ModelsOrder::STATUS_PACKAGING){
+                if ($order->status == ModelsOrder::STATUS_PACKAGING) {
                     return "<span class='px-4 py-2 rounded-3xl bg-blue-300 text-blue-900 uppercase font-black text-xs'>Packaging</span>";
                 }
 
-                if($order->status == ModelsOrder::STATUS_DELIVERY){
+                if ($order->status == ModelsOrder::STATUS_DELIVERY) {
                     return "<span class='px-4 py-2 rounded-3xl bg-yellow-300 text-yellow-900 uppercase font-black text-xs'>Delivery</span>";
                 }
 
-                if($order->status == ModelsOrder::STATUS_FEEDBACK){
+                if ($order->status == ModelsOrder::STATUS_FEEDBACK) {
                     return "<span class='px-4 py-2 rounded-3xl bg-green-300 text-green-900 uppercase font-black text-xs'>Completed</span>";
                 }
             })
                 ->asHtml()
                 ->exceptOnForms(),
 
-            Text::make('Amount', function($order){
+            Text::make('Amount', function ($order) {
                 $amount = $order->invoice->amount;
                 return "<span class='px-4 py-2 rounded bg-yellow-300 text-yellow-900 text-2xl uppercase font-black'><span class='text-sm' >PHP</span>$amount</span>";
             })
@@ -176,7 +176,7 @@ class Order extends Resource
 
             MarkAsDelivery::make(),
 
-            MarkAsRereived::make(),
+            MarkAsReceived::make(),
 
             new DownloadExcel(),
         ];

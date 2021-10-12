@@ -10,7 +10,7 @@ use Illuminate\Support\Collection;
 use Laravel\Nova\Actions\Action;
 use Laravel\Nova\Fields\ActionFields;
 
-class MarkAsRereived extends Action
+class MarkAsReceived extends Action
 {
     use InteractsWithQueue, Queueable;
 
