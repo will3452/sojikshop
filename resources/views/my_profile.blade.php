@@ -99,9 +99,7 @@
                             </label>
                             <input type="file" value="{{auth()->user()->image}}" name="picture" class="mt-2 w-full p-2 rounded border-2 border-pink-600">
                         </div>
-
                         <button class="text-white bg-pink-600 rounded px-2 py-1">Save</button>
-
                     </form>
                 </template>
             </div>
