@@ -20,7 +20,8 @@ class ApiCartController extends Controller
         ], 200);
     }
 
-    public function addToCart(){
+    public function addToCart()
+    {
         request()->validate([
             'product_id'=>'required'
         ]);
@@ -37,6 +38,22 @@ class ApiCartController extends Controller
         return response([
             'status'=>'created',
             'cart'=>$cart
+        ], 200);
+    }
+
+    public function removeToCart()
+    {
+        request()->validate([
+            'product_id'=>'required'
+        ]);
+
+        $user = User::find(auth()->id());
+
+        $cart = $user->carts()->where('product_id', request()->product_id)->first();
+
+        $cart->delete();
+        return response([
+            'status'=>'deleted'
         ], 200);
     }
 }
