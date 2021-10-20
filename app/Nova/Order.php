@@ -177,8 +177,6 @@ class Order extends Resource
             MarkAsDelivery::make(),
 
             MarkAsReceived::make(),
-
-            new DownloadExcel(),
         ];
     }
 }

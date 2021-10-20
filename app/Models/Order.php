@@ -30,4 +30,10 @@ class Order extends Model
     {
         return $this->hasMany(OrderProduct::class);
     }
+
+    public function getAmountAttribute()
+    {
+        $invoice = Invoice::find($this->invoice_id);
+        return $invoice->amount ?? '';
+    }
 }
