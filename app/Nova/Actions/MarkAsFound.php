@@ -34,6 +34,7 @@ class MarkAsFound extends Action
 
             $model->update([
                 'quotation'=>$fields->quotation,
+                'item_price'=>$fields->quotation,
                 'status'=>BuyingRequest::STATUS_FOUND
             ]);
 
@@ -53,6 +54,9 @@ class MarkAsFound extends Action
     {
         return [
             Text::make('Quotation')
+                ->rules('required'),
+
+            Text::make('Item Price')
                 ->rules('required'),
 
             Textarea::make('Message')

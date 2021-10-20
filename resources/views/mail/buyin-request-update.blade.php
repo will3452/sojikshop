@@ -5,6 +5,8 @@ Status : {{$buyingRequest->status}}
 
 @if ($buyingRequest->quotation != null)
     Quotation: {{$buyingRequest->quotation}}
+
+    Cost per Item: {{$buyingRequest->item_price}}
 @endif
 
 {{$message}}
