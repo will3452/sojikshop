@@ -138,6 +138,8 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::get('/add-new-address', [AddressController::class, 'create']);
     Route::post('/add-new-address', [AddressController::class, 'store']);
     Route::delete('/delete-address/{address}', [AddressController::class, 'destroy']);
+    Route::view('/terms', 'terms');
+    Route::view('/data', 'data');
 });
 
 //search
