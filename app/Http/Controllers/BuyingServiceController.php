@@ -12,6 +12,11 @@ class BuyingServiceController extends Controller
         return view('buying_form');
     }
 
+    public function index()
+    {
+        return view('my_requests');
+    }
+
     public function submitForm(){
         $data = request()->validate([
             'name'=>'required',

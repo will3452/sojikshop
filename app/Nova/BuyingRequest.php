@@ -57,23 +57,22 @@ class BuyingRequest extends Resource
 
             BelongsTo::make('Customer', 'user'),
 
-            Text::make('status', function($request){
-                if($request->status == ModelsBuyingRequest::STATUS_PENDING){
+            Text::make('status', function ($request) {
+                if ($request->status == ModelsBuyingRequest::STATUS_PENDING) {
                     return "<span class='px-4 py-2 rounded-3xl bg-gray-300 text-gray-900 uppercase font-black text-xs'>Pending</span>";
                 }
 
-                if($request->status == ModelsBuyingRequest::STATUS_FOUND){
+                if ($request->status == ModelsBuyingRequest::STATUS_FOUND) {
                     return "<span class='px-4 py-2 rounded-3xl bg-green-300 text-green-900 uppercase font-black text-xs'>Found</span>";
                 }
 
-                if($request->status == ModelsBuyingRequest::STATUS_NOT_FOUND){
+                if ($request->status == ModelsBuyingRequest::STATUS_NOT_FOUND) {
                     return "<span class='px-4 py-2 rounded-3xl bg-red-300 text-red-900 uppercase font-black text-xs'>Not Found</span>";
                 }
             })->asHtml()
             ->exceptOnForms(),
 
-            Text::make('Customer Details', function($request){
-
+            Text::make('Customer Details', function ($request) {
                 $customer = json_decode($request->customer_details);
                 return "
                 <ul>
@@ -85,8 +84,7 @@ class BuyingRequest extends Resource
             })->asHtml()
             ->hideFromIndex(),
 
-            Text::make('Item Details', function($request){
-
+            Text::make('Item Details', function ($request) {
                 $item_details = json_decode($request->product_details);
                 $itemImage = explode('/', $item_details->image);
                 $itemImage = '/storage/'.end($itemImage);
@@ -138,7 +136,7 @@ class BuyingRequest extends Resource
 
     /**
      * Get the actions available for the resource.
-     *
+
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */

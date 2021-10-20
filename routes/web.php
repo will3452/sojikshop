@@ -19,6 +19,7 @@ use App\Http\Controllers\Nova\LoginController;
 use App\Http\Controllers\BuyingServiceController;
 use App\Http\Controllers\PayPalPaymentController;
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\BuyingRequestController;
 use App\Mail\VerifyEmail;
 use Illuminate\Support\Facades\Mail;
 
@@ -115,6 +116,7 @@ Route::middleware(['auth','verified'])->group(function () {
 
     //orders
     Route::get('my-orders', [OrderController::class, 'myOrders'])->name('my-orders');
+    Route::get('my-requets', [BuyingServiceController::class, 'index'])->name('my-requests');
 
     //invoice
     Route::get('/invoices/{invoice}', [InvoiceController::class, 'show']);
