@@ -19,8 +19,6 @@
             </h2>
             <x-input name="name" required placeholder="Enter your Name"></x-input>
 
-            <x-input name="address" type="text" required placeholder="Enter your Complete Address"></x-input>
-
             <x-input name="mobile" type="number" required placeholder="Enter your mobile"></x-input>
 
             <x-input name="email" type="email" required placeholder="Enter your Email"></x-input>

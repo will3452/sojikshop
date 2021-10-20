@@ -55,12 +55,12 @@ Route::prefix('products')->middleware(['auth'])->name('products.')->group(functi
 });
 
 
-Route::middleware('auth')->group(function(){
-    Route::get('/verification-notice', function(){
+Route::middleware('auth')->group(function () {
+    Route::get('/verification-notice', function () {
         return view('email_verification');
     })->name('verification.notice');
 
-    Route::get('/get-new-code', function(){
+    Route::get('/get-new-code', function () {
         auth()->user()->pins()->create([
             'code'=>random_int(111111, 999999),
         ]);
@@ -70,30 +70,26 @@ Route::middleware('auth')->group(function(){
         return back();
     });
 
-    Route::post('/check-code', function(){
+    Route::post('/check-code', function () {
         request()->validate([
             'code'=>'required'
         ]);
         $code = implode('', request()->code);
         $latestPin = auth()->user()->pins()->latest()->first();
-        if($latestPin->code == $code){
+        if ($latestPin->code == $code) {
             auth()->user()->email_verified_at = now();
             auth()->user()->save();
             alert("You're email has been verified, Enjoy Shopping!", 'success');
             return redirect('/');
-        }else {
+        } else {
             alert("Wrong Pin Code", 'danger');
             return back();
         }
     });
-
 });
 
 
 Route::middleware(['auth','verified'])->group(function () {
-
-
-
     Route::redirect('/home', '/');
     Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout');
 
@@ -133,15 +129,16 @@ Route::middleware(['auth','verified'])->group(function () {
     //profile
     Route::get('/profile', [ProfileController::class, 'myProfile']);
     Route::post('/profile', [ProfileController::class, 'saveProfile']);
+
+    //buying request
+    Route::get('/buying-request', [BuyingServiceController::class, 'showForm']);
+    Route::post('/buying-request', [BuyingServiceController::class, 'submitForm']);
 });
 
 //search
 Route::get('/search', [SearchController::class, 'search'])->name('search');
 Route::get('search-category', [SearchController::class, 'getCategory'])->name('search.category');
 
-//buying request
-Route::get('/buying-request', [BuyingServiceController::class, 'showForm']);
-Route::post('/buying-request', [BuyingServiceController::class, 'submitForm']);
 
 Route::get('/paypal', function () {
     return view('paypal');

@@ -21,7 +21,6 @@ class AuthenticationController extends Controller
             'name'=>'required',
             'email'=>'required|unique:users,email',
             'password'=>'required|min:8|confirmed',
-            'address'=>'required',
             'mobile'=>'required|unique:users,mobile'
         ]);
 
@@ -101,7 +100,7 @@ class AuthenticationController extends Controller
         ]);
         $user = User::where('email', request()->email)->first();
 
-        if(!$user){
+        if (!$user) {
             alert('account not found!', 'danger');
             return back()->withError('Account not found!');
         }
