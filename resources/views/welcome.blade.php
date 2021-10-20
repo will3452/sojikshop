@@ -3,7 +3,7 @@
   <x-search-bar></x-search-bar>
   <x-title>new arrival</x-title>
   <x-product-container>
-    @foreach (\App\Models\Product::latest()->limit(10)->get() as $product)
+    @foreach (\App\Models\Product::where('quantity', '!=', 0)->latest()->limit(10)->get() as $product)
       <x-product-item :product="$product"></x-product-item>
     @endforeach
   </x-product-container>

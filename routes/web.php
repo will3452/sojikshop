@@ -117,6 +117,7 @@ Route::middleware(['auth','verified'])->group(function () {
     //orders
     Route::get('my-orders', [OrderController::class, 'myOrders'])->name('my-orders');
     Route::get('my-requets', [BuyingServiceController::class, 'index'])->name('my-requests');
+    Route::view('out-of-stack', 'pre-orders');
 
     //invoice
     Route::get('/invoices/{invoice}', [InvoiceController::class, 'show']);

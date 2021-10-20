@@ -12,6 +12,9 @@
             <a href="/buying-request" class="text-xs uppercase p-1 px-2 bg-pink-600 text-white rounded-full cursor-pointer mx-2 border-2 border-white">
                 Buying Services
             </a>
+            <a href="/out-of-stack" class="text-xs uppercase p-1 px-2 bg-pink-600 text-white rounded-full cursor-pointer mx-2 border-2 border-white">
+                Pre-orders
+            </a>
             @foreach (\App\Models\Category::get() as $category)
                 <a href="{{route('search.category', ['category' => $category->name])}}" class="text-xs uppercase p-1 px-2 bg-pink-600 text-white rounded-full cursor-pointer mx-2 border-2 border-white">
                     {{$category->name}}
