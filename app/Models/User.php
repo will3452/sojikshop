@@ -50,8 +50,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    public function getImageAttribute(){
-        $image = explode('/',$this->picture);
+    public function getImageAttribute()
+    {
+        $image = explode('/', $this->picture);
         return end($image);
     }
 
@@ -70,7 +71,8 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Order::class, 'user_id');
     }
 
-    public function invoices(){
+    public function invoices()
+    {
         return $this->hasMany(Invoice::class, 'user_id');
     }
 
@@ -82,5 +84,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function pins()
     {
         return $this->hasMany(Pin::class);
+    }
+
+    public function addresses()
+    {
+        return $this->hasMany(Address::class);
     }
 }

@@ -22,38 +22,62 @@
                 {{-- end of toggle --}}
 
                 <template x-if="!editable">
-                    <ul class="mt-10">
-                        <li class="flex justify-between p-2 rounded shadow mb-2">
-                            Name
-                            <span class="font-bold">
-                                {{auth()->user()->name}}
-                            </span>
-                        </li>
-                        <li class="flex justify-between p-2 rounded shadow mb-2">
-                            Email
-                            <span class="font-bold">
-                                {{auth()->user()->email}}
-                            </span>
-                        </li>
-                        <li class="flex justify-between p-2 rounded shadow mb-2">
-                            Mobile No.
-                            <span class="font-bold">
-                                {{auth()->user()->mobile}}
-                            </span>
-                        </li>
-                        <li class="flex justify-between p-2 rounded shadow mb-2">
-                            Address
-                            <span class="font-bold">
-                                {{auth()->user()->address}}
-                            </span>
-                        </li>
-                        <li class="flex justify-between p-2 rounded shadow mb-2">
-                            Picture
-                            <span>
-                                {{auth()->user()->image ?? '--'}}
-                            </span>
-                        </li>
-                    </ul>
+                    <div>
+                        <ul class="mt-10">
+                            <li class="flex justify-between p-2 rounded shadow mb-2">
+                                Name
+                                <span class="font-bold">
+                                    {{auth()->user()->name}}
+                                </span>
+                            </li>
+                            <li class="flex justify-between p-2 rounded shadow mb-2">
+                                Email
+                                <span class="font-bold">
+                                    {{auth()->user()->email}}
+                                </span>
+                            </li>
+                            <li class="flex justify-between p-2 rounded shadow mb-2">
+                                Mobile No.
+                                <span class="font-bold">
+                                    {{auth()->user()->mobile}}
+                                </span>
+                            </li>
+                            <li class="flex justify-between p-2 rounded shadow mb-2">
+                                Picture
+                                <span>
+                                    {{auth()->user()->image ?? '--'}}
+                                </span>
+                            </li>
+                        </ul>
+                        <div class="mt-4">
+                            <div class="flex justify-between">
+                                <h2 class="font-bold uppercase">Address</h2>
+                                <a href="/add-new-address" class="uppercase underline text-pink-500">Add Address</a>
+                            </div>
+                            <div>
+                                @foreach (auth()->user()->addresses as $address)
+                                    <li class="flex justify-between p-2 rounded shadow w-full mt-2">
+                                        <div class="">
+                                            {{$address->inline_address}}
+                                        </div>
+                                        <form action="/delete-address/{{$address->id}}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="text-white bg-red-500 rounded p-1">remove</button>
+                                        </form>
+                                    </li>
+                                @endforeach
+
+                                @if (auth()->user()->addresses->isEmpty())
+                                    <div class="flex justify-center items-center w-full bg-green-100 rounded h-20 mt-2">
+                                        <div class="uppercase font-bold text-green-500">
+                                            Empty
+                                        </div>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
                 </template>
                 <template x-if="editable">
                     <form action="{{url()->current()}}" method="POST" enctype="multipart/form-data">
@@ -84,13 +108,6 @@
                                 Mobile No.
                             </label>
                             <input type="text" value="{{auth()->user()->mobile}}" required name="mobile" class="mt-2 w-full p-2 rounded border-2 border-pink-600">
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="" class="block font-bold text-sm text-gray-900">
-                                Address
-                            </label>
-                            <input type="text" value="{{auth()->user()->address}}" required name="address" class="mt-2 w-full p-2 rounded border-2 border-pink-600">
                         </div>
 
                         <div class="mb-4">

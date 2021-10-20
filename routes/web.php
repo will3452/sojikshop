@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AddressController;
 use Laravel\Nova\Nova;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Route;
@@ -133,6 +134,10 @@ Route::middleware(['auth','verified'])->group(function () {
     //buying request
     Route::get('/buying-request', [BuyingServiceController::class, 'showForm']);
     Route::post('/buying-request', [BuyingServiceController::class, 'submitForm']);
+
+    Route::get('/add-new-address', [AddressController::class, 'create']);
+    Route::post('/add-new-address', [AddressController::class, 'store']);
+    Route::delete('/delete-address/{address}', [AddressController::class, 'destroy']);
 });
 
 //search
