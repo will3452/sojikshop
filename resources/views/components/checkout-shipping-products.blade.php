@@ -1,4 +1,4 @@
-@props(['carts'=>[], 'shipping'=>0, 'total'=>0, 'totalVat'=>0])
+@props(['carts'=>[], 'shipping'=>0, 'total'=>0, ])
 <div class="mb-4 mx-auto md:w-2/3">
     <a href="{{url()->previous()}}" class="p-2 px-5 rounded font-bold bg-gray-900 text-white">
         BACK

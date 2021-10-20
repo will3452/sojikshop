@@ -14,7 +14,7 @@
         <x-checkout-shipping-set area="{{$area}}" address="{{$address}}"></x-checkout-shipping-set>
     @else
         @if (!request()->quantity)
-            <x-checkout-shipping-products :totalVat="$totalVat" :carts="$carts" :total="$total" :shipping="$shipping"></x-checkout-shipping-products>
+            <x-checkout-shipping-products :carts="$carts" :total="$total" :shipping="$shipping"></x-checkout-shipping-products>
         @else
         <x-checkout-pre-order :totalVat="$totalVat" :product="$product" :total="$total" :shipping="$shipping"></x-checkout-pre-order>
         @endif
