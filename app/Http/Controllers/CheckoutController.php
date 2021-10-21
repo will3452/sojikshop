@@ -25,6 +25,10 @@ class CheckoutController extends Controller
                 $address = auth()->user()->addresses()->findOrFail(request()->address_id);
                 $shipping += ($address->getShippingFee($cart->product->id)) * $cart->quantity;
             }else {
+                if(is_null($address)){
+                    alert('Setup your address first');
+                    return back();
+                }
                 $shipping += ($address->getShippingFee($cart->product->id)) * $cart->quantity;
             }
         }
