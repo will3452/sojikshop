@@ -6,6 +6,7 @@ use App\Nova\Lenses\LowStock;
 use App\Nova\Lenses\OutOfStock;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsToMany;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
@@ -69,12 +70,12 @@ class Product extends Resource
             Number::make('Quantity')
                 ->required(),
 
-            Number::make('Shipping Fee')
-                ->hideFromIndex()
-                ->rules(['required'])
-                ->step(.1)
-                ->required(),
-
+            // Number::make('Shipping Fee')
+            //     ->hideFromIndex()
+            //     ->rules(['required'])
+            //     ->step(.1)
+            //     ->required(),
+            HasMany::make('Shipping Fees', 'shippingFees'),
             BelongsToMany::make('Categories'),
         ];
     }

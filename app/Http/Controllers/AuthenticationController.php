@@ -29,7 +29,7 @@ class AuthenticationController extends Controller
         alert('Regitered Successfully!');
 
         if (!$user) {
-            alert('Something is wrong!', 'danger');
+            alert('Something is wrong!');
         }
 
         alert('Registered!');
@@ -76,10 +76,10 @@ class AuthenticationController extends Controller
         $user = User::where('email', request()->email)->first();
 
         if (!$user) {
-            alert('Email not found!', 'danger');
+            alert('Email not found!');
             return back()->withError('Account not found!');
         }
-        alert("We've sent you a password reset link!", 'success');
+        alert("We've sent you a password reset link!");
         Mail::to($user)->send(new PasswordResetLink($user));
         return redirect('/');
     }
@@ -101,7 +101,7 @@ class AuthenticationController extends Controller
         $user = User::where('email', request()->email)->first();
 
         if (!$user) {
-            alert('account not found!', 'danger');
+            alert('account not found!');
             return back()->withError('Account not found!');
         }
         //change pasword here
@@ -111,7 +111,7 @@ class AuthenticationController extends Controller
         //login user
         Auth::login($user);
 
-        alert('Password reset!', 'success');
+        alert('Password reset!');
         //redirect to home
         return redirect('/');
     }

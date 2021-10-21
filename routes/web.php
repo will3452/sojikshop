@@ -84,7 +84,7 @@ Route::middleware('auth')->group(function () {
             alert("You're email has been verified, Enjoy Shopping!", 'success');
             return redirect('/');
         } else {
-            alert("Wrong Pin Code", 'danger');
+            alert("Wrong Pin Code");
             return back();
         }
     });
@@ -140,6 +140,8 @@ Route::middleware(['auth','verified'])->group(function () {
 
     Route::get('/add-new-address', [AddressController::class, 'create']);
     Route::post('/add-new-address', [AddressController::class, 'store']);
+    Route::post('/set-default-address/{address}', [AddressController::class, 'setDefault']);
+
     Route::delete('/delete-address/{address}', [AddressController::class, 'destroy']);
     Route::view('/terms', 'terms');
     Route::view('/data', 'data');
@@ -153,3 +155,5 @@ Route::get('search-category', [SearchController::class, 'getCategory'])->name('s
 Route::get('/paypal', function () {
     return view('paypal');
 });
+
+Route::view('email/new-invoice', 'mail.new-invoice');

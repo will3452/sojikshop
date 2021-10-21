@@ -73,9 +73,9 @@ class Invoice extends Resource
 
             Text::make('Items', function($invoice){
                 $list = "<ul>";
-                foreach(json_decode($invoice->items) as $item){
-                    $product = $item->quantity. 'x - '.$item->product_name;
-                    $list .= "<li class='p-2 rounded px-4 mb-2 shadow flex justify-between items-center'><img class='w-10 h-10 rounded-full shadow border-2 border-purple-100' src='/storage/$item->product_image' />$product</li>";
+                foreach(json_decode($invoice->items)->products as $item){
+                    $product = $item->quantity. 'x - '.$item->name;
+                    $list .= "<li class='p-2 rounded px-4 mb-2 shadow flex justify-between items-center'><img class='w-10 h-10 rounded-full shadow border-2 border-purple-100' src='/storage/$item->image' />$product</li>";
                 }
                 return $list. '</ul>';
             })
@@ -127,7 +127,6 @@ class Invoice extends Resource
     public function actions(Request $request)
     {
         return [
-            new DownloadExcel(),
         ];
     }
 }

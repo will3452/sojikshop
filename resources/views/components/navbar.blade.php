@@ -1,6 +1,7 @@
 <!-- navbar -->
     <nav
     x-data="{isShow:false}"
+    id="navbar"
     class="
         sticky
         md:sticky

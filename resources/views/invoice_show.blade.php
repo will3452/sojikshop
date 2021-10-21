@@ -1,109 +1,103 @@
 <x-layout>
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js">
-    </script>
-    <x-title>
-        Invoice
-    </x-title>
-    <div class="px-2 md:w-1/2 mx-auto">
-        <div class="w-full mx-auto shadow rounded-lg overflow-hidden">
-            <div class="p-2 bg-purple-900 text-white flex justify-between items-center">
-                Payment Details
-            </div>
-            <div class="p-2 text-xs text-gray-800" id="payment_details">
-                <div class="flex justify-between  pb-2">
-                    <div class="font-bold">
-                        Transaction #
-                    </div>
-                    <div>
-                        {{$invoice->txnid}}
-                    </div>
-                </div>
+    <style>
+        @media print {
+            #navbar,#printbutton {
+                display: none;
+            }
 
-                <div class="flex justify-between  pb-2">
-                    <div class="font-bold">
-                        Payer
-                    </div>
-                    <div>
-                        {{auth()->user()->name}}
-                    </div>
-                </div>
-
-                <div class="flex justify-between  pb-2">
-                    <div class="font-bold">
-                        Total Amount
-                    </div>
-                    <div>
-                        PHP {{$invoice->amount}}
-                    </div>
-                </div>
-
-                <div class="flex justify-between">
-                    <div class="font-bold">
-                        Created At
-                    </div>
-                    <div>
-                        {{$invoice->created_at}}
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <div class="w-full mx-auto shadow rounded-lg overflow-hidden mt-2">
-            <div class="p-2 bg-purple-900 text-white">
-                Order Details
-            </div>
-            <div class="p-2 text-xs text-gray-800">
-                <div class="flex justify-between ">
-                    <div class="font-bold">
-                        Reference Number
-                    </div>
-                    <div>
-                        {{$invoice->order->reference_number}}
-                    </div>
-                </div>
-            </div>
-            <div class="p-2 text-xs text-gray-800">
-                <div class="flex justify-between  pb-2">
-                    <div class="font-bold">
-                        No. of items
-                    </div>
-                    <div>
-                        {{$invoice->number_of_items}}
-                    </div>
-                </div>
-            </div>
-            <div class="p-2 text-xs text-gray-800">
-                <div class="flex justify-between  pb-2">
-                    <div class="font-bold">
-                        Items
-                    </div>
-                    <div>
-                        <ul>
-                            @foreach (json_decode($invoice->items) as $item)
-                                <li>
-                                    - {{$item->product_name}}
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-    <a id="image-save-here" class="hidden" download>
-    </a>
-
-     <script>
-        function savePaymentDetails(){
-            html2canvas(document.getElementById('payment_details')).then(function(canvas) {
-                let dataUrl = canvas.toDataURL("image/png");
-                document.getElementById('image-save-here').download = 'invoice-{{$invoice->txn_id}}.png';
-                document.getElementById('image-save-here').href = dataUrl.replace("image/png", "image/octet-stream");
-                document.getElementById('image-save-here').click();
-            });
         }
-     </script>
+    </style>
+    <div style="max-width: 210mm;" class="mx-auto">
+        <div class="flex mt-4 text-xs">
+            <div class="w-1/2 border p-2 mr-2">
+                <div class="font-bold uppercase">
+                    Invoice For
+                </div>
+                <div>
+                    {{$invoice->user->name}}
+                </div>
+            </div>
+            <div class="w-1/2 border p-2">
+                <div class="font-bold uppercase">
+                    Transaction #
+                </div>
+                <div>
+                    {{$invoice->txnid}}
+                </div>
+                <div class="font-bold uppercase mt-4">
+                    Date
+                </div>
+                <div>
+                    {{$invoice->created_at->format('m/d/Y')}}
+                </div>
+            </div>
+        </div>
+        <table class="w-full mt-2 text-left border p-2 text-sm">
+            <thead>
+                <tr>
+                    <th class="text-purple-900 border p-1 mx-2">
+                        Description
+                    </th>
+                    <th class="text-purple-900 border p-1 mx-2">
+                        Quantity
+                    </th>
+                    <th class="text-purple-900 border p-1 mx-2">
+                        Unit Price
+                    </th>
+                    <th class="text-purple-900 border p-1 mx-2">
+                        Total Price
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (json_decode($invoice->items)->products as $item)
+                <tr>
+                    <td class="border p-1 mx-2">
+                        {{$item->name}}
+                    </td>
+                    <td class="border p-1 mx-2">
+                        {{$item->quantity}}
+                    </td>
+                    <td class="border p-1 mx-2">
+                        {{$item->price}}
+                    </td>
+                    <td class="border p-1 mx-2">
+                        {{$item->price * $item->quantity}}
+                    </td>
+                </tr>
+                @endforeach
+                <tr>
+                    <th></th>
+                    <th colspan="2" class="border">
+                        Shipping
+                    </th>
+                    <th class="border">
+                        {{json_decode($invoice->items)->summary->shipping_fee}}
+                    </th>
+                </tr>
+                <tr>
+                    <th></th>
+
+                    <th colspan="2" class="border">
+                        Total
+                    </th>
+                    <th class="border">
+                        {{json_decode($invoice->items)->summary->total}}
+                    </th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th colspan="2" class="border">
+                        Grand Total
+                    </th>
+                    <th class="border">
+                        {{json_decode($invoice->items)->summary->grand_total}}
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center mt-2">
+        <button id="printbutton" class="px-4 py-2 font-bold rounded bg-green-200 uppercase text-sm" onclick="window.print()" >print</button>
+    </div>
 </x-layout>

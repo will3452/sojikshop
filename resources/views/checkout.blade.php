@@ -10,53 +10,40 @@
             Loading, Please Wait
         </p>
     </div>
-    @if ($step == 0)
-        <x-checkout-shipping-set area="{{$area}}" address="{{$address}}"></x-checkout-shipping-set>
-    @else
+
+    @if (auth()->user()->addresses()->count())
+        <div class="text-sm mx-2 shadow-lg rounded overflow-hidden mx-auto md:w-10/12 mb-2">
+            <div class="p-2 bg-purple-900 text-white font-bold uppercase flex justify-between">
+                <div>
+                    Address
+                </div>
+                <a href="/add-new-address" class="text-white text-xs p-1 bg-pink-500 rounded">
+                    Add Address
+                </a>
+            </div>
+            <div class="p-2">
+                <form action="{{url()->current()}}">
+                    <select name="address_id" id="" class="w-full" onchange="this.parentNode.submit()">
+                        @foreach (auth()->user()->addresses as $address)
+                            <option value="{{$address->id}}" {{request()->address_id ? (request()->address_id != $address->id ?:'selected'):(!$address->is_default ?:'selected')}}>
+                                {{$address->inline_address}}
+                            </option>
+                        @endforeach
+                    </select>
+            </form>
+            </div>
+        </div>
         @if (!request()->quantity)
-            <x-checkout-shipping-products :carts="$carts" :total="$total" :shipping="$shipping"></x-checkout-shipping-products>
+            <x-checkout-shipping-products :carts="$carts" :shipping="$shipping" :total="$total"></x-checkout-shipping-products>
         @else
-        <x-checkout-pre-order :totalVat="$totalVat" :product="$product" :total="$total" :shipping="$shipping"></x-checkout-pre-order>
+            <x-checkout-pre-order :totalVat="$totalVat" :product="$product" :total="$total" ></x-checkout-pre-order>
         @endif
+    @else
+    <div class="bg-red-100 text-center p-2">
+        Please Add Address to your Profile, for you to checkout.
+    </div>
     @endif
 
-
-
-    <script>
-            const long = document.getElementById('long');
-            const lat = document.getElementById('lat');
-
-            function getLocation() {
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(({coords})=>{
-                        long.value = coords.longitude;
-                        lat.value = coords.latitude;
-
-                        reverseGeocoding(coords);
-
-                    });
-                } else {
-                    console.log('geolocation not supported!');
-                }
-            }
-
-            function reverseGeocoding({latitude, longitude}){
-                fetch(`http://open.mapquestapi.com/geocoding/v1/reverse?key=YCFvPJOH6YxnFQkpOhJ9fMzNIDd6oeMv&location=${latitude},${longitude}`)
-                    .then(response=>response.json())
-                    .then(({results})=>{
-                        let result = results[0];
-                        let location = result.locations[0];
-                        let street = location.street;
-                        let city = location.adminArea3;
-                        let barangay = location.adminArea5;
-                        let currentAddress = `${street}, ${barangay} ${city}`;
-                        console.log(location)
-                        document.getElementById('address').value = currentAddress;
-                    })
-            }
-
-
-    </script>
 
 <script src="https://www.paypal.com/sdk/js?client-id={{nova_get_setting('paypal_client_id')}}&currency=PHP&disable-card=amex,jcb&locale=en_PH">
 </script>
@@ -68,7 +55,7 @@
             return actions.order.create({
                 purchase_units: [{
                     amount: {
-                        value: '{{$total}}',
+                        value: '{{$total + $shipping}}',
                         currency:'PHP'
                     }
                 }],
@@ -86,13 +73,16 @@
                 let payload = {
                     id: id,
                     status: status,
+                    shipping_fee:'{{$shipping}}',
                     amount: '{{$total}}',
-                    shipping_address: '{{request()->address}}',
-                    shipping_zip: '{{request()->zip}}',
-                    shipping_area_id: '{{request()->area}}',
+                    shipping_inline_address: '{{$address->inline_address}}',
+                    shipping_postal_code: '{{$address->postal_code}}',
+                    shipping_street:'{{$address->street}}',
+                    shipping_barangay:'{{$address->barangay}}',
+                    shipping_city:'{{$address->city}}',
+                    shipping_building:'{{$address->building}}',
+                    shipping_house_number:'{{$address->house_number}}',
                     user_id: {{auth()->id()}},
-                    lat: '{{request()->lat}}',
-                    lng:'{{request()->lng}}'
                     @if(request()->has('quantity') && request()->has('product_id'))
                     ,
                         order_status:'{{\App\Models\Order::STATUS_PRE_ORDER}}',

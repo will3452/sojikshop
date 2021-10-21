@@ -2,15 +2,28 @@
 
 namespace App\Nova;
 
+use Laravel\Nova\Nova;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class ShippingFee extends Resource
 {
-    public static $group = 'shipping Management';
+
+    public static function redirectAfterCreate(NovaRequest $request, $resource)
+    {
+        return  ('/resources/products/'.$resource->product_id);
+    }
+
+    public static function redirectAfterUpdate(NovaRequest $request, $resource)
+    {
+        return  ('/resources/products/'.$resource->product_id);
+    }
+
+    public static $displayInNavigation = false;
     /**
      * The model the resource corresponds to.
      *
@@ -43,12 +56,20 @@ class ShippingFee extends Resource
     public function fields(Request $request)
     {
         return [
-            BelongsTo::make('Area')
-            ->rules(['required']),
+            BelongsTo::make('Product')
+                ->rules('required'),
 
-            Number::make('Amount')
-            ->rules(['required'])
-            ->step('0.1'),
+            Select::make('Region', 'region_id')
+                ->rules(['required'])
+                ->options(function(){
+                    $product = \App\Models\Product::find(request()->viaResourceId);
+                    return \App\Models\Region::whereNotIn('id', $product->shippingFees()->get()->pluck('region_id')->toArray() ?? [])->get()->pluck('name', 'id');
+                })->displayUsing(function(){
+                    return \App\Models\Region::find($this->region_id)->name;
+                }),
+
+                Number::make('Amount per Unit', 'amount')
+                ->rules('required'),
         ];
     }
 

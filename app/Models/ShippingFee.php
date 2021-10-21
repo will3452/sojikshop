@@ -8,10 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class ShippingFee extends Model
 {
     use HasFactory;
-
     protected $guarded = [];
 
-    public function area(){
-        return $this->belongsTo(Area::class);
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+
+    public function region()
+    {
+        return $this->belongTo(Region::class);
     }
 }

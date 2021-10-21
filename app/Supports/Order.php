@@ -27,10 +27,10 @@ class Order {
         $carts = self::getCart($userId);
         $items = [];
         foreach ($carts as $cart) {
-            $items[] = [
-                'product_image'=>$cart->product->image,
-                'product_name'=>$cart->product->name,
-                'product_price'=>$cart->product->price,
+            $items['products'][] = [
+                'image'=>$cart->product->image,
+                'name'=>$cart->product->name,
+                'price'=>$cart->product->price,
                 'quantity'=>$cart->quantity,
             ];
         }
@@ -75,11 +75,13 @@ class Order {
 
 
         $location = [
-            'shipping_address'=>$payload->shipping_address,
-            'shipping_zip'=>$payload->shipping_zip,
-            'shipping_area_id'=>$payload->shipping_area_id,
-            'lat'=>$payload->lat,
-            'lng'=>$payload->lng
+            'shipping_inline_address'=>$payload->shipping_inline_address,
+            'shipping_postal_code'=>$payload->shipping_postal_code,
+            'shipping_street'=>$payload->shipping_street,
+            'shipping_barangay'=>$payload->shipping_barangay,
+            'shipping_city'=>$payload->shipping_city,
+            'shipping_building'=>$payload->shipping_building,
+            'shipping_house_number'=>$payload->shipping_house_number,
         ];
 
         //init
@@ -91,15 +93,25 @@ class Order {
             $product = Product::find($payload->product_id);
             $quantity = $payload->quantity;
             $status = ModelsOrder::STATUS_PRE_ORDER;
-            $items[] = [
-                'product_image'=>$product->image,
-                'product_name'=>$product->name,
-                'product_price'=>$product->price,
+            $items['products'][] = [
+                'image'=>$product->image,
+                'name'=>$product->name,
+                'price'=>$product->price,
                 'quantity'=>$quantity,
+            ];
+            $items['summary'] = [
+                'total'=>$payload->amount,
+                'shipping_fee'=>$payload->shipping_fee,
+                'grand_total'=>$payload->amount + $payload->shipping_fee
             ];
         }
         else {
             $items = self::getItems($payload->user_id);
+            $items['summary'] = [
+                'total'=>$payload->amount,
+                'shipping_fee'=>$payload->shipping_fee,
+                'grand_total'=>$payload->amount + $payload->shipping_fee
+            ];
         }
 
         $order = ModelsOrder::create([

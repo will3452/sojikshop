@@ -57,14 +57,29 @@
                             <div>
                                 @foreach (auth()->user()->addresses as $address)
                                     <li class="flex justify-between p-2 rounded shadow w-full mt-2">
-                                        <div class="">
-                                            {{$address->inline_address}}
+                                        <div class="flex items-center">
+                                            <div>
+                                                {{$address->inline_address}}
+                                            </div>
+                                            @if ($address->is_default)
+                                                <div class="p-1 bg-gray-100 rounded ml-2 text-xs font-bold uppercase text-gray-500">
+                                                    Default
+                                                </div>
+                                            @endif
                                         </div>
-                                        <form action="/delete-address/{{$address->id}}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="text-white bg-red-500 rounded p-1">remove</button>
-                                        </form>
+                                        <div class="flex">
+                                            @if (!$address->is_default)
+                                            <form action="/set-default-address/{{$address->id}}" method="POST">
+                                                @csrf
+                                                <button class="text-white bg-pink-500 rounded p-1">set as default</button>
+                                            </form>
+                                            @endif
+                                            <form class="ml-2" action="/delete-address/{{$address->id}}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="text-white bg-red-500 rounded p-1">remove</button>
+                                            </form>
+                                        </div>
                                     </li>
                                 @endforeach
 

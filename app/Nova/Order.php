@@ -72,9 +72,9 @@ class Order extends Resource
 
             Text::make('Items', function ($order) {
                 $list = "<ul>";
-                foreach (json_decode($order->items) as $item) {
-                    $product = $item->quantity. 'x - '.$item->product_name;
-                    $list .= "<li class='p-2 rounded px-4 mb-2 shadow flex justify-between items-center'><img class='w-10 h-10 rounded-full shadow border-2 border-purple-100' src='/storage/$item->product_image' />$product</li>";
+                foreach (json_decode($order->items)->products as $item) {
+                    $product = $item->quantity. 'x - '.$item->name;
+                    $list .= "<li class='p-2 rounded px-4 mb-2 shadow flex justify-between items-center'><img class='w-10 h-10 rounded-full shadow border-2 border-purple-100' src='/storage/$item->image' />$product</li>";
                 }
                 return $list. '</ul>';
             })
@@ -84,13 +84,14 @@ class Order extends Resource
 
             Text::make('Location', function ($order) {
                 $location = json_decode($order->location);
-                $shippingArea = Area::find($location->shipping_area_id);
                 $text = "
-                <p> Address : <span class='px-2 text-sm font-bold bg-green-100 text-green-900 rounded-3xl'>$location->shipping_address</span></p>
-                <p>Zip Code : <span class='px-2 text-sm font-bold bg-green-100 text-green-900 rounded-3xl'>$location->shipping_zip</span></p>
-                <p>Shipping Area: <span class='px-2 text-sm font-bold bg-green-100 text-green-900 rounded-3xl'>$shippingArea->description</span></p>
-                <p>Coordinates : <span class='px-2 text-sm font-bold bg-green-100 text-green-900 rounded-3xl'>$location->lat, $location->lng</span></p>
-                ".'<div style="width: 100%" class="p-4 shadow rounded" ><iframe width="100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q='.$location->lat.','.$location->lng.'+(Sojikshop)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe></div>';
+                <p> Address : <span class='px-2 text-sm font-bold bg-green-100 text-green-900 rounded-3xl'>$location->shipping_inline_address</span></p>
+                <p>Zip Code : <span class='px-2 text-sm font-bold bg-green-100 text-green-900 rounded-3xl'>$location->shipping_postal_code</span></p>
+                <p>Shipping Street: <span class='px-2 text-sm font-bold bg-green-100 text-green-900 rounded-3xl'>$location->shipping_street</span></p>
+                <p>Shipping barangay: <span class='px-2 text-sm font-bold bg-green-100 text-green-900 rounded-3xl'>$location->shipping_barangay</span></p>
+                <p>Shipping city: <span class='px-2 text-sm font-bold bg-green-100 text-green-900 rounded-3xl'>$location->shipping_city</span></p>
+                <p>Shipping Subdivision/bldg: <span class='px-2 text-sm font-bold bg-green-100 text-green-900 rounded-3xl'>$location->shipping_building</span></p>
+                <p>Shipping House/Flr Number: <span class='px-2 text-sm font-bold bg-green-100 text-green-900 rounded-3xl'>$location->shipping_house_number</span></p>";
 
                 return "<div class='leading-7' >$text</div>";
             })

@@ -17,10 +17,10 @@ class Invoice {
         $carts = self::getCart($userId);
         $items = [];
         foreach ($carts as $cart) {
-            $items[] = [
-                'product_image'=>$cart->product->image,
-                'product_name'=>$cart->product->name,
-                'product_price'=>$cart->product->price,
+            $items['products'][] = [
+                'image'=>$cart->product->image,
+                'name'=>$cart->product->name,
+                'price'=>$cart->product->price,
                 'quantity'=>$cart->quantity,
             ];
         }
@@ -33,14 +33,24 @@ class Invoice {
         if($payload->order_status == Order::STATUS_PRE_ORDER){
             $product = Product::find($payload->product_id);
             $quantity = $payload->quantity;
-            $items[] = [
-                'product_image'=>$product->image,
-                'product_name'=>$product->name,
-                'product_price'=>$product->price,
+            $items['products'][] = [
+                'image'=>$product->image,
+                'name'=>$product->name,
+                'price'=>$product->price,
                 'quantity'=>$quantity,
+            ];
+            $items['summary'] = [
+                'total'=>$payload->amount,
+                'shipping_fee'=>$payload->shipping_fee,
+                'grand_total'=>$payload->amount + $payload->shipping_fee
             ];
         }else{
             $items = self::getItems($payload->user_id);
+            $items['summary'] = [
+                'total'=>$payload->amount,
+                'shipping_fee'=>$payload->shipping_fee,
+                'grand_total'=>$payload->amount + $payload->shipping_fee
+            ];
         }
 
         $invoice = ModelsInvoice::create([

@@ -35,4 +35,12 @@ class AddressController extends Controller
         $address->delete();
         return back();
     }
+    public function setDefault(Address $address)
+    {
+        foreach (auth()->user()->addresses as $xaddress) {
+            $xaddress->removeDefault();
+        }
+        $address->setDefault();
+        return back();
+    }
 }

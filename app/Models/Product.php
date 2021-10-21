@@ -35,4 +35,9 @@ class Product extends Model
     public function feedbacks(){
         return $this->hasMany(Feedback::class);
     }
+
+    public function shippingFees()
+    {
+        return $this->hasMany(ShippingFee::class);
+    }
 }

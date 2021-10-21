@@ -15,7 +15,7 @@ class CartController extends Controller
             'product_id'=>$product->id,
             'user_id'=>auth()->id()
         ]);
-        alert('The Product has been added to your Cart!', 'success');
+        alert('The Product has been added to your Cart!');
         return back();
     }
 
@@ -35,7 +35,7 @@ class CartController extends Controller
     {
         $qty = $cart->quantity + 1;
         if ($qty > $cart->product->quantity) {
-            alert("Can't Increase Quantity!", 'error');
+            alert("Can't Increase Quantity!");
             return back();
         }
         $cart->update([
@@ -49,7 +49,7 @@ class CartController extends Controller
     {
         $qty = $cart->quantity - 1;
         if ($qty <= 0) {
-            alert("Can't Increase Quantity!", 'error');
+            alert("Can't Increase Quantity!");
             return back();
         }
         $cart->update([

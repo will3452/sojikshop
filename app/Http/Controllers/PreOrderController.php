@@ -11,7 +11,7 @@ class PreOrderController extends Controller
     public function checkIfValid($product)
     {
         if($product->quantity != 0) {
-            alert('Something went wrong!', 'danger');
+            alert('Something went wrong!');
             return back();
         }
     }

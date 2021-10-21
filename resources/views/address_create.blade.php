@@ -1,18 +1,64 @@
 <x-layout>
     <x-title>Add Address</x-title>
-    <form action="/add-new-address" method="POST" class="w-1/2 mx-auto">
+    <form
+    action="/add-new-address"
+    method="POST"
+    class="w-1/2 mx-auto"
+    x-data="
+    {
+        regions:[],
+        cities:[],
+        selectedRegion:'x|x',
+        selectedCity:'x|x',
+        getSelectedCode(str){
+            return str.split('|')[0];
+        },
+        getSelectedName(str){
+            return str.split('|')[1];
+        },
+        getCities(){
+            fetch(`https://psgc.gitlab.io/api/regions/${this.getSelectedCode(this.selectedRegion)}/cities.json`)
+                .then(res=>res.json())
+                .then(res=>{
+                   this.cities = res;
+                })
+        },
+        onchangeRegion(e){
+            this.getCities();
+            this.selecedCity = 'x|x';
+        }
+    }"
+    x-init="
+        fetch('https://psgc.gitlab.io/api/regions.json')
+            .then(res=>res.json())
+            .then(res=>{
+                regions = res;
+            })
+    ">
         @csrf
         <div class="mb-4">
             <label for="" class="block font-bold text-sm text-gray-900">
-                Street *
+                Region
             </label>
-            <input type="text" value="" name="street" required   class="mt-2 w-full p-2 rounded border-2 border-pink-600">
+            <input type="hidden" name="region" x-bind:value="getSelectedName(selectedRegion)">
+            <select x-model="selectedRegion" x-on:change="onchangeRegion" required id="" class="mt-2 w-full p-2 rounded border-2 border-pink-600">
+                <option value="">----</option>
+                <template x-for="region in regions">
+                    <option x-bind:value="`${region.code}|${region.name}`" x-text="`${region.name} - ${region.regionName}`"></option>
+                </template>
+            </select>
         </div>
         <div class="mb-4">
             <label for="" class="block font-bold text-sm text-gray-900">
-                Postal Code *
+                City *
             </label>
-            <input type="number" value="" name="postal_code" required   class="mt-2 w-full p-2 rounded border-2 border-pink-600">
+            <input type="hidden" name="city" x-bind:value="getSelectedName(selectedCity)">
+            <select x-model="selectedCity" x-on:change="onchangeCity" required id="" class="mt-2 w-full p-2 rounded border-2 border-pink-600">
+                <option value="">----</option>
+                <template x-for="city in cities">
+                    <option x-bind:value="`${city.code}|${city.name}`" x-text="city.name"></option>
+                </template>
+            </select>
         </div>
         <div class="mb-4">
             <label for="" class="block font-bold text-sm text-gray-900">
@@ -22,33 +68,27 @@
         </div>
         <div class="mb-4">
             <label for="" class="block font-bold text-sm text-gray-900">
-                City *
+               Zip Code *
             </label>
-            <input type="text" value="" name="city" required   class="mt-2 w-full p-2 rounded border-2 border-pink-600">
+            <input type="number" value="" name="postal_code" required   class="mt-2 w-full p-2 rounded border-2 border-pink-600">
         </div>
         <div class="mb-4">
             <label for="" class="block font-bold text-sm text-gray-900">
-                Region
+                Subdivision/bldg *
             </label>
-            <select name="region" required id="" class="mt-2 w-full p-2 rounded border-2 border-pink-600">
-                <option value="NCR">NCR</option>
-                <option value="CAR">CAR</option>
-                <option value="Region I">Region I</option>
-                <option value="Region II">Region II</option>
-                <option value="Region III">Region III</option>
-                <option value="Region IV-A">Region IV-A</option>
-                <option value="Mimaropa">Mimaropa</option>
-                <option value="Region V">Region V</option>
-                <option value="Region VI">Region VI</option>
-                <option value="RRegion VII">Region VII</option>
-                <option value="Region VIII">Region VIII</option>
-                <option value="Region IX">Region IX</option>
-                <option value="Region X">Region X</option>
-                <option value="Region XI">Region XI</option>
-                <option value="Region XII">Region XII</option>
-                <option value="Region XIII">Region XIII</option>
-                <option value="BARMM">BARMM</option>
-            </select>
+            <input type="text" value="" name="building" required   class="mt-2 w-full p-2 rounded border-2 border-pink-600">
+        </div>
+        <div class="mb-4">
+            <label for="" class="block font-bold text-sm text-gray-900">
+                Street *
+            </label>
+            <input type="text" value="" name="street" required   class="mt-2 w-full p-2 rounded border-2 border-pink-600">
+        </div>
+        <div class="mb-4">
+            <label for="" class="block font-bold text-sm text-gray-900">
+                House/Flr Number *
+            </label>
+            <input type="text" value="" name="house_number" required   class="mt-2 w-full p-2 rounded border-2 border-pink-600">
         </div>
 
         <button class="p-2 text-sm text-white bg-pink-500 rounded px-4 uppercase font-bold">Add</button>
