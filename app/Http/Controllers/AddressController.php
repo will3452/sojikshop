@@ -18,7 +18,9 @@ class AddressController extends Controller
             'postal_code'=>'required',
             'barangay'=>'required',
             'city'=>'required',
-            'region'=>'required'
+            'region'=>'required',
+            'building'=>'required',
+            'house_number'=>'required'
         ]);
 
         $data['user_id'] = auth()->id();

@@ -20,7 +20,10 @@ class CreateAddressesTable extends Migration
             $table->string('postal_code')->nullable();
             $table->string('barangay')->nullable();
             $table->string('region')->nullable();
-            $table->string('city');
+            $table->string('city')->nullable();
+            $table->string('building')->nullable();
+            $table->string('house_number')->nullable();
+            $table->boolean('is_default')->default(false);
             $table->timestamps();
         });
     }
