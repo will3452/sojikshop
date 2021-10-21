@@ -68,7 +68,7 @@ Route::middleware('auth')->group(function () {
         ]);
 
         Mail::to(auth()->user())->send(new VerifyEmail());
-        alert('New Code has been sent to your email', 'success');
+        alert('New Code has been sent to your email');
         return back();
     });
 
@@ -81,7 +81,7 @@ Route::middleware('auth')->group(function () {
         if ($latestPin->code == $code) {
             auth()->user()->email_verified_at = now();
             auth()->user()->save();
-            alert("You're email has been verified, Enjoy Shopping!", 'success');
+            alert("You're email has been verified, Enjoy Shopping!");
             return redirect('/');
         } else {
             alert("Wrong Pin Code");
