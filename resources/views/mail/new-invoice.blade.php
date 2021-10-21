@@ -12,7 +12,7 @@
 <body class="m-4">
     <div style="max-width: 210mm;" class="mx-auto">
         <div class="flex">
-            <img src="{{config('app.url')}}/storage/{{nova_get_setting('logo')}}" alt="logo" class="w-20"/>
+            <img src="{{config('app.url')}}/storage/{{nova_get_setting('logo')}}" alt="logo" class="w-20" style="width:100px;"/>
         </div>
         <div class="flex mt-4 text-xs">
             <div class="w-1/2 border p-2 mx-2">
