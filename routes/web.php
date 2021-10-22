@@ -22,6 +22,7 @@ use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\BuyingRequestController;
 use App\Mail\VerifyEmail;
 use App\Models\Invoice;
+use App\Models\Order;
 use Illuminate\Support\Facades\Mail;
 
 /*

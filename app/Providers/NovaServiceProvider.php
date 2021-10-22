@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Order;
 use Laravel\Nova\Nova;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\Text;
@@ -17,6 +18,7 @@ use Laravel\Nova\Fields\Textarea;
 use OptimistDigital\NovaSettings\NovaSettings;
 use Laravel\Nova\NovaApplicationServiceProvider;
 use NumaxLab\NovaCKEditor5Classic\CKEditor5Classic;
+use Coroowicaksono\ChartJsIntegration\LineChart;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -116,10 +118,39 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     protected function cards()
     {
+        $salestotal = Order::TOTALSALES();
+        $data = [];
+        foreach ($salestotal as $key => $value) {
+            $total = 0;
+            foreach ($value as $item) {
+                $total += json_decode($item->items)->summary->total;
+            }
+            $data[] = $total;
+        }
+        $categories = $salestotal->keys();
         return [
+            (new LineChart())
+                ->title('Sales')
+                ->animations([
+                    'enabled' => true,
+                    'easing' => 'easeinout',
+                ])
+                ->series(array([
+                    'barPercentage' => 0.5,
+                    'label' => 'Sales',
+                    'borderColor' => '#90ed7d',
+                    'data' => $data,
+                ]))
+                ->options([
+                    'xaxis' => [
+                        'categories' => $categories
+                    ],
+                ])
+                ->width('2/3'),
             NumberOfProducts::make(),
             NumberOfCategories::make(),
             NumberOfBanners::make(),
+
         ];
     }
 

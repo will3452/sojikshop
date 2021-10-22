@@ -57,4 +57,11 @@ class Order extends Model
             'status'=>self::STATUS_RETURN
         ]);
     }
+
+    public static function TOTALSALES()
+    {
+       return self::where('status', self::STATUS_COMPLETED)->get()->groupBy(function($item){
+            return $item->created_at->format('M Y');
+        });
+    }
 }
