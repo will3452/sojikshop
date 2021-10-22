@@ -45,6 +45,9 @@ class Banner extends Resource
             Text::make('Name')
                 ->required(),
 
+            Text::make('Redirect link', 'link')
+                ->help('optional'),
+
             Textarea::make('Description')
                 ->required(),
 

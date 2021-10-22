@@ -1,6 +1,8 @@
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
 @foreach (\App\Models\Banner::get() as $key=>$banner)
-<img src="/storage/{{ $banner->image }}" id="slider-{{ $key }}" class="slider object-cover h-80 w-screen" alt="image" >
+<span onclick="window.location = '{{$banner->link ?? '#'}}'" class="block">
+    <img src="/storage/{{ $banner->image }}" id="slider-{{ $key }}" class="slider object-cover h-80 w-screen" alt="image">
+</span>
 @endforeach
 
 
@@ -19,7 +21,11 @@
             _count++;
         }, 5000);
     });
+    function redirectTo(url){
+        alert(url);
+        window.location = url;
+    }
 </script>
 
-  
+
 <!-- end of banner -->
