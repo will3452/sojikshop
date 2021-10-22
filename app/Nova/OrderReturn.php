@@ -17,6 +17,11 @@ class OrderReturn extends Resource
         return "Returns";
     }
 
+    public static function authorizedToCreate(Request $request)
+    {
+        return false;
+    }
+
     public static $group = "Order Management";
 
     /**
