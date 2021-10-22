@@ -2,32 +2,36 @@
 
 namespace App\Nova;
 
+use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Date;
-use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\HasOne;
+use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Maatwebsite\LaravelNovaExcel\Actions\DownloadExcel;
 
-class SalesReport extends Resource
+class OrderReturn extends Resource
 {
-    public static function indexQuery(NovaRequest $request, $query)
-    {
-        return $query->where('status', \App\Models\Order::STATUS_COMPLETED);
+    public static function label(){
+        return "Returns";
     }
+
+    public static $group = "Order Management";
+
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Models\Order::class;
+    public static $model = \App\Models\ReturnReason::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'reference_number';
 
     /**
      * The columns that should be searched.
@@ -49,17 +53,18 @@ class SalesReport extends Resource
         return [
             Date::make('Date', 'created_at')
                 ->exceptOnForms(),
+            HasOne::make('user'),
+            Text::make('Order Reference #', function(){
+                return $this->order->reference_number ?? '---';
+            })->exceptOnForms(),
+            HasOne::make('order'),
+            Image::make('Attachment', function(){
+                $array = explode('/', $this->attachment);
 
-            Text::make('Reference Number')
-                ->exceptOnForms(),
-
-            Text::make('Items', function ($request) {
-                $data = collect(json_decode($request->items));
-                $products = implode(', ', $data->pluck('product_name')->toArray());
-                return  $products;
+                return end($array);
             }),
-
-            Text::make('Amount', 'amount'),
+            Textarea::make('Reason')
+                ->alwaysShow()
         ];
     }
 
@@ -104,8 +109,6 @@ class SalesReport extends Resource
      */
     public function actions(Request $request)
     {
-        return [
-            new DownloadExcel()
-        ];
+        return [];
     }
 }

@@ -24,9 +24,7 @@ class FeedbackController extends Controller
             ]);
         }
 
-        $order->update(['status'=>'end']);
-
-        alert('Thanks, Your Feedback has been submitted!', 'success');
+        alert('Thanks, Your Feedback has been submitted!');
         return redirect('/');
     }
 }

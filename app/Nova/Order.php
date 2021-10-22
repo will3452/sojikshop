@@ -113,7 +113,15 @@ class Order extends Resource
                 }
 
                 if ($order->status == ModelsOrder::STATUS_FEEDBACK) {
+                    return "<span class='px-4 py-2 rounded-3xl bg-purple-300 text-purple-900 uppercase font-black text-xs'>Received</span>";
+                }
+
+                if ($order->status == ModelsOrder::STATUS_COMPLETED) {
                     return "<span class='px-4 py-2 rounded-3xl bg-green-300 text-green-900 uppercase font-black text-xs'>Completed</span>";
+                }
+
+                if ($order->status == ModelsOrder::STATUS_RETURN) {
+                    return "<span class='px-4 py-2 rounded-3xl bg-red-300 text-red-900 uppercase font-black text-xs'>Return</span>";
                 }
             })
                 ->asHtml()

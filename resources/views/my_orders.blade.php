@@ -41,6 +41,16 @@
                     Feedback
                 </span>
             </a>
+
+            <a x-data="{isHover:false}" x-on:mouseover="isHover=true"x-on:mouseleave="isHover=false" href="{{route('my-orders')}}?active={{\App\Models\Order::STATUS_COMPLETED}}" class="relative md:h-12 md:w-12 active block w-8 h-8 border-2 border-purple-900 {{request()->active!= \App\Models\Order::STATUS_COMPLETED ? 'bg-white':'bg-purple-900'}} rounded-full flex items-center justify-center flex-col">
+                <span class="material-icons {{request()->active!= \App\Models\Order::STATUS_COMPLETED ? 'text-purple-900':'text-white'}}" style="font-size:16px;">
+                    check_circle
+                </span>
+                <span x-show="isHover" class="uppercase text-xs font-bold absolute -top-5 text-purple-900">
+                    Completed
+                </span>
+            </a>
+
         </div>
         {{-- list of orders--}}
         <ul>
@@ -84,10 +94,22 @@
                             view invoice
                         </a>
                         @if ($order->status == \App\Models\Order::STATUS_FEEDBACK)
+                       <form action="/mark-as-completed/{{$order->id}}" method="POST" class="w-full">
+                        @csrf
+                        <button
+                        class="w-full text-xs border-2 border-purple-900 uppercase font-bold p-2 block bg-purple-900 text-white text-center mt-2 rounded">
+                            Mark as Completed
+                       </button>
+                       </form>
                         <a
                         href="/write-feedback/{{$order->id}}"
                         class="text-xs border-2 border-purple-900 uppercase font-bold p-2 block bg-white text-purple-900 text-center mt-2 rounded">
                             Write Feedback
+                        </a>
+                        <a
+                        href="/return-order/{{$order->id}}"
+                        class="text-xs border-2 border-red-900 uppercase font-bold p-2 block bg-red-500 text-white text-center mt-2 rounded">
+                            Return Order
                         </a>
                         @endif
                     </div>

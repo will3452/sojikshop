@@ -21,6 +21,7 @@ use App\Http\Controllers\PayPalPaymentController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\BuyingRequestController;
 use App\Mail\VerifyEmail;
+use App\Models\Invoice;
 use Illuminate\Support\Facades\Mail;
 
 /*
@@ -117,6 +118,9 @@ Route::middleware(['auth','verified'])->group(function () {
     //orders
     Route::get('my-orders', [OrderController::class, 'myOrders'])->name('my-orders');
     Route::get('my-requets', [BuyingServiceController::class, 'index'])->name('my-requests');
+    Route::post('mark-as-completed/{order}', [OrderController::class, 'markAsCompleted']);
+    Route::get('return-order/{order}', [OrderController::class, 'returnOrder']);
+    Route::post('return-order/{order}', [OrderController::class, 'postReturnOrder']);
     Route::view('out-of-stack', 'pre-orders');
 
     //invoice
@@ -156,4 +160,6 @@ Route::get('/paypal', function () {
     return view('paypal');
 });
 
-Route::view('email/new-invoice', 'mail.new-invoice');
+Route::get('email/new-invoice/{invoice}', function(Request $request, Invoice $invoice){
+    return view('mail.new-invoice', compact('invoice'));
+})->name('invoice.print');

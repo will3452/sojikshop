@@ -13,6 +13,8 @@ class Order extends Model
     const STATUS_PACKAGING = 'packaging';
     const STATUS_DELIVERY = 'delivery';
     const STATUS_FEEDBACK = 'feedback';
+    const STATUS_COMPLETED = 'completed';
+    const STATUS_RETURN = 'return';
 
     protected $guarded = [];
 
@@ -35,5 +37,24 @@ class Order extends Model
     {
         $invoice = Invoice::find($this->invoice_id);
         return $invoice->amount ?? '';
+    }
+
+    public function returnReason()
+    {
+        return $this->hasOne(ReturnReason::class);
+    }
+
+    public function markAsComplete()
+    {
+        $this->update([
+            'status'=>self::STATUS_COMPLETED
+        ]);
+    }
+
+    public function markAsReturn()
+    {
+        $this->update([
+            'status'=>self::STATUS_RETURN
+        ]);
     }
 }
