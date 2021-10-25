@@ -49,7 +49,6 @@ class ApiAuthenticationController extends Controller
     {
         $data = request()->validate([
             'name'=>'required',
-            'address'=>'required',
             'mobile'=>'required',
             'email'=>'required',
             'password'=>'required',
