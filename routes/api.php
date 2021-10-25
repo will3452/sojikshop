@@ -3,6 +3,7 @@
 use App\Http\Controllers\ApiAuthenticationController;
 use App\Http\Controllers\ApiCartController;
 use App\Http\Controllers\ApiProductController;
+use App\Http\Controllers\ApiWishlistController;
 use App\Models\Cart;
 use App\Supports\Invoice as InvoiceSupport;
 use App\Supports\Order as OrderSupport;
@@ -30,6 +31,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/my-carts', [ApiCartController::class, 'myCart']);
     Route::post('/add-to-cart', [ApiCartController::class, 'addToCart']);
     Route::post('/remove-to-cart', [ApiCartController::class, 'removeToCart']);
+
+    //wishlists
+    Route::get('/wishlists', [ApiWishlistController::class, 'getWishlists']);
+    Route::post('/add-to-wishlists', [ApiWishlistController::class, 'addToWishList']);
+    Route::post('/remove-to-wishlists', [ApiWishlistController::class, 'removeToWishList']);
 });
 
 
