@@ -16,7 +16,7 @@ class BestSellerController extends Controller
         $ps = Product::withCount('orderProducts')->get();
 
         foreach ($ps as $p) {
-            if ($p->orderProducts_count >= $max) {
+            if ($p->orderProducts_count) {
                 $products->push($p);
             }
         }
