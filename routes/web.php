@@ -93,10 +93,10 @@ Route::middleware('auth')->group(function () {
     });
 });
 
-
+Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout')->middleware('auth');
 Route::middleware(['auth','verified'])->group(function () {
     Route::redirect('/home', '/');
-    Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout');
+
 
     Route::post('/add-to-cart/{product}', [CartController::class, 'addToCart']);
     Route::post('/increase-quantity/{cart}', [CartController::class, 'increaseQuantity']);
