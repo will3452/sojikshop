@@ -9,19 +9,7 @@ class BestSellerController extends Controller
 {
     public function bestSeller()
     {
-        $max = 1;
-
-        $products = collect([]);
-
-        $ps = Product::withCount('orderProducts')->get();
-
-        foreach ($ps as $p) {
-            if ($p->orderProducts_count) {
-                $products->push($p);
-            }
-        }
-
-
+        $products = Product::orderBy('sell_count', 'DESC')->take(10)->get();
         return view('best_seller', compact('products'));
     }
 }

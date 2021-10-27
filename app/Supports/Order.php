@@ -10,20 +10,23 @@ use App\Models\Product;
 
 use function PHPUnit\Framework\isEmpty;
 
-class Order {
-
-    public static function emptyCart($userid){
+class Order
+{
+    public static function emptyCart($userid)
+    {
         $carts =User::find($userid)->carts;
         foreach ($carts as $cart) {
             $cart->delete();
         }
     }
 
-    public static function getCart($id){
+    public static function getCart($id)
+    {
         return User::find($id)->carts;
     }
 
-    public static function getItems($userId){
+    public static function getItems($userId)
+    {
         $carts = self::getCart($userId);
         $items = [];
         foreach ($carts as $cart) {
@@ -37,20 +40,24 @@ class Order {
         return $items;
     }
 
-    public static function deductProducts($userid){
+    public static function deductProducts($userid)
+    {
         $items = self::getCart($userid);
         foreach ($items as $item) {
             $item->product->update([
-                'quantity'=>$item->product->quantity - $item->quantity
+                'quantity'=>$item->product->quantity - $item->quantity,
+                'sell_count'=>$item->sell_count + $item->quantity,
             ]);
         }
     }
 
-    public static function createReferenceNumber(){
+    public static function createReferenceNumber()
+    {
         return now()->timestamp.Str::random(6);
     }
 
-    public static function recordOrderProducts($orderid, $userid){
+    public static function recordOrderProducts($orderid, $userid)
+    {
         $carts = self::getCart($userid);
         foreach ($carts as $cart) {
             OrderProduct::create([
@@ -62,7 +69,8 @@ class Order {
         }
     }
 
-    public static function recordOrderProduct($orderid, $product, $quantity){
+    public static function recordOrderProduct($orderid, $product, $quantity)
+    {
         OrderProduct::create([
             'order_id'=>$orderid,
             'product_id'=>$product->id,
@@ -71,9 +79,8 @@ class Order {
         ]);
     }
 
-    public static function createOrder($payload, $invoice_id){
-
-
+    public static function createOrder($payload, $invoice_id)
+    {
         $location = [
             'shipping_inline_address'=>$payload->shipping_inline_address,
             'shipping_postal_code'=>$payload->shipping_postal_code,
@@ -89,7 +96,7 @@ class Order {
         $items = [];
 
 
-        if($payload->order_status == ModelsOrder::STATUS_PRE_ORDER){
+        if ($payload->order_status == ModelsOrder::STATUS_PRE_ORDER) {
             $product = Product::find($payload->product_id);
             $quantity = $payload->quantity;
             $status = ModelsOrder::STATUS_PRE_ORDER;
@@ -104,8 +111,7 @@ class Order {
                 'shipping_fee'=>$payload->shipping_fee,
                 'grand_total'=>$payload->amount + $payload->shipping_fee
             ];
-        }
-        else {
+        } else {
             $items = self::getItems($payload->user_id);
             $items['summary'] = [
                 'total'=>$payload->amount,
@@ -123,7 +129,7 @@ class Order {
             'status'=> $status
         ]);
 
-        if($order->status == ModelsOrder::STATUS_PACKAGING){
+        if ($order->status == ModelsOrder::STATUS_PACKAGING) {
             //create connection between order and products
             self::recordOrderProducts($order->id, $payload->user_id);
 
@@ -132,7 +138,7 @@ class Order {
 
             //destroy cart
             self::emptyCart($payload->user_id);
-        }else {
+        } else {
             $product = Product::find($payload->product_id);
             $quantity = $payload->quantity;
             self::recordOrderProduct($order->id, $product, $quantity);
