@@ -9,7 +9,7 @@ class BestSellerController extends Controller
 {
     public function bestSeller()
     {
-        $max = 0;
+        $max = 1;
 
         $products = collect([]);
 
