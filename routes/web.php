@@ -155,7 +155,7 @@ Route::middleware(['auth','verified'])->group(function () {
 //search
 Route::get('/search', [SearchController::class, 'search'])->name('search');
 Route::get('search-category', [SearchController::class, 'getCategory'])->name('search.category');
-
+Route::get('/best-seller', [BestSellerController::class, 'bestSeller'])->name('best.seller');
 
 Route::get('/paypal', function () {
     return view('paypal');
