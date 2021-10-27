@@ -22,6 +22,6 @@ class BestSellerController extends Controller
         }
 
 
-        return view('best_seller', $products);
+        return view('best_seller', compact('products'));
     }
 }
