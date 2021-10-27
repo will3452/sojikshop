@@ -1,12 +1,16 @@
 <?php
 
-use App\Http\Controllers\AddressController;
+use App\Models\Order;
 use Laravel\Nova\Nova;
+use App\Models\Invoice;
+use App\Mail\VerifyEmail;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\AddressController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -15,15 +19,12 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\PreOrderController;
 use App\Http\Controllers\WishListController;
+use App\Http\Controllers\BestSellerController;
 use App\Http\Controllers\Nova\LoginController;
+use App\Http\Controllers\BuyingRequestController;
 use App\Http\Controllers\BuyingServiceController;
 use App\Http\Controllers\PayPalPaymentController;
 use App\Http\Controllers\AuthenticationController;
-use App\Http\Controllers\BuyingRequestController;
-use App\Mail\VerifyEmail;
-use App\Models\Invoice;
-use App\Models\Order;
-use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -161,6 +162,6 @@ Route::get('/paypal', function () {
     return view('paypal');
 });
 
-Route::get('email/new-invoice/{invoice}', function(Request $request, Invoice $invoice){
+Route::get('email/new-invoice/{invoice}', function (Request $request, Invoice $invoice) {
     return view('mail.new-invoice', compact('invoice'));
 })->name('invoice.print');
