@@ -11,6 +11,11 @@ use Maatwebsite\LaravelNovaExcel\Actions\DownloadExcel;
 
 class SalesReport extends Resource
 {
+    public static function authorizedToCreate(Request $request)
+    {
+        return false;
+    }
+
     public static function indexQuery(NovaRequest $request, $query)
     {
         return $query->where('status', \App\Models\Order::STATUS_COMPLETED);
