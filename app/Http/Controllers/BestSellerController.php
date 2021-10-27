@@ -9,7 +9,7 @@ class BestSellerController extends Controller
 {
     public function bestSeller()
     {
-        $products = Product::orderBy('sell_count', 'DESC')->take(10)->get();
+        $products = Product::where('sell_count', '!=', 0)->orderBy('sell_count', 'DESC')->take(10)->get();
         return view('best_seller', compact('products'));
     }
 }
