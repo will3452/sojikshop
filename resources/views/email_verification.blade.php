@@ -18,6 +18,9 @@
                 element.addEventListener('keydown', function(e){
                     e.preventDefault();
                     console.log(e.code);
+                    if(e.code =='Backspace'){
+                        tboxes[index - 1].focus();
+                    }
                     if(e.code == "Backspace" || e.code == "CapsLock" || e.code == "Tab" || e.code == "ControlLeft" || e.code == "Alt"){
                         element.value = '';
                         return;
