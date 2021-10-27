@@ -9,7 +9,7 @@ class BestSellerController extends Controller
 {
     public function bestSeller()
     {
-        $max = 1;
+        $max = nova_get_setting('best_seller_count') ?? 2;
 
         $products = collect([]);
 

@@ -81,6 +81,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             Textarea::make('Packaging Mail message'),
 
             Number::make('Low Stock'),
+
+            Number::make('Best Seller Count'),
         ]);
     }
 
