@@ -37,7 +37,10 @@ use App\Http\Controllers\AuthenticationController;
 |
  */
 
-Route::get('/', [WelcomeController::class, 'index']);
+// Route::get('/', [WelcomeController::class, 'index']);
+Route::get('/', function(){
+    return 'hello Frage Perez Belamide';
+});
 
 //override the default login
 Route::post(Nova::path('/login'), [LoginController::class, 'login'])->name('admin.login');
