@@ -21,6 +21,8 @@ class RegionSeeder extends Seeder
             'CALABARZON',
             'MIMAROPA Region',
             'Bicol Region',
+            'NCR',
+            'CAR',
             'Western Visayas',
             'Central Visayas',
             'Eastern Visayas',
@@ -28,13 +30,23 @@ class RegionSeeder extends Seeder
             'Northern Mindanao',
             'Davao Region',
             'SOCCSKSARGEN',
-            'NCR',
-            'CAR',
             'ARMM',
             'Caraga'
         ];
+        $islands = [
+            'luzon',
+            'visayas',
+            'mindanao'
+        ];
+
+        $count = 0;
+        $islandCount = 0;
         foreach ($regions as $region) {
-            Region::create(['name'=>$region]);
+            $count ++;
+            if ($count == 8) {
+                $islandCount ++;
+            }
+            Region::create(['name'=>$region, 'island'=>$islands[$islandCount]]);
         }
     }
 }
