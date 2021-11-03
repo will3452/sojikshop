@@ -47,7 +47,7 @@
                         PHP {{ $shipping != null ? number_format($shipping):'XXXX' }}
                     </td>
                 </tr>
-                <tr>
+                <tr class="text-left">
                     <th class="p-2 border-2">
                         VAT ( {{nova_get_setting('vat') ?? 12}} % )
                     </th>
