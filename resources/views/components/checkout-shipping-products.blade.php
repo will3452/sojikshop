@@ -47,6 +47,14 @@
                         PHP {{ $shipping != null ? number_format($shipping):'XXXX' }}
                     </td>
                 </tr>
+                <tr>
+                    <th>
+                        VAT ((nova_get_setting('vat')))
+                    </th>
+                    <td>
+                        {{$total * (nova_get_setting('vat')/100)}}
+                    </td>
+                </tr>
                 <tr class="text-left">
                     <th class="p-2 border-2">
                         Total
