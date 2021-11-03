@@ -48,10 +48,10 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>
+                    <th class="p-2 border-2">
                         VAT ( {{nova_get_setting('vat') ?? 12}} % )
                     </th>
-                    <td>
+                    <td class="p-2 border-2">
                         {{$total * ((nova_get_setting('vat') ?? 12)/100)}}
                     </td>
                 </tr>
