@@ -52,7 +52,7 @@
                         VAT ( {{nova_get_setting('vat') ?? 12}} % )
                     </th>
                     <td class="p-2 border-2">
-                        {{$total * ((nova_get_setting('vat') ?? 12)/100)}}
+                        PHP {{$total * ((nova_get_setting('vat') ?? 12)/100)}}
                     </td>
                 </tr>
                 <tr class="text-left">
