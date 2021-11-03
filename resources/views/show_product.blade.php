@@ -302,7 +302,7 @@
         </div>
 
         @forelse ($product->feedbacks as $feedback)
-            <x-feedback-pane message="{{$feedback->message}}" userimage="{{$feedback->user->image}}" star="{{$feedback->star}}"></x-feedback-pane>
+            <x-feedback-pane message="{{$feedback->message}}" userimage="{{$feedback->user ? $feedback->user->image : null }}" star="{{$feedback->star}}"></x-feedback-pane>
         @empty
             <div class="text-center text-gray-600 font-bold bg-gray-100 p-4 rounded">
                 No Feedback Yet.
