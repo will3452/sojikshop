@@ -1,6 +1,6 @@
 <x-layout>
     <x-title>
-        CHECKOUT
+        Invoice
     </x-title>
     <div class="hidden h-screen w-screen bg-gradient-to-r from-pink-600 to-purple-900 fixed top-0 z-50 flex flex-col justify-center items-center"
     style="z-index:90000 !important;"
@@ -36,7 +36,7 @@
         @if (!request()->quantity)
             <x-checkout-shipping-products :carts="$carts" :shipping="$shipping" :total="$total"></x-checkout-shipping-products>
         @else
-            <x-checkout-pre-order :totalVat="$totalVat" :product="$product" :total="$total" ></x-checkout-pre-order>
+            <x-checkout-pre-order  :product="$product" :total="$total" ></x-checkout-pre-order>
         @endif
     @else
     <div class="bg-red-100 text-center p-2">
@@ -84,7 +84,6 @@
                     shipping_house_number:'{{$address->house_number}}',
                     user_id: {{auth()->id()}},
                     @if(request()->has('quantity') && request()->has('product_id'))
-                    ,
                         order_status:'{{\App\Models\Order::STATUS_PRE_ORDER}}',
                         product_id:{{request()->product_id}},
                         quantity:{{request()->quantity}},
@@ -94,7 +93,11 @@
                 fetch('/api/create-order', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)})
                     .then(data=>data.json())
                     .then(function(data){
-                        window.location.href="{{url('/my-orders')}}";
+                        @if(request()->has('quantity') && request()->has('product_id'))
+                            window.location.href="{{url('/my-pre-orders')}}";
+                        @else
+                            window.location.href="{{url('/my-orders')}}";
+                        @endif
                     });
             })
         }

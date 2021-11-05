@@ -25,6 +25,7 @@ use App\Http\Controllers\BuyingRequestController;
 use App\Http\Controllers\BuyingServiceController;
 use App\Http\Controllers\PayPalPaymentController;
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\myPreOrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -125,6 +126,9 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::post('return-order/{order}', [OrderController::class, 'postReturnOrder']);
     Route::view('out-of-stack', 'pre-orders');
 
+    //pre-orders
+    Route::get('/my-pre-orders', [myPreOrderController::class, 'list']);
+
     //invoice
     Route::get('/invoices/{invoice}', [InvoiceController::class, 'show']);
 
@@ -142,7 +146,10 @@ Route::middleware(['auth','verified'])->group(function () {
 
     //buying request
     Route::get('/buying-request', [BuyingServiceController::class, 'showForm']);
+    Route::get('/buying-request-checkout/{buyingRequest}', [BuyingServiceController::class, 'payRequest']);
     Route::post('/buying-request', [BuyingServiceController::class, 'submitForm']);
+    Route::get('/buying-receipt/{buyingRequest}', [BuyingServiceController::class, 'showReceipt']);
+
 
     Route::get('/add-new-address', [AddressController::class, 'create']);
     Route::post('/add-new-address', [AddressController::class, 'store']);

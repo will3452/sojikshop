@@ -1,0 +1,72 @@
+<x-layout>
+    <x-datatable>
+        <x-title>
+            My Pre-Orders
+        </x-title>
+        <div class="w-2/3 mx-auto">
+            <table class="text-center" id="myTable">
+                <thead>
+                    <tr>
+                        <th class="border border-black bg-green-200">
+                            Date
+                        </th>
+                        <th class="border border-black bg-green-200">
+                            Ref #
+                        </th>
+                        <th class="border border-black bg-green-200">
+                            Product
+                        </th>
+                        <th class="border border-black bg-green-200">
+                            Price
+                        </th>
+                        <th class="border border-black bg-green-200">
+                            Quantity
+                        </th>
+                        <th class="border border-black bg-green-200">
+                            Total
+                        </th>
+                        <th class="border border-black bg-green-200">
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($preOrders as $item)
+                        <tr >
+                            <td class="border border-black">
+                                {{$item->created_at->format('m/d/y')}}
+                            </td>
+                            <td class="border border-black">
+                                {{$item->reference_number}}
+                            </td>
+                            <td class="border border-black">
+                                {{json_decode($item->items)->products[0]->name}}
+                            </td>
+                            <td class="border border-black">
+                                {{json_decode($item->items)->products[0]->price}}
+                            </td>
+                            <td class="border border-black">
+                                {{json_decode($item->items)->products[0]->quantity}}
+                            </td>
+                            <td class="border border-black">
+                                {{number_format(json_decode($item->items)->summary->total, 2)}}
+                            </td>
+                            <td class="border border-black">
+                                <a
+                                href="{{url('invoices', ['invoice'=>$item->invoice_id])}}"
+                                class="text-xs uppercase bg-green-100 p-1 px-2 font-bold rounded">
+                                    Receipt
+                                </a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+        <script>
+            $(document).ready( function () {
+                $('#myTable').DataTable();
+            } );
+        </script>
+    </x-datatable>
+</x-layout>

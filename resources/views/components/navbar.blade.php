@@ -49,7 +49,8 @@
         @auth
         <a href="/profile" class="block hover:bg-purple-900 hover:text-white py-2">Profile</a>
         <a href="{{ route('my-requests') }}" class="block hover:bg-purple-900 hover:text-white py-2">My Requests</a>
-        <a href="{{ route('my-orders') }}" class="block hover:bg-purple-900 hover:text-white py-2">Orders</a>
+        <a href="{{ route('my-orders') }}" class="block hover:bg-purple-900 hover:text-white py-2">My Orders</a>
+        <a href="/my-pre-orders" class="block hover:bg-purple-900 hover:text-white py-2">Pre-Orders</a>
         <a href="{{ route('logout') }}" class="block hover:bg-purple-900 hover:text-white py-2">Logout</a>
         @endauth
     </div>

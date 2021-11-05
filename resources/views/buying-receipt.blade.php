@@ -15,13 +15,10 @@
                     Receipt For
                 </div>
                 <div>
-                    {{$invoice->user->name}}
+                    {{auth()->user()->name}}
                 </div>
                 <div>
-                    {{$invoice->user->mobile}}
-                </div>
-                <div>
-                    {{json_decode($invoice->order->location)->shipping_inline_address}}
+                    {{auth()->user()->mobile}}
                 </div>
             </div>
             <div class="w-1/2 border p-2">
@@ -29,13 +26,13 @@
                     Transaction #
                 </div>
                 <div>
-                    {{$invoice->txnid}}
+                    BR{{\Str::padLeft($buyingRequest->id, 8, '0')}}
                 </div>
                 <div class="font-bold uppercase mt-4">
                     Date
                 </div>
                 <div>
-                    {{$invoice->created_at->format('m/d/Y')}}
+                    {{$buyingRequest->updated_at->format('m/d/Y')}}
                 </div>
             </div>
         </div>
@@ -57,39 +54,23 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (json_decode($invoice->items)->products as $item)
                 <tr>
                     <td class="border p-1 mx-2">
-                        {{$item->name}}
+                        {{json_decode($buyingRequest->product_details)->name}}
                     </td>
                     <td class="border p-1 mx-2">
-                        {{$item->quantity}}
+                        {{json_decode($buyingRequest->product_details)->quantity}}
                     </td>
                     <td class="border p-1 mx-2">
-                        {{$item->price}}
+                        {{$buyingRequest->unit_cost}}
                     </td>
                     <td class="border p-1 mx-2">
-                        {{$item->price * $item->quantity}}
+                        {{$buyingRequest->unit_cost * json_decode($buyingRequest->product_details)->quantity}}
                     </td>
                 </tr>
-                @endforeach
                 <tr>
-                    <th></th>
-                    <th colspan="2" class="border">
-                        Shipping
-                    </th>
                     <th class="border">
-                        {{json_decode($invoice->items)->summary->shipping_fee}}
-                    </th>
-                </tr>
-                <tr>
-                    <th></th>
-
-                    <th colspan="2" class="border">
-                        Total
-                    </th>
-                    <th class="border">
-                        {{json_decode($invoice->items)->summary->total}}
+                        {{$buyingRequest->unit_cost * json_decode($buyingRequest->product_details)->quantity}}
                     </th>
                 </tr>
                 <tr>
@@ -98,7 +79,7 @@
                         Grand Total
                     </th>
                     <th class="border">
-                        {{json_decode($invoice->items)->summary->grand_total}}
+                        {{$buyingRequest->unit_cost * json_decode($buyingRequest->product_details)->quantity}}
                     </th>
                 </tr>
             </tbody>

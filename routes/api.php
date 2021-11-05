@@ -4,6 +4,7 @@ use App\Http\Controllers\ApiAuthenticationController;
 use App\Http\Controllers\ApiCartController;
 use App\Http\Controllers\ApiProductController;
 use App\Http\Controllers\ApiWishlistController;
+use App\Models\BuyingRequest;
 use App\Models\Cart;
 use App\Supports\Invoice as InvoiceSupport;
 use App\Supports\Order as OrderSupport;
@@ -44,6 +45,15 @@ Route::post('/create-order', function () {
 
     $order = OrderSupport::createOrder(request(), $invoice->id);
     return $order;
+});
+
+Route::post('/buying-paid', function () {
+    $buyingRequest = BuyingRequest::find(request()->buying_request_id);
+
+    $buyingRequest->update([
+        'status'=>BuyingRequest::STATUS_PAID,
+    ]);
+    return $buyingRequest;
 });
 
 //assets

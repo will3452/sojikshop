@@ -17,7 +17,8 @@ class BuyingServiceController extends Controller
         return view('my_requests');
     }
 
-    public function submitForm(){
+    public function submitForm()
+    {
         $data = request()->validate([
             'name'=>'required',
             'email'=>'required',
@@ -29,12 +30,12 @@ class BuyingServiceController extends Controller
         ]);
 
         //attach user if authenticated
-        if(auth()->check()){
+        if (auth()->check()) {
             $data['user_id'] = auth()->id();
         }
 
         //store image
-        if(request()->has('item_image')){
+        if (request()->has('item_image')) {
             $data['item_image'] = request()->item_image->store('public');
         }
 
@@ -60,5 +61,28 @@ class BuyingServiceController extends Controller
 
         alert('Your Form has been submitted, we will update you through your given information', 'success');
         return redirect('/');
+    }
+
+    public function payRequest(BuyingRequest $buyingRequest)
+    {
+        $address = auth()->user()->addresses()->where('is_default', true)->first();
+        $total = 0;
+
+        $total += $buyingRequest->unit_cost * json_decode($buyingRequest->product_details)->quantity;
+        if (request()->has('address_id')) {
+            $address = auth()->user()->addresses()->findOrFail(request()->address_id);
+        } else {
+            if (is_null($address)) {
+                alert('Setup your address first');
+                return back();
+            }
+        }
+
+        return view('checkout-request', compact('total', 'buyingRequest', 'address'));
+    }
+
+    public function showReceipt(BuyingRequest $buyingRequest)
+    {
+        return view('buying-receipt', compact('buyingRequest'));
     }
 }
