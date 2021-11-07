@@ -172,6 +172,16 @@ Route::get('/search', [SearchController::class, 'search'])->name('search');
 Route::get('search-category', [SearchController::class, 'getCategory'])->name('search.category');
 Route::get('/best-seller', [BestSellerController::class, 'bestSeller'])->name('best.seller');
 
+Route::get('/page', function () {
+    $data = request()->validate([
+        'page'=>'required'
+    ]);
+
+    $page = $data['page'];
+
+    return view('show_page', compact('page'));
+});
+
 Route::get('/paypal', function () {
     return view('paypal');
 });

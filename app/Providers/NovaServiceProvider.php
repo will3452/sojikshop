@@ -62,6 +62,34 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                     ],
                 ]),
 
+                CKEditor5Classic::make('Contacts')
+                ->options([
+                    'toolbar' => [
+                        'heading',
+                        '|',
+                        'bold',
+                        'italic',
+                        'link',
+                        'bulletedList',
+                        'numberedList',
+                        'blockQuote',
+                    ],
+                ]),
+
+                CKEditor5Classic::make('About Us')
+                ->options([
+                    'toolbar' => [
+                        'heading',
+                        '|',
+                        'bold',
+                        'italic',
+                        'link',
+                        'bulletedList',
+                        'numberedList',
+                        'blockQuote',
+                    ],
+                ]),
+
             Code::make('Facebook scripts'),
 
             Text::make('Copyright'),
@@ -83,6 +111,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             Number::make('Low Stock'),
 
             Number::make('Best Seller Count'),
+
         ]);
     }
 

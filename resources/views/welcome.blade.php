@@ -17,8 +17,11 @@
     @endforeach
   </x-product-container-slider>
 
-  <div class="bg-green-200 text-xs text-center p-4 mt-4">
-      <a href="/terms" >Terms and Conditions</a>|<a href="/data" >Data Privacy</a>
+  <div class="bg-green-200 text-sm font-bold text-center p-4 mt-4">
+      <a href="/page?page=about_us" class="mx-2 text-green-900" >About us</a>|
+      <a href="/page?page=contacts" class="mx-2 text-green-900" >Contact Us</a>|
+      <a href="/terms" class="mx-2 text-green-900" >Terms and Conditions</a>|
+      <a href="/data" class="mx-2 text-green-900" >Data Privacy</a>
   </div>
   {!!nova_get_setting('facebook_scripts')!!}
 </x-layout>
