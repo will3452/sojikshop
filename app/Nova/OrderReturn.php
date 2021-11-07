@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Nova\Actions\WriteMessage;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Date;
@@ -13,7 +14,8 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 
 class OrderReturn extends Resource
 {
-    public static function label(){
+    public static function label()
+    {
         return "Returns";
     }
 
@@ -59,11 +61,11 @@ class OrderReturn extends Resource
             Date::make('Date', 'created_at')
                 ->exceptOnForms(),
             HasOne::make('user'),
-            Text::make('Order Reference #', function(){
+            Text::make('Order Reference #', function () {
                 return $this->order->reference_number ?? '---';
             })->exceptOnForms(),
             HasOne::make('order'),
-            Image::make('Attachment', function(){
+            Image::make('Attachment', function () {
                 $array = explode('/', $this->attachment);
 
                 return end($array);
@@ -114,6 +116,8 @@ class OrderReturn extends Resource
      */
     public function actions(Request $request)
     {
-        return [];
+        return [
+            WriteMessage::make(),
+        ];
     }
 }
