@@ -10,12 +10,6 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Courier extends Resource
 {
-    public static $group = 'User Management';
-
-    public static function createButtonLabel()
-    {
-        return 'Register New Courier';
-    }
     /**
      * The model the resource corresponds to.
      *
@@ -37,8 +31,7 @@ class Courier extends Resource
      */
     public static $search = [
         'id',
-        'name',
-        'email'
+        'name'
     ];
 
     /**
@@ -52,11 +45,7 @@ class Courier extends Resource
         return [
             Text::make('Name')
                 ->rules(['required', 'unique:couriers,name,{{resourceId}}']),
-
-            Text::make('Email')
-                ->rules(['required', 'unique:couriers,email,{{resourceId}}']),
-
-            Image::make('Picture')
+            Text::make('Tracker Site', 'tracker_site')
                 ->rules(['required'])
         ];
     }

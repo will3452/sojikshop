@@ -2,19 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Courier extends User
+class Courier extends Model
 {
+    use HasFactory;
     protected $guarded = [];
-    protected $table = 'users';
-
-    protected static function booted()
-    {
-        static::addGlobalScope('courier', function (Builder $builder) {
-            $builder->whereType(User::COURIER);
-        });
-    }
 }
