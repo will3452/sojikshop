@@ -6,7 +6,7 @@ class="
   text-purple-900
   uppercase
   md:text-4xl md:py-10
-  font-thin
+  font-bold
 "
 >
 {{ $slot }}
