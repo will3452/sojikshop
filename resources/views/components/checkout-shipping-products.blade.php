@@ -28,9 +28,15 @@
                             <td class="p-2">
                                 {{$cart->product->name}}
                             </td>
+                            @if ($cart->product->hasDiscounts())
+                            <td>
+                                PHP {{number_format($cart->product->discounted_product * $cart->quantity, 2)}}
+                            </td>
+                            @else
                             <td>
                                 PHP {{number_format($cart->product->price * $cart->quantity, 2)}}
                             </td>
+                            @endif
                         </tr>
                     @endforeach
                 </tbody>
