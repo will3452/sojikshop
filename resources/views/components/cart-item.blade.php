@@ -7,9 +7,15 @@
             <h4 class=" text-xs text-gray-800">
                 {{ $cart->product->name }}
             </h4>
-            <h4 class="text-xl font-bold text-gray-800">
-                P {{ number_format($cart->product->price, 2) }}
-            </h4>
+            @if ($cart->product->hasDiscount())
+                <h4 class="text-xl font-bold text-gray-800">
+                    P {{ number_format($cart->product->discounted_price, 2) }}
+                </h4>
+            @else
+                <h4 class="text-xl font-bold text-gray-800">
+                    P {{ number_format($cart->product->price, 2) }}
+                </h4>
+            @endif
         </div>
     </div>
     <div class="flex items-end flex-col justify-between">

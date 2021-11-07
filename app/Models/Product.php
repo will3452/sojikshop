@@ -32,7 +32,8 @@ class Product extends Model
         return $this->hasMany(OrderProduct::class);
     }
 
-    public function feedbacks(){
+    public function feedbacks()
+    {
         return $this->hasMany(Feedback::class);
     }
 
@@ -41,4 +42,18 @@ class Product extends Model
         return $this->hasMany(ShippingFee::class);
     }
 
+    public function discounts()
+    {
+        return $this->hasMany(ProductDiscount::class);
+    }
+
+    public function getDiscountedPriceAttribute()
+    {
+        return $this->price - (($this->discounts()->first()->discount->discount / 100) * $this->price);
+    }
+
+    public function hasDiscount()
+    {
+        return $this->discounts()->count() >= 1;
+    }
 }

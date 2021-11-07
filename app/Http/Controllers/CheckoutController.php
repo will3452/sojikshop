@@ -14,18 +14,21 @@ class CheckoutController extends Controller
 
     public function checkout()
     {
-        $address = auth()->user()->addresses()->where('is_default',true)->first();
+        $address = auth()->user()->addresses()->where('is_default', true)->first();
         $total = 0;
         $shipping = 0;
         $carts = auth()->user()->carts()->with('product')->latest()->get();
-
         foreach ($carts as $cart) {
-            $total += $cart->product->price * $cart->quantity;
-            if(request()->has('address_id')){
+            $addToTotal = $cart->product->price * $cart->quantity;
+            if ($cart->product->hasDiscount()) {
+                $addToTotal = $cart->product->discounted_price * $cart->quantity;
+            }
+            $total += $addToTotal;
+            if (request()->has('address_id')) {
                 $address = auth()->user()->addresses()->findOrFail(request()->address_id);
                 $shipping += ($address->getShippingFee($cart->product->id)) * $cart->quantity;
-            }else {
-                if(is_null($address)){
+            } else {
+                if (is_null($address)) {
                     alert('Setup your address first');
                     return back();
                 }
@@ -33,6 +36,6 @@ class CheckoutController extends Controller
             }
         }
 
-        return view('checkout', compact('total', 'shipping','carts', 'address'));
+        return view('checkout', compact('total', 'shipping', 'carts', 'address'));
     }
 }

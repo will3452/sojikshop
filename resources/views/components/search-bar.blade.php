@@ -8,7 +8,7 @@
         </button>
     </form>
     <div class="absolute bottom-3 w-full">
-        <div class="text-center flex justify-center overflow-y-auto items-center">
+        <div class="text-center flex justify-start md:justify-center overflow-y-auto items-center">
             <a href="/best-seller" class="flex-none text-xs uppercase p-1 px-2 bg-pink-600 text-white rounded-full cursor-pointer mx-2 border-2 border-white">
                 Best Sellers
             </a>
@@ -22,6 +22,12 @@
                 <a href="{{route('search.category', ['category' => $category->name])}}" class="text-xs uppercase p-1 px-2 bg-pink-600 text-white rounded-full cursor-pointer mx-2 border-2 border-white flex-none">
                     {{$category->name}}
                 </a>
+            @endforeach
+
+            @foreach (\App\Models\Discount::get() as $discount)
+            <a href="/discount/{{$discount->id}}" class="text-xs uppercase p-1 px-2 bg-pink-600 text-white rounded-full cursor-pointer mx-2 border-2 border-white flex-none">
+                {{\Str::limit($discount->description, 20)}}
+            </a>
             @endforeach
 
         </div>

@@ -25,6 +25,10 @@
             <div class="absolute bg-gray-500 transform rotate-45 w-40 text-center text-xs p-1 font-bold text-white uppercase top-8 -right-8">
                 Out-of-stock
             </div>
+        @elseif($product->discounts()->count())
+            <div class="absolute bg-green-500 transform rotate-45 w-40 text-center text-xs p-1 font-bold text-white uppercase top-8 -right-8">
+                {{$product->discounts()->first()->discount->discount}} % Off
+            </div>
         @endif
             <div class="
             p-2 text-center md:text-left font-bold text-pink-600 ">

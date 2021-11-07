@@ -130,7 +130,12 @@
                 {{$product->name}}
             </h1>
             <div class="text-2xl text-center font-bold text-gray-900 md:text-left">
+                @if ($product->discounts()->count())
+                    <span class="text-lg">PHP</span> {{$product->discounted_price}}
+                    <span class="text-sm text-gray-600 line-through">PHP {{$product->price}}</span>
+                @else
                 <span class="text-lg">PHP</span> {{$product->price}}
+                @endif
             </div>
             <div x-data="{star:{{$product->feedbacks()->avg('star') ?? 5}}}" class="my-2 flex justify-center md:justify-start">
                 <div>

@@ -26,6 +26,7 @@ use App\Http\Controllers\BuyingServiceController;
 use App\Http\Controllers\PayPalPaymentController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\myPreOrderController;
+use App\Models\Discount;
 
 /*
 |--------------------------------------------------------------------------
@@ -149,6 +150,12 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::get('/buying-request-checkout/{buyingRequest}', [BuyingServiceController::class, 'payRequest']);
     Route::post('/buying-request', [BuyingServiceController::class, 'submitForm']);
     Route::get('/buying-receipt/{buyingRequest}', [BuyingServiceController::class, 'showReceipt']);
+
+    //discount
+    Route::get('/discount/{discount}', function (Discount $discount) {
+        $productDiscounts = $discount->products;
+        return view('discount_page', compact('discount', 'productDiscounts'));
+    });
 
 
     Route::get('/add-new-address', [AddressController::class, 'create']);
