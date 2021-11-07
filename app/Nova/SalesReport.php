@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Nova\Actions\ExtractReport;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
@@ -58,12 +59,6 @@ class SalesReport extends Resource
             Text::make('Reference Number')
                 ->exceptOnForms(),
 
-            Text::make('Items', function ($request) {
-                $data = collect(json_decode($request->items));
-                $products = implode(', ', $data->pluck('product_name')->toArray());
-                return  $products;
-            }),
-
             Text::make('Amount', 'amount'),
         ];
     }
@@ -110,7 +105,7 @@ class SalesReport extends Resource
     public function actions(Request $request)
     {
         return [
-            new DownloadExcel()
+            new ExtractReport(),
         ];
     }
 }

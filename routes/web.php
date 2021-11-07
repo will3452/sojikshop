@@ -186,6 +186,22 @@ Route::get('/paypal', function () {
     return view('paypal');
 });
 
+Route::get('/extract', function () {
+    request()->validate([
+        'ids'=>'required'
+    ]);
+    $orders = null;
+    $ids = request()->ids;
+    if ($ids == 'all') {
+        $orders = Order::where('status', Order::STATUS_COMPLETED)->get();
+    } else {
+        $ids = explode(',', $ids);
+        $orders = Order::where('status', Order::STATUS_COMPLETED)->whereIn('id', $ids)->get();
+    }
+
+    return view('sales_report', compact('orders'));
+});
+
 Route::get('email/new-invoice/{invoice}', function (Request $request, Invoice $invoice) {
     return view('mail.new-invoice', compact('invoice'));
 })->name('invoice.print');
