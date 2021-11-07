@@ -68,6 +68,22 @@
                         </a>
                     </div>
                     <div class="mt-2" x-show="isShow">
+                        @if (request()->active == \App\Models\Order::STATUS_DELIVERY)
+                            <div class="bg-pink-200 rounded p-2 text-sm">
+                                <div class="font-bold">
+                                    Location your Order?
+                                </div>
+                                <div>
+                                    Courier: {{$order->delivery->courier->name}}
+                                </div>
+                                <div>
+                                    Tracking #: {{$order->delivery->tracking_number}}
+                                </div>
+                                <div>
+                                    Tracking Page: <a class="underline"href="{{$order->delivery->courier->tracker_site}}">{{$order->delivery->courier->tracker_site}}</a>
+                                </div>
+                            </div>
+                        @endif
                         <span class="font-bold text-xs text-gray-600">[Order Details]</span>
                         @foreach ($order->orderProducts as $orderProduct)
                             <div class="flex justify-between text-xs mt-2 border-b-2 p-2">
