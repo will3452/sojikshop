@@ -30,7 +30,7 @@
                             </td>
                             @if ($cart->product->hasDiscount())
                             <td>
-                                PHP {{number_format($cart->product->discounted_product * $cart->quantity, 2)}}
+                                PHP {{number_format($cart->product->discounted_price * $cart->quantity, 2)}}
                             </td>
                             @else
                             <td>
