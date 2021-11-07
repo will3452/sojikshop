@@ -202,6 +202,8 @@ Route::get('/extract', function () {
     return view('sales_report', compact('orders'));
 });
 
+
+
 Route::get('email/new-invoice/{invoice}', function (Request $request, Invoice $invoice) {
     return view('mail.new-invoice', compact('invoice'));
 })->name('invoice.print');
