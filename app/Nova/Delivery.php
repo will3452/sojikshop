@@ -4,26 +4,27 @@ namespace App\Nova;
 
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\HasMany;
-use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Courier extends Resource
+class Delivery extends Resource
 {
+    public static $displayInNavigation = false;
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Models\Courier::class;
+    public static $model = \App\Models\Delivery::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'name';
+    public static $title = 'id';
 
     /**
      * The columns that should be searched.
@@ -32,7 +33,7 @@ class Courier extends Resource
      */
     public static $search = [
         'id',
-        'name'
+        'tracking_number'
     ];
 
     /**
@@ -44,11 +45,14 @@ class Courier extends Resource
     public function fields(Request $request)
     {
         return [
-            Text::make('Name')
-                ->rules(['required', 'unique:couriers,name,{{resourceId}}']),
-            Text::make('Tracker Site', 'tracker_site')
+            Date::make('Date', 'created_at')
+                ->exceptOnForms()
+                ->sortable(),
+
+            Text::make('Tracking Number')
                 ->rules(['required']),
-            HasMany::make('Delivery', 'delivery', Delivery::class),
+
+            BelongsTo::make('Order', 'order', Order::class)
         ];
     }
 

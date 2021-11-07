@@ -58,9 +58,14 @@ class Order extends Model
         ]);
     }
 
+    public function delivery()
+    {
+        return $this->hasOne(Delivery::class);
+    }
+
     public static function TOTALSALES()
     {
-       return self::where('status', self::STATUS_COMPLETED)->get()->groupBy(function($item){
+        return self::where('status', self::STATUS_COMPLETED)->get()->groupBy(function ($item) {
             return $item->created_at->format('M Y');
         });
     }

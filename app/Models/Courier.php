@@ -9,4 +9,9 @@ class Courier extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function delivery()
+    {
+        return $this->hasMany(Delivery::class);
+    }
 }

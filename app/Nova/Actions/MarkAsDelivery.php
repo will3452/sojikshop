@@ -3,12 +3,15 @@
 namespace App\Nova\Actions;
 
 use App\Models\Order;
+use App\Models\Courier;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Support\Collection;
+use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Actions\Action;
+use Illuminate\Support\Collection;
 use Laravel\Nova\Fields\ActionFields;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 class MarkAsDelivery extends Action
 {
@@ -28,6 +31,17 @@ class MarkAsDelivery extends Action
                 continue;
             }
 
+            if (!is_null($fields['courier_id'])) {
+                if (is_null($fields['tracking_number'])) {
+                    return Action::danger('No Tracking Number!');
+                }
+
+                $model->delivery()->create([
+                    'courier_id'=>$fields['courier_id'],
+                    'tracking_number'=>$fields['tracking_number']
+                ]);
+            }
+
             $model->update([
                 'status'=>Order::STATUS_DELIVERY
             ]);
@@ -41,6 +55,10 @@ class MarkAsDelivery extends Action
      */
     public function fields()
     {
-        return [];
+        return [
+            Select::make('Courier', 'courier_id')
+                ->options(Courier::get()->pluck('name', 'id')),
+            Text::make('Tracking Number'),
+        ];
     }
 }
