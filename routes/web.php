@@ -27,6 +27,7 @@ use App\Http\Controllers\PayPalPaymentController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\myPreOrderController;
 use App\Models\Discount;
+use App\Models\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -171,6 +172,10 @@ Route::middleware(['auth','verified'])->group(function () {
 Route::get('/search', [SearchController::class, 'search'])->name('search');
 Route::get('search-category', [SearchController::class, 'getCategory'])->name('search.category');
 Route::get('/best-seller', [BestSellerController::class, 'bestSeller'])->name('best.seller');
+Route::get('/pre-order', function () {
+    $products = Product::where('is_pre_order', true)->get();
+    return view('pre-orders', compact('products'));
+});
 
 Route::get('/page', function () {
     $data = request()->validate([
