@@ -72,6 +72,7 @@
 
                 let payload = {
                     id: id,
+                    typeOfOrder:"{{$isPreOrder ? \App\Models\Order::STATUS_PRE_ORDER:\App\Models\Order::STATUS_PACKAGING}}",
                     status: status,
                     shipping_fee:'{{$shipping}}',
                     amount: '{{$total}}',
@@ -93,7 +94,7 @@
                 fetch('/api/create-order', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)})
                     .then(data=>data.json())
                     .then(function(data){
-                        @if(request()->has('quantity') && request()->has('product_id'))
+                        @if((request()->has('quantity') && request()->has('product_id')) || $isPreOrder)
                             window.location.href="{{url('/my-pre-orders')}}";
                         @else
                             window.location.href="{{url('/my-orders')}}";

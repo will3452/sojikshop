@@ -3,11 +3,12 @@
 namespace App\Supports;
 
 use App\Models\User;
+use App\Models\Invoice;
+use App\Models\Product;
 use Illuminate\Support\Str;
 use App\Models\OrderProduct;
-use App\Models\Order as ModelsOrder;
-use App\Models\Product;
 
+use App\Models\Order as ModelsOrder;
 use function PHPUnit\Framework\isEmpty;
 
 class Order
@@ -119,14 +120,15 @@ class Order
                 'grand_total'=>$payload->amount + $payload->shipping_fee
             ];
         }
-
+        $invoice = Invoice::find($invoice_id);
         $order = ModelsOrder::create([
             'user_id'=>$payload->user_id,
             'invoice_id'=>$invoice_id,
             'reference_number'=>self::createReferenceNumber(),
             'items'=>json_encode($items),
             'location'=>json_encode($location),
-            'status'=> $status
+            'status'=> $status,
+            'type'=>$invoice->type,
         ]);
 
         if ($order->status == ModelsOrder::STATUS_PACKAGING) {

@@ -9,6 +9,15 @@ class CartController extends Controller
 {
     public function addToCart(Product $product)
     {
+        $isPreOrder = false;
+        if (auth()->user()->carts()->first()) {
+            $isPreOrder = auth()->user()->carts()->first()->product->is_pre_order;
+        }
+        if ($isPreOrder != $product->is_pre_order) {
+            foreach (auth()->user()->carts as $cart) {
+                $cart->delete();
+            }
+        }
         Cart::create([
             'quantity'=>1,
             'total_cost'=>$product->price,

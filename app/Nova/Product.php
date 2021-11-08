@@ -2,15 +2,16 @@
 
 namespace App\Nova;
 
-use App\Nova\Lenses\LowStock;
-use App\Nova\Lenses\OutOfStock;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\BelongsToMany;
-use Laravel\Nova\Fields\HasMany;
-use Laravel\Nova\Fields\Image;
-use Laravel\Nova\Fields\Number;
+use App\Nova\Lenses\LowStock;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Image;
+use App\Nova\Lenses\OutOfStock;
+use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Textarea;
+use Laravel\Nova\Fields\BelongsToMany;
 use Maatwebsite\LaravelNovaExcel\Actions\DownloadExcel;
 
 class Product extends Resource
@@ -69,6 +70,8 @@ class Product extends Resource
 
             Number::make('Quantity')
                 ->required(),
+
+            Boolean::make('Pre-Order', 'is_pre_order'),
 
             // Number::make('Shipping Fee')
             //     ->hideFromIndex()

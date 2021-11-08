@@ -14,11 +14,19 @@ class OrderController extends Controller
         if (!request()->has('active') || !in_array(request()->active, $statuses)) {
             return redirect(route('my-orders').'?active='.Order::STATUS_PACKAGING);
         }
+        $orders = [];
+        if (request()->active == Order::STATUS_PACKAGING) {
+            $orders = Order::where([
+                'user_id'=>auth()->id(),
+                'status'=>request()->active,
+            ])->where('type', '!=', Order::STATUS_PRE_ORDER)->latest()->get();
+        } else {
+            $orders = Order::where([
+                'user_id'=>auth()->id(),
+                'status'=>request()->active
+            ])->latest()->get();
+        }
 
-        $orders = Order::where([
-            'user_id'=>auth()->id(),
-            'status'=>request()->active
-        ])->latest()->get();
 
         return view('my_orders', compact('orders'));
     }

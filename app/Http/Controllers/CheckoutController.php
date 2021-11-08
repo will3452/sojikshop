@@ -18,8 +18,12 @@ class CheckoutController extends Controller
         $total = 0;
         $shipping = 0;
         $carts = auth()->user()->carts()->with('product')->latest()->get();
+        $isPreOrder = false;
         foreach ($carts as $cart) {
             $addToTotal = $cart->product->price * $cart->quantity;
+            if ($cart->product->is_pre_order) {
+                $isPreOrder = true;
+            }
             if ($cart->product->hasDiscount()) {
                 $addToTotal = $cart->product->discounted_price * $cart->quantity;
             }
@@ -36,6 +40,6 @@ class CheckoutController extends Controller
             }
         }
 
-        return view('checkout', compact('total', 'shipping', 'carts', 'address'));
+        return view('checkout', compact('total', 'shipping', 'carts', 'address', 'isPreOrder'));
     }
 }
