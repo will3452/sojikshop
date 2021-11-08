@@ -14,7 +14,7 @@ class AddUnitCostToBuyingRequests extends Migration
     public function up()
     {
         Schema::table('buying_requests', function (Blueprint $table) {
-            $table->string('unit_cost')->nullable();
+            // $table->string('unit_cost')->nullable();
         });
     }
 
