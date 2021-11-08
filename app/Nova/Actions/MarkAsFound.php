@@ -34,7 +34,7 @@ class MarkAsFound extends Action
 
             $model->update([
                 'quotation'=>$fields->quotation,
-                'item_price'=>$fields->quotation,
+                'unit_cost'=>$fields->item_price,
                 'status'=>BuyingRequest::STATUS_FOUND
             ]);
 

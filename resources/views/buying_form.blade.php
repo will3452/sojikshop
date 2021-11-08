@@ -43,7 +43,7 @@
             </div>
             <div class="mb-4">
                 <label for="" class="block font-bold text-sm text-gray-900 uppercase mb-4">Item Picture </label>
-                <input type="file" accept="image/*" name="item_image">
+                <input  required type="file" accept="image/*" name="item_image">
             </div>
 
             <button class="px-4 py-2 bg-purple-900 text-white uppercase rounded-3xl w-full text-center font-bold">
