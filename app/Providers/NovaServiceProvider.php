@@ -62,7 +62,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                     ],
                 ]),
 
-                CKEditor5Classic::make('Contacts')
+                CKEditor5Classic::make('Contact Us')
                 ->options([
                     'toolbar' => [
                         'heading',

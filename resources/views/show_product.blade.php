@@ -160,7 +160,7 @@
                 <div class="text-xs text-gray-500 font-bold ">
                     Description
                 </div>
-                <div class="text-xs p-2 text-gray-700 mb-10 md:mb-0">
+                <div class="p-2 text-gray-700 mb-10 md:mb-0">
                     {{$product->description}}
                 </div>
                 <div class="hidden md:block mt-4 md:flex">
