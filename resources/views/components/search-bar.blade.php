@@ -12,6 +12,9 @@
             <a href="/best-seller" class="flex-none text-xs uppercase p-1 px-2 bg-pink-600 text-white rounded-full cursor-pointer mx-2 border-2 border-white">
                 Best Sellers
             </a>
+            <a href="/pre-order" class="flex-none text-xs uppercase p-1 px-2 bg-pink-600 text-white rounded-full cursor-pointer mx-2 border-2 border-white">
+                Pre-Order
+            </a>
             <a href="/buying-request" class="flex-none text-xs uppercase p-1 px-2 bg-pink-600 text-white rounded-full cursor-pointer mx-2 border-2 border-white">
                 Buying Services
             </a>
