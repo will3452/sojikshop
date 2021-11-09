@@ -3,6 +3,8 @@
 namespace App\Nova;
 
 use App\Nova\Actions\ExtractReport;
+use App\Nova\Filters\EndDate;
+use App\Nova\Filters\StartDate;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
@@ -82,7 +84,10 @@ class SalesReport extends Resource
      */
     public function filters(Request $request)
     {
-        return [];
+        return [
+            StartDate::make(),
+            EndDate::make(),
+        ];
     }
 
     /**
