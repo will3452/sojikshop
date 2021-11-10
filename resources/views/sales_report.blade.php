@@ -52,7 +52,7 @@
                             {{implode(', ', $names)}}
                         </td>
                         <td>
-                            {{json_decode($order->items)->summary->grand_total}}
+                            {{json_decode($order->items)->summary->total}}
                         </td>
                         <td>
                             {{$order->created_at->format('m/d/y')}}
