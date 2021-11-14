@@ -22,7 +22,7 @@
             </div>
             <div class="mb-4">
                 <label for="" class="block font-bold text-sm text-gray-900 uppercase mb-4">Attach Photo (optional)</label>
-                <input type="file" name="attachment" accept="image/*">
+                <input type="file" name="attachment" required accept="image/*">
             </div>
             <div>
                 <button class="p-2 bg-purple-900 text-white font-bold rounded w-full">

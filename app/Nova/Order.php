@@ -109,7 +109,7 @@ class Order extends Resource
                 }
 
                 if ($order->status == ModelsOrder::STATUS_DELIVERY) {
-                    return "<span class='px-4 py-2 rounded-3xl bg-yellow-300 text-yellow-900 uppercase font-black text-xs'>Delivery</span>";
+                    return "<span class='px-4 py-2 rounded-3xl bg-yellow-300 text-yellow-900 uppercase font-black text-xs'>Shipped</span>";
                 }
 
                 if ($order->status == ModelsOrder::STATUS_FEEDBACK) {
@@ -128,7 +128,7 @@ class Order extends Resource
                 ->exceptOnForms(),
 
             Text::make('Amount', function ($order) {
-                $amount = $order->invoice->amount;
+                $amount = json_decode($order->invoice->items)->summary->grand_total;
                 return "<span class='px-4 py-2 rounded bg-yellow-300 text-yellow-900 text-2xl uppercase font-black'><span class='text-sm' >PHP</span>$amount</span>";
             })
                 ->asHtml()

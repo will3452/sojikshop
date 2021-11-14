@@ -32,6 +32,7 @@
         "maatwebsite/laravel-nova-excel": "^1.2",
         "numaxlab/nova-ckeditor5-classic": "^1.1",
         "optimistdigital/nova-settings": "^3.2",
+        "optimistdigital/nova-tailwind": "^1.1",
         "realrashid/sweet-alert": "^4.0"
     },
     "require-dev": {

@@ -112,6 +112,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
             Number::make('Best Seller Count'),
 
+            Number::make('Best')
+
         ]);
     }
 
@@ -179,9 +181,6 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 ])
                 ->width('2/3'),
             NumberOfProducts::make(),
-            NumberOfCategories::make(),
-            NumberOfBanners::make(),
-
         ];
     }
 

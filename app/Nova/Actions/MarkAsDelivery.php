@@ -17,6 +17,11 @@ class MarkAsDelivery extends Action
 {
     use InteractsWithQueue, Queueable;
 
+    public function name()
+    {
+        return 'Mark As Shipped';
+    }
+
     /**
      * Perform the action on the given models.
      *

@@ -2,6 +2,8 @@
 
 namespace App\Nova;
 
+use App\Nova\Lenses\RegularCustomers;
+use App\Nova\Lenses\TenLatestCustomersWhoPurchased;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
@@ -98,7 +100,10 @@ class Customer extends Resource
      */
     public function lenses(Request $request)
     {
-        return [];
+        return [
+            RegularCustomers::make(),
+            TenLatestCustomersWhoPurchased::make(),
+        ];
     }
 
     /**

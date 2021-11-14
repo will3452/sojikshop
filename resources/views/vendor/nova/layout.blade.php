@@ -12,10 +12,6 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('app.css', 'vendor/nova') }}">
-    @if (url()->current() != url('/admin/dashboards/main'))
-        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-    @endif
-
     <!-- Tool Styles -->
     @foreach(\Laravel\Nova\Nova::availableStyles(request()) as $name => $path)
         @if (\Illuminate\Support\Str::startsWith($path, ['http://', 'https://']))
