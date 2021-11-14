@@ -18,7 +18,7 @@
     <style>
         #main_content {
             visibility: hidden;
-            transition: visibility 250ms;
+            transition: visibility 500ms;
         }
     </style>
 </head>
