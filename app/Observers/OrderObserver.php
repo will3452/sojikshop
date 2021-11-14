@@ -13,4 +13,11 @@ class OrderObserver
         $user = User::find($order->user_id);
         Mail::to($user)->send(new OrderStatusUpdate($user, $order));
     }
+
+    public function created(Order $order)
+    {
+        $order->update([
+            'created_at'=>$order->invoice->created_at,
+        ]);
+    }
 }

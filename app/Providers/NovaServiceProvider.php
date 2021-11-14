@@ -2,23 +2,33 @@
 
 namespace App\Providers;
 
+use App\Nova\User;
 use App\Models\Order;
 use Laravel\Nova\Nova;
+use App\Models\Invoice;
 use Laravel\Nova\Fields\Code;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Image;
+use App\Models\PendingDelivery;
+use App\Models\Product;
+use Laravel\Nova\Fields\Number;
+use App\Nova\Metrics\TotalSales;
+use Laravel\Nova\Fields\Textarea;
 use App\Nova\Metrics\NumberOfUsers;
+use Mako\CustomTableCard\Table\Row;
+use App\Nova\Metrics\NumberOfOrders;
 use Illuminate\Support\Facades\Gate;
+use Mako\CustomTableCard\Table\Cell;
 use App\Nova\Metrics\NumberOfBanners;
 use App\Nova\Metrics\NumberOfProducts;
+use App\Nova\Metrics\PendingDeliveries;
 use App\Nova\Metrics\NumberOfCategories;
+use Mako\CustomTableCard\CustomTableCard;
 use Bolechen\NovaActivitylog\NovaActivitylog;
-use Laravel\Nova\Fields\Number;
-use Laravel\Nova\Fields\Textarea;
 use OptimistDigital\NovaSettings\NovaSettings;
+use Coroowicaksono\ChartJsIntegration\BarChart;
 use Laravel\Nova\NovaApplicationServiceProvider;
 use NumaxLab\NovaCKEditor5Classic\CKEditor5Classic;
-use Coroowicaksono\ChartJsIntegration\LineChart;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -151,38 +161,71 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     protected function cards()
     {
-        $salestotal = Order::TOTALSALES();
+        $invoiceData = Invoice::getMonthlyData();
+
+        $categories = [];
+
         $data = [];
-        foreach ($salestotal as $key => $value) {
-            $total = 0;
-            foreach ($value as $item) {
-                $total += json_decode($item->items)->summary->total;
+
+        foreach ($invoiceData as $key => $values) {
+            $categories[] = $key;
+            $sale = 0;
+            foreach ($values as $value) {
+                $sale += $value->amount;
             }
-            $data[] = $total;
+            $data[] = $sale;
         }
-        $categories = $salestotal->keys();
+
+        $lowstacksdata = Product::where('quantity', '<=', nova_get_setting('low_stock', 10))->orderBy('quantity')->limit(10)->get();
+        $lowstackdata = [];
+        foreach ($lowstacksdata as $ld) {
+            $lowstackdata[] = new Row(
+                new Cell($ld->reference_number),
+                new Cell($ld->name),
+                new Cell($ld->quantity),
+            );
+        }
         return [
-            (new LineChart())
-                ->title('Sales')
-                ->animations([
-                    'enabled' => true,
-                    'easing' => 'easeinout',
-                ])
-                ->series(array([
-                    'barPercentage' => 0.5,
-                    'label' => 'Sales',
-                    'borderColor' => '#90ed7d',
-                    'data' => $data,
-                ]))
-                ->options([
-                    'xaxis' => [
-                        'categories' => $categories
-                    ],
-                ])
-                ->width('2/3'),
-            NumberOfProducts::make(),
+            (new BarChart())
+            ->title('Sales')
+            ->animations([
+                'enabled' => true,
+                'easing' => 'easeinout',
+            ])
+            ->series(array([
+                'barPercentage' => 0.5,
+                'label' => 'Total Sales',
+                'backgroundColor' => '#B7FBE1',
+                'data' => $data,
+            ]))
+            ->options([
+                'xaxis' => [
+                    'categories' => $categories,
+                ],
+            ])
+            ->width('2/3'),
+            NumberOfProducts::make()->width('1/3'),
+            NumberOfOrders::make()->width('1/3'),
+            TotalSales::make()->width('1/3'),
+            PendingDeliveries::make()->width('1/3'),
+            (new CustomTableCard)
+            ->header([
+                new Cell('Reference Number'),
+                new Cell('Name'),
+                new Cell('Quantity'),
+            ])
+            ->data($lowstackdata)
+            ->title('Out Of Stock Or Low stock Products')
+            ->viewall(['label' => 'View All', 'link' => Nova::path().'/resources/products/lens/low-stock']),
         ];
     }
+
+    // [
+    //     (new Row(
+    //         new Cell('2018091001'),
+    //         (new Cell('20.50'))->class('text-right')->id('price-2')
+    //     ))->viewLink('/resources/orders/1'),
+    // ]
 
     /**
      * Get the extra dashboards that should be displayed on the Nova dashboard.
@@ -191,7 +234,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     protected function dashboards()
     {
-        return [];
+        return [
+        ];
     }
 
     /**

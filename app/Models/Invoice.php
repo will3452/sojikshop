@@ -20,4 +20,11 @@ class Invoice extends Model
     {
         return $this->hasOne(Order::class);
     }
+
+    public static function getMonthlyData()
+    {
+        return self::whereYear('created_at', '=', now()->format('Y'))->get()->groupBy(function ($e) {
+            return $e->created_at->format('M');
+        });
+    }
 }
