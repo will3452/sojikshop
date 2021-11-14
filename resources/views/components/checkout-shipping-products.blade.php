@@ -50,7 +50,7 @@
                         Shipping
                     </th>
                     <td class="p-2 border-2">
-                        PHP {{ $shipping != 0 ? number_format($shipping):'FREE' }}
+                        {{ $shipping != 0 ? 'PHP '.number_format($shipping):'FREE' }}
                     </td>
                 </tr>
                 <tr class="text-left">
