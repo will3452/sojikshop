@@ -137,7 +137,7 @@
                 <span class="text-lg">PHP</span> {{$product->price}}
                 @endif
             </div>
-            <div x-data="{star:{{$product->feedbacks()->avg('star') ?? 5}}}" class="my-2 flex justify-center md:justify-start">
+            <div x-data="{star:{{$product->feedbacks()->avg('star') ?? 0}}}" class="my-2 flex justify-center md:justify-start">
                 <div>
                     <span class="select-none material-icons cursor-pointer" :class="{'text-yellow-500':star >= 1}" >
                         grade
