@@ -18,7 +18,8 @@
   <body class="">
     <x-goto-top></x-goto-top>
     @include('sweetalert::alert')
-    <x-navbar></x-navbar>
+    <div>
+        <x-navbar></x-navbar>
         {{ $slot }}
         {{-- <script>
             {
@@ -38,6 +39,7 @@
                 });
             }
         </script> --}}
+    </div>
 
   </body>
 </html>
