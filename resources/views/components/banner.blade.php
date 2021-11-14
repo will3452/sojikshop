@@ -1,6 +1,6 @@
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
 @foreach (\App\Models\Banner::get() as $key=>$banner)
-<span onclick="window.location = '{{$banner->link ?? '#'}}'" class="block">
+<span onclick="window.location = '{{$banner->link ?? '#'}}'" class="block bg-green-200">
     <img src="/storage/{{ $banner->image }}" id="slider-{{ $key }}" class="slider object-contain h-80 w-screen" alt="image">
 </span>
 @endforeach
