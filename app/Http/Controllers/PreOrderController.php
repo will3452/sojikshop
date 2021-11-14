@@ -49,6 +49,11 @@ class PreOrderController extends Controller
             $shipping += ($address->getShippingFee($product->id)) * $data['quantity'];
         }
 
+        $freeshipping = nova_get_setting('free_shipping', 0);
+        if ($total >= $freeshipping) {
+            $shipping = 0;
+        }
+
         return view('checkout', compact('total', 'shipping', 'product', 'address'));
     }
 }

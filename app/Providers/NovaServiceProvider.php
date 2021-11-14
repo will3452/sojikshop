@@ -112,7 +112,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
             Number::make('Best Seller Count'),
 
-            Number::make('Best')
+            Number::make('Free Shipping'),
 
         ]);
     }
