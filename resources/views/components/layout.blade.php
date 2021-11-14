@@ -18,10 +18,14 @@
     <style>
         #main_content {
             visibility: hidden;
+            transition: visibility 250ms;
         }
     </style>
 </head>
   <body class="">
+      <div id="loader" class="w-screen h-screen flex items-center justify-center bg-pink-200 fixed">
+          <div class="animate-spin w-10 h-10 border-4 rounded-full border-green-500" style="border-top-color: transparent;"></div>
+      </div>
     <x-goto-top></x-goto-top>
     @include('sweetalert::alert')
     <div id="main_content">
@@ -46,6 +50,13 @@
             }
         </script> --}}
     </div>
+
+    <script>
+        window.onload = function(){
+            document.getElementById('loader').style.display = 'none';
+            document.getElementById('main_content').style.visibility = 'visible';
+        }
+    </script>
 
   </body>
 </html>
