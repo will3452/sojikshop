@@ -216,10 +216,8 @@ Route::get('email/new-invoice/{invoice}', function (Request $request, Invoice $i
 
 
 Route::get('/track-page', function () {
-    $data = request()->validate([
-        'tracking_number'=>'',
-    ]);
 
-    $order = Delivery::where('tracking_number', $data['tracking_number' ?? ''])->first();
+
+    $order = Delivery::where('tracking_number', request()->tracking_number??'')->first();
     return view('tracking-page', compact('order'));
 });
