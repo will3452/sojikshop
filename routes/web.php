@@ -26,6 +26,7 @@ use App\Http\Controllers\BuyingServiceController;
 use App\Http\Controllers\PayPalPaymentController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\myPreOrderController;
+use App\Models\Delivery;
 use App\Models\Discount;
 use App\Models\Product;
 
@@ -212,3 +213,13 @@ Route::get('/extract', function () {
 Route::get('email/new-invoice/{invoice}', function (Request $request, Invoice $invoice) {
     return view('mail.new-invoice', compact('invoice'));
 })->name('invoice.print');
+
+
+Route::get('/track-page', function () {
+    $data = request()->validate([
+        'tracking_number'=>'',
+    ]);
+
+    $order = Delivery::where('tracking_number', $data['tracking_number'])->first();
+    return view('tracking-page', compact('order'));
+});
