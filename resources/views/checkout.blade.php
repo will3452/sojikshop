@@ -45,7 +45,7 @@
     @endif
 
 
-<script src="https://www.paypal.com/sdk/js?client-id={{nova_get_setting('paypal_client_id')}}&currency=PHP&disable-funding=credit,card&disable-card=amex,jcb&locale=en_PH">
+<script src="https://www.paypal.com/sdk/js?client-id={{nova_get_setting('paypal_client_id')}}&currency=PHP&disable-funding=credit,card&locale=en_PH">
 </script>
 
 <script>
