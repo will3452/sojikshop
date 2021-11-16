@@ -220,6 +220,6 @@ Route::get('/track-page', function () {
         'tracking_number'=>'',
     ]);
 
-    $order = Delivery::where('tracking_number', $data['tracking_number'])->first();
+    $order = Delivery::where('tracking_number', $data['tracking_number' ?? ''])->first();
     return view('tracking-page', compact('order'));
 });
