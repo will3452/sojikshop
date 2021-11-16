@@ -38,6 +38,11 @@ class Customer extends Resource
         'name'
     ];
 
+    public static function indexQuery(NovaRequest $request, $query)
+    {
+        return $query->where('id', '!=', auth()->id());
+    }
+
     /**
      * Get the fields displayed by the resource.
      *

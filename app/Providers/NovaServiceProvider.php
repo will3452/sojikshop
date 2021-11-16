@@ -21,8 +21,9 @@ use Illuminate\Support\Facades\Gate;
 use Mako\CustomTableCard\Table\Cell;
 use App\Nova\Metrics\NumberOfBanners;
 use App\Nova\Metrics\NumberOfProducts;
-use App\Nova\Metrics\PendingDeliveries;
+use App\Nova\Metrics\Shipped;
 use App\Nova\Metrics\NumberOfCategories;
+use App\Nova\Metrics\Packaging;
 use Mako\CustomTableCard\CustomTableCard;
 use Bolechen\NovaActivitylog\NovaActivitylog;
 use OptimistDigital\NovaSettings\NovaSettings;
@@ -205,9 +206,10 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             ])
             ->width('2/3'),
             NumberOfProducts::make()->width('1/3'),
-            NumberOfOrders::make()->width('1/3'),
-            TotalSales::make()->width('1/3'),
-            PendingDeliveries::make()->width('1/3'),
+            NumberOfOrders::make()->width('1/2'),
+            TotalSales::make()->width('1/2'),
+            Shipped::make()->width('1/2'),
+            Packaging::make()->width('1/2'),
             (new CustomTableCard)
             ->header([
                 new Cell('Reference Number'),

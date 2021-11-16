@@ -2,17 +2,18 @@
 
 namespace App\Nova;
 
-use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Gravatar;
-use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Password;
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\Gravatar;
+use Laravel\Nova\Fields\Password;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class User extends Resource
 {
-    public static $displayInNavigation = false;
-    public static $group = "account Management";
+    public static $group = "User Management";
+    public static $label = 'Account';
     /**
      * The model the resource corresponds to.
      *
@@ -22,7 +23,7 @@ class User extends Resource
 
     public function authorizedToDelete(Request $request)
     {
-        return true;
+        return false;
     }
 
     public static function authorizedToCreate(Request $request)
@@ -30,9 +31,9 @@ class User extends Resource
         return false;
     }
 
-    public function authorizedToUpdate(Request $request)
+    public static function indexQuery(NovaRequest $request, $query)
     {
-        return false;
+        return $query->where('id', auth()->id());
     }
 
     /**

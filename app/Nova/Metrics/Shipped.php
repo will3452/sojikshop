@@ -6,8 +6,9 @@ use App\Models\PendingDelivery;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Metrics\Value;
 
-class PendingDeliveries extends Value
+class Shipped extends Value
 {
+
     /**
      * Calculate the value of the metric.
      *
@@ -54,6 +55,6 @@ class PendingDeliveries extends Value
      */
     public function uriKey()
     {
-        return 'pending-deliveries';
+        return 'Shipped';
     }
 }
