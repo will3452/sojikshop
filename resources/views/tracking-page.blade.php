@@ -22,7 +22,7 @@
 
     <script>
         @if($order)
-            var mymap = L.map('map').setView([{{$order->lat}}, {{$order->lng}}], 5);
+            var mymap = L.map('map').setView([{{$order->lat}}, {{$order->lng}}], 19);
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     maxZoom: 19,
                     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
