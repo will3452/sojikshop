@@ -80,7 +80,7 @@
                                     Tracking #: {{$order->delivery->tracking_number}}
                                 </div>
                                 <div>
-                                    Tracking Page: <a class="underline"href="{{$order->delivery->courier->tracker_site}}">{{$order->delivery->courier->tracker_site}}</a>
+                                    Tracking now: <a class="underline"href="/track-page?tracking_number={{$order->delivery->tracking_number}}">Click here</a>
                                 </div>
                             </div>
                         @endif
