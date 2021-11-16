@@ -80,7 +80,7 @@
                                     Tracking #: {{$order->delivery->tracking_number}}
                                 </div>
                                 <div>
-                                    Courier site: <a href="#">{{\Str::limit($order->delivery->courier->tracker_site, 20)}}</a>
+                                    Courier site: <a href="{{$order->delivery->courier->tracker_site}}">{{\Str::limit($order->delivery->courier->tracker_site, 20)}}</a>
                                 </div>
                                 <div>
                                     <a href="/track-page?tracking_number={{$order->delivery->tracking_number}}" class="underline">Track order now</a>
