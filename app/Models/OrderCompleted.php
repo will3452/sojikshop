@@ -13,8 +13,9 @@ class OrderCompleted extends Invoice
     protected static function booted()
     {
         static::addGlobalScope('order-completed', function (Builder $builder) {
-            $builder->whereHas('order', function (Builder $q) {
-                return $q->where('status', Order::STATUS_COMPLETED);
+            $ordersId = Order::where('status', Order::STATUS_COMPLETED)->get()->pluck('invoice_id')->toArray();
+            $builder->whereHas('order', function (Builder $q) use ($ordersId) {
+                return $q->whereIn('id', $ordersId);
             });
         });
     }
