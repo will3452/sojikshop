@@ -45,6 +45,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         NovaSettings::addSettingsFields([
             Image::make('Logo'),
 
+            Image::make('Favicon'),
+
             CKEditor5Classic::make('FAQ', 'data_privacy')
                 ->options([
                     'toolbar' => [
