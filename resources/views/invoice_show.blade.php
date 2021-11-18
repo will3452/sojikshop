@@ -15,7 +15,7 @@
                     Receipt For
                 </div>
                 <div>
-                    {{$invoice->user->name}}
+                    {{$invoice->user->name ?? auth()->user()->name}}
                 </div>
                 <div>
                     {{$invoice->user->mobile}}
