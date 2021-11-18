@@ -172,7 +172,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             $categories[] = $key;
             $sale = 0;
             foreach ($values as $value) {
-                $sale += $value->amount;
+                if ($value->order->status === Order::STATUS_COMPLETED) {
+                    $sale += $value->amount;
+                }
             }
             $data[] = $sale;
         }
