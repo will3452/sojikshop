@@ -25,7 +25,7 @@ class Invoice extends Model
     public static function getMonthlyData()
     {
         return self::whereHas('order', function (Builder $q) {
-            return $q->status == Order::STATUS_COMPLETED;
+            return $q->where('status', Order::STATUS_COMPLETED);
         })->whereYear('created_at', '=', now()->format('Y'))->orderBy('created_at')->get()->groupBy(function ($e) {
             return $e->created_at->format('M');
         });
