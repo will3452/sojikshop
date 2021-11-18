@@ -10,6 +10,8 @@ class InvoiceCompleted extends Model
 {
     use HasFactory;
 
+    protected $table = 'invoices';
+
     protected $guarded = [];
 
     public function user()
