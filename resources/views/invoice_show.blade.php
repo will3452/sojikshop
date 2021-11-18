@@ -18,7 +18,7 @@
                     {{$invoice->user->name ?? auth()->user()->name}}
                 </div>
                 <div>
-                    {{$invoice->user->mobile}}
+                    {{$invoice->user->mobile ?? auth()->user()->mobile}}
                 </div>
                 <div>
                     {{json_decode($invoice->order->location)->shipping_inline_address}}
