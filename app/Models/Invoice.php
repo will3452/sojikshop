@@ -23,7 +23,7 @@ class Invoice extends Model
 
     public static function getMonthlyData()
     {
-        return self::whereYear('created_at', '=', now()->format('Y'))->orderBy('created_at')->get()->groupBy(function ($e) {
+        return self::whereYear('created_at', '=', now()->format('Y'))->with('order')->orderBy('created_at')->get()->groupBy(function ($e) {
             return $e->created_at->format('M');
         });
     }
