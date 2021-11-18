@@ -2,9 +2,9 @@
 
 namespace App\Nova\Metrics;
 
-use App\Models\InvoiceCompleted;
-use Laravel\Nova\Http\Requests\NovaRequest;
+use App\Models\OrderCompleted;
 use Laravel\Nova\Metrics\Value;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class TotalSales extends Value
 {
@@ -16,7 +16,7 @@ class TotalSales extends Value
      */
     public function calculate(NovaRequest $request)
     {
-        return $this->sum($request, InvoiceCompleted::class, 'amount');
+        return $this->sum($request, OrderCompleted::class, 'amount');
     }
 
     /**
