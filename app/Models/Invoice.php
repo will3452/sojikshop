@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -23,7 +24,9 @@ class Invoice extends Model
 
     public static function getMonthlyData()
     {
-        return self::whereYear('created_at', '=', now()->format('Y'))->with('order')->orderBy('created_at')->get()->groupBy(function ($e) {
+        return self::whereHas('order', function (Builder $q) {
+            return $q->status == Order::STATUS_COMPLETED;
+        })->whereYear('created_at', '=', now()->format('Y'))->orderBy('created_at')->get()->groupBy(function ($e) {
             return $e->created_at->format('M');
         });
     }
