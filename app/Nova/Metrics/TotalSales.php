@@ -16,7 +16,7 @@ class TotalSales extends Value
      */
     public function calculate(NovaRequest $request)
     {
-        return $this->sum($request, OrderCompleted::class, 'sumarry.total');
+        return $this->sum($request, OrderCompleted::class, 'summary.total');
     }
 
     /**
