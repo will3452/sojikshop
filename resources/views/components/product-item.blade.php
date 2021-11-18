@@ -23,7 +23,7 @@
         >
         @if ($product->is_pre_order)
             <div class="absolute bg-yellow-500 transform rotate-45 w-40 text-center text-xs p-1 font-bold text-white uppercase top-8 -right-8">
-                Pre-Order Now
+                Pre-Order
             </div>
         @elseif ($product->quantity <= 0)
             <div class="absolute bg-gray-500 transform rotate-45 w-40 text-center text-xs p-1 font-bold text-white uppercase top-8 -right-8">
