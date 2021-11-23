@@ -91,7 +91,7 @@
                         @foreach ($order->orderProducts as $orderProduct)
                             <div class="flex justify-between text-xs mt-2 border-b-2 p-2">
                                 <span class="pr-2">
-                                   {{$orderProduct->quantity}} - {{$orderProduct->product->name}}
+                                   {{$orderProduct->quantity}} - {{$orderProduct->product ? $orderProduct->product->name : '---'}}
                                 </span>
                                 <div class="font-bold flex-none">
                                     <span style="font-size: 8px;">PHP</span> {{number_format($orderProduct->amount,2)}}
