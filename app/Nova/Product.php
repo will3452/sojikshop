@@ -16,6 +16,11 @@ use Maatwebsite\LaravelNovaExcel\Actions\DownloadExcel;
 
 class Product extends Resource
 {
+    public function authorizedToDelete(Request $request)
+    {
+        return false;
+    }
+
     public static $group = "data Management";
     /**
      * The model the resource corresponds to.
