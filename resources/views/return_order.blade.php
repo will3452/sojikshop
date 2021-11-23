@@ -21,7 +21,7 @@
                 class="w-full p-2 border-2 border-pink-600 rounded"></textarea>
             </div>
             <div class="mb-4">
-                <label for="" class="block font-bold text-sm text-gray-900 uppercase mb-4">Attach Photo (optional)</label>
+                <label for="" class="block font-bold text-sm text-gray-900 uppercase mb-4">Attach Photo *</label>
                 <input type="file" name="attachment" required accept="image/*">
             </div>
             <div>
