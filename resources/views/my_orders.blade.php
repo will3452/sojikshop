@@ -99,7 +99,7 @@
                             </div>
                         @endforeach
                         <a
-                        href="{{url('invoices', ['invoice'=>$order->invoice->id])}}"
+                        href="{{url('invoices', ['invoice'=>$order->invoice ? $order->invoice->id : '-'])}}"
                         class="text-xs uppercase font-bold p-2 block bg-green-200 text-white text-center mt-2 rounded">
                             View Receipt
                         </a>
