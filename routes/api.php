@@ -1,16 +1,18 @@
 <?php
 
-use App\Http\Controllers\ApiAuthenticationController;
-use App\Http\Controllers\ApiCartController;
-use App\Http\Controllers\ApiProductController;
-use App\Http\Controllers\ApiWishlistController;
-use App\Models\BuyingRequest;
 use App\Models\Cart;
-use App\Supports\Invoice as InvoiceSupport;
-use App\Supports\Order as OrderSupport;
 use Illuminate\Http\Request;
+use App\Models\BuyingRequest;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
+use App\Supports\Order as OrderSupport;
+use App\Http\Controllers\ApiCartController;
+use App\Http\Controllers\ProfileController;
+use App\Supports\Invoice as InvoiceSupport;
+use App\Http\Controllers\ApiProductController;
+use App\Http\Controllers\ApiProfileController;
+use App\Http\Controllers\ApiWishlistController;
+use App\Http\Controllers\ApiAuthenticationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +39,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/wishlists', [ApiWishlistController::class, 'getWishlists']);
     Route::post('/add-to-wishlists', [ApiWishlistController::class, 'addToWishList']);
     Route::post('/remove-to-wishlists', [ApiWishlistController::class, 'removeToWishList']);
+
+    //profile
+    Route::get('/profile', [ApiProfileController::class, 'getProfile']);
 });
+
+Route::get('/profile-demo', [ApiProfileController::class, 'getProfileDemo']);
 
 
 Route::post('/create-order', function () {

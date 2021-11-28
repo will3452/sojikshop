@@ -52,6 +52,11 @@ class Product extends Model
         return $this->price - (($this->discounts()->first()->discount->discount / 100) * $this->price);
     }
 
+    public function getNormalPriceAttribute()
+    {
+        return ($this->price - ($this->price * (nova_get_setting('vat', 12) / 100)));
+    }
+
     public function hasDiscount()
     {
         return $this->discounts()->count() >= 1;

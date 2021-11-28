@@ -36,7 +36,7 @@
         @endif
             <div class="
             p-2 text-center md:text-left font-bold text-pink-600 ">
-                P {{ number_format($product->price, 2) }}
+                P {{ number_format($product->normal_price, 2) }}
             </div>
         <div class="
         bg-green-200
