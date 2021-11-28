@@ -42,6 +42,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     //profile
     Route::get('/profile', [ApiProfileController::class, 'getProfile']);
+    Route::post('/profile', [ApiProfileController::class, 'saveProfile']);
 });
 
 Route::get('/profile-demo', [ApiProfileController::class, 'getProfileDemo']);
