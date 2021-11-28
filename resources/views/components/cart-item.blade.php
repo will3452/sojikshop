@@ -13,7 +13,7 @@
                 </h4>
             @else
                 <h4 class="text-xl font-bold text-gray-800">
-                    P {{ number_format($cart->product->price, 2) }}
+                    P {{ number_format($cart->product->normal_price, 2) }}
                 </h4>
             @endif
         </div>
