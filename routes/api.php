@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApiAddressController;
 use App\Models\Cart;
 use Illuminate\Http\Request;
 use App\Models\BuyingRequest;
@@ -43,6 +44,10 @@ Route::middleware('auth:sanctum')->group(function () {
     //profile
     Route::get('/profile', [ApiProfileController::class, 'getProfile']);
     Route::post('/profile', [ApiProfileController::class, 'saveProfile']);
+
+    //address
+    Route::get('/address', [ApiAddressController::class, 'getAddress']);
+    Route::post('/address', [ApiAddressController::class, 'store']);
 });
 
 Route::get('/profile-demo', [ApiProfileController::class, 'getProfileDemo']);
