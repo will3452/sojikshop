@@ -132,9 +132,9 @@
             <div class="text-2xl text-center font-bold text-gray-900 md:text-left">
                 @if ($product->discounts()->count())
                     <span class="text-lg">PHP</span> {{$product->discounted_price}}
-                    <span class="text-sm text-gray-600 line-through">PHP {{$product->price}}</span>
+                    <span class="text-sm text-gray-600 line-through">PHP {{$product->normal_price}}</span>
                 @else
-                <span class="text-lg">PHP</span> {{$product->price}}
+                <span class="text-lg">PHP</span> {{$product->normal_price}}
                 @endif
             </div>
             <div x-data="{star:{{$product->feedbacks()->avg('star') ?? 0}}}" class="my-2 flex justify-center md:justify-start">
