@@ -74,7 +74,7 @@
                                     Location your Order?
                                 </div>
                                 <div>
-                                    Courier: {{$order->delivery->courier ? $order->delivery->courier->name : ''}}
+                                    Courier: {{$order->delivery ? $order->delivery->courier->name : ''}}
                                 </div>
                                 <div>
                                     Tracking #: {{$order->delivery->tracking_number}}
