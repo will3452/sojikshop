@@ -1,6 +1,6 @@
 <x-layout>
-    <div class="h-screen w-full mx-auto md:w-1/2 border">
-        <div style="height:70vh !important; overflow-y:auto;">
+    <div class="h-screen w-full mx-auto md:w-1/2">
+        <div class="border" style="height:70vh !important; overflow-y:auto;">
             @forelse ($messages as $message)
                 @if ($message->sender_id === auth()->id())
                     <div class="my-4">
