@@ -22,7 +22,7 @@ class ApiCheckoutController extends Controller
                 $addToTotal = $cart->product->discounted_price * $cart->quantity;
             }
 
-            $cart->original_price = $cart->normal_price;
+            $cart->original_price = $cart->product->normal_price;
 
             $total += $addToTotal;
             if (request()->has('address_id')) {
