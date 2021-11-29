@@ -32,8 +32,6 @@ class ApiOrderController extends Controller
             $order->courier_info = $order->delivery->courier;
         }
 
-
-
         return response([
             'orders' => $orders
         ], 200);
