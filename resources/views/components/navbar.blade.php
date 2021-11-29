@@ -20,7 +20,7 @@
         {{-- <a href="/" class="transform rotate-90 block">
         <span class="material-icons text-white "> polymer </span>
         </a> --}}
-        <a href="/">
+        <a href="/" title="Home">
             <img src="/storage/{{nova_get_setting('logo')}}" alt="" class="mx-auto w-10 h-10">
         </a>
     </div>
