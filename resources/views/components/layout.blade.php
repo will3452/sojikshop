@@ -29,7 +29,8 @@
           @if (auth()->user()->addresses()->count() == 0 && (url()->current() !== route('profile') || url()->current() !== 'https://sojikshop.store/public/verification-notice' || url()->current() !=='https://sojikshop.store/verification-notice'))
             <script>
                alert('Please setup your default address first.');
-                window.location.href = '/profile/';
+               window.location.href = '/profile/';
+               //
             </script>
           @endif
       @endauth
