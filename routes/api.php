@@ -15,6 +15,7 @@ use App\Http\Controllers\ApiProfileController;
 use App\Http\Controllers\ApiWishlistController;
 use App\Http\Controllers\ApiAuthenticationController;
 use App\Http\Controllers\ApiCheckoutController;
+use App\Http\Controllers\ApiOrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,7 +53,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/address', [ApiAddressController::class, 'getAddress']);
     Route::post('/address', [ApiAddressController::class, 'store']);
 
+    //checkout or invoice
     Route::get('/invoice', [ApiCheckoutController::class, 'getInvoice']);
+
+    //orders
+    Route::get('/orders', [ApiOrderController::class, 'myOrders']);
 });
 
 Route::get('/profile-demo', [ApiProfileController::class, 'getProfileDemo']);
