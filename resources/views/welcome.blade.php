@@ -1,4 +1,13 @@
 <x-layout>
+    @auth
+          @if (auth()->user()->addresses()->count() == 0 && url()->current() !== route('profile'))
+          <script>
+                alert('Please setup your default address first.');
+                window.location.href = '/profile/';
+                //
+            </script>
+          @endif
+      @endauth
   <x-banner></x-banner>
   <x-search-bar></x-search-bar>
   <x-title>new arrival</x-title>

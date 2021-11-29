@@ -1,4 +1,13 @@
 <x-layout>
+    @auth
+          @if (auth()->user()->addresses()->count() == 0 && url()->current() !== route('profile'))
+          <script>
+                alert('Please setup your default address first.');
+                window.location.href = '/profile/';
+                //
+            </script>
+          @endif
+      @endauth
     <div class="md:hidden fixed w-full h-12 bottom-0 left-0 right-0 bg-purple-900 flex items-center justify-around px-2">
         @if (!$product->carts()->where('user_id', auth()->id())->exists())
                 @if ($product->quantity != 0)
