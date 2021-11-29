@@ -24,14 +24,16 @@
                 @endif
             @endforeach
             <div id="latest">
-
+                <a class="mx-2 p-2 pl-0 rounded underline font-bold" href="{{url()->current()}}">refresh message</a>
             </div>
         </div>
         <form class="h-4/12 flex items-center" method="POST" action="/chat">
             @csrf
             <input type="hidden" name="receiver_id" value="{{$user->id}}"/>
             <textarea name="content" id="" class="w-full border rounded"></textarea>
-            <button class="mx-2 bg-green-200 p-2 rounded">send</button>
+            <div>
+                <button class="mx-2 bg-green-200 p-2 rounded">send</button>
+            </div>
         </form>
     </div>
 </x-layout>

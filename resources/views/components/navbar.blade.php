@@ -30,6 +30,11 @@
         @endauth
     </div>
     <div>
+        @auth
+        <a href="/chat/1#latest" class="px-2">
+            <span class="material-icons text-purple-900"> mail </span>
+        </a>
+        @endauth
         <a href="{{route('my.wishlist')}}" class="px-2">
         <span class="material-icons text-purple-900"> favorite </span>
         <x-dot type="heart"></x-dot>
