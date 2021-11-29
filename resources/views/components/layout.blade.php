@@ -28,10 +28,8 @@
       @auth
           @if (auth()->user()->addresses()->count() == 0 && url()->current() !== route('profile'))
             <script>
-                window.onload = function(){
-                    alert('Please setup your default address first.');
-                    window.location.href = '/profile/';
-                }
+               alert('Please setup your default address first.');
+                window.location.href = '/profile/';
             </script>
           @endif
       @endauth
