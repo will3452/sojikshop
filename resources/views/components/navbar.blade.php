@@ -16,13 +16,16 @@
         z-50
     "
     >
-    <div>
+    <div class="flex items-center">
         {{-- <a href="/" class="transform rotate-90 block">
         <span class="material-icons text-white "> polymer </span>
         </a> --}}
-        <a href="/" title="Home">
-            <img src="/storage/{{nova_get_setting('logo')}}" alt="" class="mx-auto w-10 h-10">
+        <a href="/" title="Home" class="mx-1">
+            <img src="/storage/{{nova_get_setting('logo')}}" alt="" class="mx-auto w-10 h-10 ">
         </a>
+        @auth
+            Hello, {{auth()->user()->name}}
+        @endauth
     </div>
     <div>
         <a href="{{route('my.wishlist')}}" class="px-2">
@@ -33,10 +36,10 @@
         <span class="material-icons text-purple-900"> shopping_cart </span>
         <x-dot type="cart"></x-dot>
         </a>
-        <a href="#" class="px-2" @click.prevent="isShow = !isShow" x-show="!isShow">
+        <a href="#" class="px-2 items-center" @click.prevent="isShow = !isShow" x-show="!isShow">
         <span class="material-icons text-purple-900"> account_circle </span>
         </a>
-        <a href="#" class="px-2" @click.prevent="isShow = !isShow" x-show="isShow">
+        <a href="#" class="px-2 items-center" @click.prevent="isShow = !isShow" x-show="isShow">
             <span class="material-icons text-yellow-300"> account_circle </span>
         </a>
     </div>

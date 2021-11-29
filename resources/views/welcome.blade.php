@@ -23,5 +23,5 @@
       <a href="/terms" class="mx-2 text-green-900" >Terms and Conditions</a>|
       <a href="/data" class="mx-2 text-green-900" >FAQ</a>
   </div>
-  {!!nova_get_setting('facebook_scripts')!!}
+  {{-- {!!nova_get_setting('facebook_scripts')!!} --}}
 </x-layout>
