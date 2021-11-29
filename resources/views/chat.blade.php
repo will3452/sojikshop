@@ -1,33 +1,37 @@
 <x-layout>
     <div class="h-screen w-full mx-auto md:w-1/2">
-        <div class="h-8/12">
+        <div style="height:70vh !important; overflow-y:auto;">
             @foreach ($messages as $message)
                 @if ($message->sender_id === auth()->id())
-                    <div>
-                        <div>
-                            You
-                        </div>
-                        <div class="bg-blue-300 p-2 w-full mb-2" style="border-radius:20px 20px 0px 20px">
+                    <div class="my-4">
+                        <div class="bg-blue-300 p-2 w-full" style="border-radius:20px 20px 0px 20px">
                             {{$message->content}}
+                        </div>
+                        <div class="text-xs font-bold text-gray-300">
+                            {{$message->created_at->format('m-d-Y H:i a')}}
                         </div>
                     </div>
                 @else
-                <div>
-                    <div>
-                        {{$message->sender->name}}
+                    <div class="my-4">
+
+                        <div class="bg-gray-300 p-2 w-full " style="border-radius:20px 20px 20px 0px">
+                            {{$message->content}}
+                        </div>
+                        <div class="text-xs font-bold text-gray-300">
+                            {{$message->created_at->format('m-d-Y h:i a')}}
+                        </div>
                     </div>
-                    <div class="bg-gray-300 p-2 w-full mb-2" style="border-radius:20px 20px 20px 0px">
-                        {{$message->content}}
-                    </div>
-                </div>
                 @endif
             @endforeach
-        </div>
-        <form class="h-4/12 flex">
-            <textarea name="" id="" cols="30" rows="10">
+            <div id="latest">
 
-            </textarea>
-            <button>send</button>
+            </div>
+        </div>
+        <form class="h-4/12 flex items-center" method="POST" action="/chat">
+            @csrf
+            <input type="hidden" name="receiver_id" value="{{$user->id}}"/>
+            <textarea name="content" id="" class="w-full border rounded"></textarea>
+            <button class="mx-2 bg-green-200 p-2 rounded">send</button>
         </form>
     </div>
 </x-layout>

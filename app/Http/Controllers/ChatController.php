@@ -16,8 +16,19 @@ class ChatController extends Controller
         ])->orWhere([
             'sender_id' => auth()->user()->id,
             'receiver_id' => $user->id,
-        ])->latest()->get();
+        ])->get();
 
-        return view('chat', compact('messages'));
+        return view('chat', compact('messages', 'user'));
+    }
+
+    public function postMessage()
+    {
+        $data = request()->validate([
+            'receiver_id' => 'required',
+            'content' => 'required',
+        ]);
+
+        Message::create($data);
+        return back();
     }
 }

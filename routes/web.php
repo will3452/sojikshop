@@ -104,6 +104,7 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::redirect('/home', '/');
 
     Route::get('/chat/{user}', [ChatController::class, 'showMessage']);
+    Route::post('/chat', [ChatController::class, 'postMessage']);
 
     Route::post('/add-to-cart/{product}', [CartController::class, 'addToCart']);
     Route::post('/increase-quantity/{cart}', [CartController::class, 'increaseQuantity']);
