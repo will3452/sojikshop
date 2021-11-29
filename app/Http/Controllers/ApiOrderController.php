@@ -25,14 +25,14 @@ class ApiOrderController extends Controller
                 'status'=>request()->active
             ])->latest()->get();
         }
-
-        if (request()->active == Order::STATUS_DELIVERY) {
-            foreach ($orders as $order) {
-                $order->json_items = json_decode($order->items);
+        foreach ($orders as $order) {
+            $order->json_items = json_decode($order->items);
+            if (request()->active == Order::STATUS_DELIVERY) {
                 $order->delivery_info = $order->delivery;
                 $order->courier_info = $order->delivery->courier;
             }
         }
+
 
         return response([
             'orders' => $orders
