@@ -62,6 +62,7 @@ class MarkAsDelivery extends Action
     {
         return [
             Select::make('Courier', 'courier_id')
+                ->rules('required')
                 ->options(Courier::get()->pluck('name', 'id')),
             Text::make('Tracking Number'),
         ];
