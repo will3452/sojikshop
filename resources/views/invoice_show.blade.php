@@ -20,9 +20,9 @@
                 <div>
                     {{$invoice->user->mobile ?? auth()->user()->mobile}}
                 </div>
-                <div>
+                {{-- <div>
                     {{json_decode($invoice->order->location)->shipping_inline_address}}
-                </div>
+                </div> --}}
             </div>
             <div class="w-1/2 border p-2">
                 <div class="font-bold uppercase">
