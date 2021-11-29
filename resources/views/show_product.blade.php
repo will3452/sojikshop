@@ -25,7 +25,7 @@
                     ADD TO CART
                     </button>
                 </form>
-                @else
+                {{-- @else
                 <form
                     action="#pre-order"
                     method="POST"
@@ -49,7 +49,7 @@
                     >
                     Pre-Order
                 </a>
-                </form>
+                </form> --}}
                 @endif
             @else
             <a
