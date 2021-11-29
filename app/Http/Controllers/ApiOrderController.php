@@ -26,10 +26,12 @@ class ApiOrderController extends Controller
             ])->latest()->get();
         }
 
-        foreach ($orders as $order) {
-            $order->json_items = json_decode($order->items);
-            $order->delivery_info = $order->delivery;
-            $order->courier_info = $order->delivery->courier;
+        if (request()->active == Order::STATUS_DELIVERY) {
+            foreach ($orders as $order) {
+                $order->json_items = json_decode($order->items);
+                $order->delivery_info = $order->delivery;
+                $order->courier_info = $order->delivery->courier;
+            }
         }
 
         return response([
