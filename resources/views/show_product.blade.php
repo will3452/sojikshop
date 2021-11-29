@@ -72,7 +72,7 @@
                 </a>
             @endif
 
-            @if (!$product->wishLists()->where('user_id', auth()->id())->exists())
+            @if (!$product->wishLists()->where('user_id', auth()->id())->exists() && $product->quantity == 0)
                 <form
                 action="{{route('add.wishlist', ['product'=>$product->id])}}"
                 method="POST"
@@ -246,7 +246,7 @@
                             </div>
                         @endif
 
-                        @if (!$product->wishLists()->where('user_id', auth()->id())->exists())
+                        @if (!$product->wishLists()->where('user_id', auth()->id())->exists() && $product->quantity == 0)
                             <form
                             action="{{route('add.wishlist', ['product'=>$product->id])}}"
                             method="POST"
