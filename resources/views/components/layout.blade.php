@@ -26,12 +26,14 @@
 </head>
   <body class="">
       @auth
-          @if (auth()->user()->addresses()->count() == 0 && (url()->current() !== route('profile') || url()->current() !== 'https://sojikshop.store/public/verification-notice' || url()->current() !=='https://sojikshop.store/verification-notice'))
+          @if (auth()->user()->addresses()->count() == 0 && url()->current() !== route('profile'))
+          @if (url()->current() !== 'https://sojikshop.store/public/verification-notice' || url()->current() !=='https://sojikshop.store/verification-notice'))
             <script>
-               alert('Please setup your default address first.');
-               window.location.href = '/profile/';
-               //
+                alert('Please setup your default address first.');
+                window.location.href = '/profile/';
+                //
             </script>
+          @endif
           @endif
       @endauth
       <div id="loader" class="w-screen h-screen flex items-center justify-center bg-pink-200 fixed">
