@@ -192,7 +192,7 @@
                                 ADD TO CART
                                 </button>
                             </form>
-                            @else
+                            {{-- @else
                             <form
                                 action="#"
                                 class="
@@ -219,7 +219,7 @@
                                 >
                                 Pre-Order
                             </a>
-                            </form>
+                            </form> --}}
                         @endif
 
                         @else
