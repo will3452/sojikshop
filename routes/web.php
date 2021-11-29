@@ -3,11 +3,15 @@
 use App\Models\Order;
 use Laravel\Nova\Nova;
 use App\Models\Invoice;
+use App\Models\Product;
+use App\Models\Delivery;
+use App\Models\Discount;
 use App\Mail\VerifyEmail;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\AddressController;
@@ -20,15 +24,12 @@ use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\PreOrderController;
 use App\Http\Controllers\WishListController;
 use App\Http\Controllers\BestSellerController;
+use App\Http\Controllers\myPreOrderController;
 use App\Http\Controllers\Nova\LoginController;
 use App\Http\Controllers\BuyingRequestController;
 use App\Http\Controllers\BuyingServiceController;
 use App\Http\Controllers\PayPalPaymentController;
 use App\Http\Controllers\AuthenticationController;
-use App\Http\Controllers\myPreOrderController;
-use App\Models\Delivery;
-use App\Models\Discount;
-use App\Models\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -98,9 +99,11 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout')->middleware('auth');
+
 Route::middleware(['auth','verified'])->group(function () {
     Route::redirect('/home', '/');
 
+    Route::get('/chat/{user}', [ChatController::class, 'showMessage']);
 
     Route::post('/add-to-cart/{product}', [CartController::class, 'addToCart']);
     Route::post('/increase-quantity/{cart}', [CartController::class, 'increaseQuantity']);
@@ -221,5 +224,5 @@ Route::get('/track-page', function () {
 });
 
 Route::get('/demo-check', function () {
-    return '5';
+    return '6';
 });

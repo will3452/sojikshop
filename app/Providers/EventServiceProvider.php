@@ -5,10 +5,12 @@ namespace App\Providers;
 use App\Models\BuyingRequest;
 use App\Models\Order;
 use App\Models\Invoice;
+use App\Models\Message;
 use App\Models\Product;
 use App\Observers\BuyingRequestObserver;
 use App\Observers\OrderObserver;
 use App\Observers\InvoiceObserver;
+use App\Observers\MessageObserver;
 use App\Observers\ProductObserver;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
@@ -38,5 +40,6 @@ class EventServiceProvider extends ServiceProvider
         Product::observe(ProductObserver::class);
         Invoice::observe(InvoiceObserver::class);
         Order::observe(OrderObserver::class);
+        Message::observe(MessageObserver::class);
     }
 }

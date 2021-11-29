@@ -26,6 +26,10 @@ class ApiOrderController extends Controller
             ])->latest()->get();
         }
 
+        foreach ($orders as $order) {
+            $order->json_items = json_decode($order->items);
+        }
+
 
         return response([
             'orders' => $orders
