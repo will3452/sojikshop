@@ -28,7 +28,9 @@ class ApiOrderController extends Controller
 
         foreach ($orders as $order) {
             $order->json_items = json_decode($order->items);
+            $order->delivery_info = $order->delivery->with('courier');
         }
+
 
 
         return response([

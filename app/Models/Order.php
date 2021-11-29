@@ -63,6 +63,7 @@ class Order extends Model
         return $this->hasOne(Delivery::class);
     }
 
+
     public static function TOTALSALES()
     {
         return self::where('status', self::STATUS_COMPLETED)->get()->groupBy(function ($item) {
