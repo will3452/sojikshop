@@ -21,6 +21,9 @@ class ApiCheckoutController extends Controller
             if ($cart->product->hasDiscount()) {
                 $addToTotal = $cart->product->discounted_price * $cart->quantity;
             }
+
+            $cart->original_price = $cart->normal_price;
+
             $total += $addToTotal;
             if (request()->has('address_id')) {
                 $address = auth()->user()->addresses()->findOrFail(request()->address_id);

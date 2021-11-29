@@ -34,7 +34,7 @@
                             </td>
                             @else
                             <td>
-                                PHP {{number_format($cart->product->price * $cart->quantity, 2)}}
+                                PHP {{number_format($cart->product->normal_price * $cart->quantity, 2)}}
                             </td>
                             @endif
                         </tr>
