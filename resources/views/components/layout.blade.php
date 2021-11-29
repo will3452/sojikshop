@@ -25,6 +25,16 @@
     </style>
 </head>
   <body class="">
+      @auth
+          @if (auth()->user()->addresses()->count() == 0)
+            <script>
+                window.onload = function(){
+                    alert('Please setup your default address first.');
+                    window.location.href = '/profile/';
+                }
+            </script>
+          @endif
+      @endauth
       <div id="loader" class="w-screen h-screen flex items-center justify-center bg-pink-200 fixed">
           <div class="animate-spin w-10 h-10 border-4 rounded-full border-green-500" style="border-top-color: transparent;"></div>
       </div>
