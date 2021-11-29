@@ -58,6 +58,8 @@ Route::middleware('auth:sanctum')->group(function () {
 
     //orders
     Route::get('/orders', [ApiOrderController::class, 'myOrders']);
+    Route::post('order-completed/{order}', [ApiOrderController::class, 'markAsCompleted']); // mark as completed
+    Route::post('order-return/{order}', [ApiOrderController::class, 'postReturnOrder']); // post order return
 });
 
 Route::get('/profile-demo', [ApiProfileController::class, 'getProfileDemo']);

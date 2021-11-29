@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\ReturnReason;
 use Illuminate\Http\Request;
 
 class ApiOrderController extends Controller
@@ -36,6 +37,34 @@ class ApiOrderController extends Controller
 
         return response([
             'orders' => $orders
+        ], 200);
+    }
+
+    public function markAsCompleted(Order $order)
+    {
+        $order->markAsComplete();
+
+        return response([
+            'order' => $order,
+        ], 200);
+    }
+
+    public function postReturnOrder(Order $order)
+    {
+        $data = request()->validate([
+            'reason'=>'required|max:200',
+        ]);
+
+        ReturnReason::create([
+            'user_id'=>auth()->id(),
+            'reason'=>$data['reason'],
+            'order_id'=>$order->id,
+        ]);
+
+        $order->markAsReturn();
+
+        return response([
+            'order' => $order,
         ], 200);
     }
 }

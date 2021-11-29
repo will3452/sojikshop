@@ -15,10 +15,10 @@
                     Receipt For
                 </div>
                 <div>
-                    {{$invoice->user->name ?? auth()->user()->name}}
+                    {{$invoice->user->name ?? $user->name}}
                 </div>
                 <div>
-                    {{$invoice->user->mobile ?? auth()->user()->mobile}}
+                    {{$invoice->user->mobile ?? $user->mobile}}
                 </div>
                 {{-- <div>
                     {{json_decode($invoice->order->location)->shipping_inline_address}}
@@ -107,6 +107,4 @@
     <div class="text-center mt-2">
         <button id="printbutton" class="px-4 py-2 font-bold rounded bg-green-200 uppercase text-sm" onclick="window.print()" >print</button>
     </div>
-
-
 </x-layout>

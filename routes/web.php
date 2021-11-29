@@ -136,9 +136,6 @@ Route::middleware(['auth','verified'])->group(function () {
     //pre-orders
     Route::get('/my-pre-orders', [myPreOrderController::class, 'list']);
 
-    //invoice
-    Route::get('/invoices/{invoice}', [InvoiceController::class, 'show']);
-
     //pre-ordering
     Route::get('/preorder-set/{product}', [PreOrderController::class, 'setPreOrder']);
     Route::get('/preorder-pay', [PreOrderController::class, 'payPreOrder']);
@@ -172,6 +169,9 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::view('/terms', 'terms');
     Route::view('/data', 'data');
 });
+
+//invoice
+Route::get('/invoices/{invoice}', [InvoiceController::class, 'show']);
 
 //search
 Route::get('/search', [SearchController::class, 'search'])->name('search');
