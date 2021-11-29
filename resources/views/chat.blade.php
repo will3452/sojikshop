@@ -1,7 +1,7 @@
 <x-layout>
     <div class="h-screen w-full mx-auto md:w-1/2">
         <div style="height:70vh !important; overflow-y:auto;">
-            @foreach ($messages as $message)
+            @forelse ($messages as $message)
                 @if ($message->sender_id === auth()->id())
                     <div class="my-4">
                         <div class="bg-blue-300 p-2 w-full" style="border-radius:20px 20px 0px 20px">
@@ -22,7 +22,11 @@
                         </div>
                     </div>
                 @endif
-            @endforeach
+            @empty
+                <div class="text-center p-2">
+                    No Message Found.
+                </div>
+            @endforelse
             <div id="latest">
                 <a class="mx-2 p-2 pl-0 rounded underline font-bold" href="{{url()->current()}}">refresh message</a>
             </div>
