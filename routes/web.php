@@ -221,5 +221,5 @@ Route::get('/track-page', function () {
 });
 
 Route::get('/demo-check', function () {
-    return '3';
+    return '4';
 });
