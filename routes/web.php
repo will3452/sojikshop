@@ -30,6 +30,7 @@ use App\Http\Controllers\BuyingRequestController;
 use App\Http\Controllers\BuyingServiceController;
 use App\Http\Controllers\PayPalPaymentController;
 use App\Http\Controllers\AuthenticationController;
+use App\Models\Page;
 
 /*
 |--------------------------------------------------------------------------
@@ -182,13 +183,7 @@ Route::get('/pre-order', function () {
     return view('pre-orders', compact('products'));
 });
 
-Route::get('/page', function () {
-    $data = request()->validate([
-        'page'=>'required'
-    ]);
-
-    $page = $data['page'];
-
+Route::get('/page/{$page}', function (Page $page) {
     return view('show_page', compact('page'));
 });
 
