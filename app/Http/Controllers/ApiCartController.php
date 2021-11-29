@@ -56,4 +56,38 @@ class ApiCartController extends Controller
             'status'=>'deleted'
         ], 200);
     }
+
+    public function increaseQuantity(Cart $cart)
+    {
+        $qty = $cart->quantity + 1;
+        if ($qty > $cart->product->quantity) {
+            return response([
+                'result' => 'error',
+            ], 200);
+        }
+        $cart->update([
+            'quantity'=>$qty
+        ]);
+
+        return response([
+            'result' => 'success',
+        ], 200);
+    }
+
+    public function decreaseQuantity(Cart $cart)
+    {
+        $qty = $cart->quantity - 1;
+        if ($qty <= 0) {
+            return response([
+                'result' => 'error',
+            ], 200);
+        }
+        $cart->update([
+            'quantity'=>$qty
+        ]);
+
+        return response([
+            'result' => 'success',
+        ], 200);
+    }
 }

@@ -35,6 +35,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/my-carts', [ApiCartController::class, 'myCart']);
     Route::post('/add-to-cart', [ApiCartController::class, 'addToCart']);
     Route::post('/remove-to-cart', [ApiCartController::class, 'removeToCart']);
+    Route::post('/increase-quantity/{cart}', [ApiCartController::class, 'increaseQuantity']);
+    Route::post('/decrease-quantity/{cart}', [ApiCartController::class, 'decreaseQuantity']); // params cart-id
 
     //wishlists
     Route::get('/wishlists', [ApiWishlistController::class, 'getWishlists']);
