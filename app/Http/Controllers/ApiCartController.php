@@ -26,6 +26,16 @@ class ApiCartController extends Controller
             'product_id'=>'required'
         ]);
 
+        $isPreOrder = false;
+        if (auth()->user()->carts()->first()) {
+            $isPreOrder = auth()->user()->carts()->first()->product->is_pre_order;
+        }
+        if ($isPreOrder != $product->is_pre_order) {
+            foreach (auth()->user()->carts as $cart) {
+                $cart->delete();
+            }
+        }
+
         $product = Product::find(request()->product_id);
 
         $cart = Cart::create([
