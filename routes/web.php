@@ -183,7 +183,7 @@ Route::get('/pre-order', function () {
     return view('pre-orders', compact('products'));
 });
 
-Route::get('/page/{$page}', function (Page $page) {
+Route::get('/page/{page}', function (Page $page) {
     return view('show_page', compact('page'));
 });
 
