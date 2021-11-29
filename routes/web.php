@@ -148,7 +148,7 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::post('/write-feedback/{order}', [FeedbackController::class, 'saveFeedback']);
 
     //profile
-    Route::get('/profile', [ProfileController::class, 'myProfile']);
+    Route::get('/profile', [ProfileController::class, 'myProfile'])->name('profile');
     Route::post('/profile', [ProfileController::class, 'saveProfile']);
 
     //buying request

@@ -26,7 +26,7 @@
 </head>
   <body class="">
       @auth
-          @if (auth()->user()->addresses()->count() == 0)
+          @if (auth()->user()->addresses()->count() == 0 && url()->current() !== route('profile'))
             <script>
                 window.onload = function(){
                     alert('Please setup your default address first.');
