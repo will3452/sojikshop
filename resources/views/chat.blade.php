@@ -13,7 +13,6 @@
                     </div>
                 @else
                     <div class="my-4">
-
                         <div class="bg-gray-300 p-2 w-full " style="border-radius:20px 20px 20px 0px">
                             {{$message->content}}
                         </div>
@@ -23,7 +22,7 @@
                     </div>
                 @endif
             @empty
-                <div class="text-center p-2">
+                <div class="text-center p-2 h-50">
                     No Message Found.
                 </div>
             @endforelse
