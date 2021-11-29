@@ -46,6 +46,7 @@ class ApiCheckoutController extends Controller
             'shipping' => $shipping,
             'carts' => $carts,
             'address' => $address,
+            'is_pre_order' => $isPreOrder,
             'vat' => nova_get_setting('vat') ?? 12,
         ], 200);
     }
