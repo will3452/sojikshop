@@ -14,6 +14,7 @@ use App\Http\Controllers\ApiProductController;
 use App\Http\Controllers\ApiProfileController;
 use App\Http\Controllers\ApiWishlistController;
 use App\Http\Controllers\ApiAuthenticationController;
+use App\Http\Controllers\ApiBuyingServiceController;
 use App\Http\Controllers\ApiCheckoutController;
 use App\Http\Controllers\ApiFeedbackController;
 use App\Http\Controllers\ApiOrderController;
@@ -64,6 +65,9 @@ Route::middleware('auth:sanctum')->group(function () {
 
     //feedback
     Route::post('/feedback/{order}', [ApiFeedbackController::class, 'saveFeedback']);
+
+    //buying request
+    Route::post('/buying-request', [ApiBuyingServiceController::class, 'submitForm']);
 });
 
 Route::get('/profile-demo', [ApiProfileController::class, 'getProfileDemo']);
