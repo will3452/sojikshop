@@ -9,9 +9,9 @@ class ApiProductController extends Controller
 {
     public function index()
     {
-        $products = Product::get();
+        $products = Product::latest()->get();
 
-        if(request()->has('keyword')){
+        if (request()->has('keyword')) {
             $keyword = request()->keyword;
             $products = Product::where('name', 'LIKE', '%'.$keyword.'%')
                 ->orWhere('description', 'LIKE', '%'.$keyword.'%')
@@ -20,6 +20,11 @@ class ApiProductController extends Controller
 
         if (request()->has('_limit')) {
             $products = Product::limit(request()->_limit)->get();
+        }
+
+        foreach ($products as $product) {
+            $product->discounted_price = $product->discounted_price;
+            $product->feedbacks = $product->feedbacks;
         }
 
         return response([
