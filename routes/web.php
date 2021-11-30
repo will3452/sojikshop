@@ -141,9 +141,7 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::get('/preorder-set/{product}', [PreOrderController::class, 'setPreOrder']);
     Route::get('/preorder-pay', [PreOrderController::class, 'payPreOrder']);
 
-    //feedback here
-    Route::get('/write-feedback/{order}', [FeedbackController::class, 'writeFeedback']);
-    Route::post('/write-feedback/{order}', [FeedbackController::class, 'saveFeedback']);
+
 
     //profile
     Route::get('/profile', [ProfileController::class, 'myProfile'])->name('profile');
@@ -170,6 +168,10 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::view('/terms', 'terms');
     Route::view('/data', 'data');
 });
+
+ //feedback here
+ Route::get('/write-feedback/{order}', [FeedbackController::class, 'writeFeedback']);
+ Route::post('/write-feedback/{order}', [FeedbackController::class, 'saveFeedback']);
 
 //invoice
 Route::get('/invoices/{invoice}', [InvoiceController::class, 'show']);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class FeedbackController extends Controller
@@ -15,16 +16,16 @@ class FeedbackController extends Controller
 
     public function saveFeedback(Order $order)
     {
+        $user = User::find($order->user_id);
         $feedbacks = [];
         foreach (request()->product_id as $key => $value) {
-            $feedbacks[] = auth()->user()->feedbacks()->create([
+            $feedbacks[] = $user->feedbacks()->create([
                 'product_id'=>request()->product_id[$key],
                 'star'=>request()->star[$key],
                 'message'=>request()->message[$key]
             ]);
         }
 
-        alert('Thanks, Your Feedback has been submitted!');
-        return redirect('/');
+        return 'feedback submitted!';
     }
 }
