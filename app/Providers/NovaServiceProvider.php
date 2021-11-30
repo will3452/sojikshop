@@ -47,64 +47,6 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
             Image::make('Favicon'),
 
-            CKEditor5Classic::make('FAQ', 'data_privacy')
-                ->options([
-                    'toolbar' => [
-                        'heading',
-                        '|',
-                        'bold',
-                        'italic',
-                        'link',
-                        'bulletedList',
-                        'numberedList',
-                        'blockQuote',
-                    ],
-                ]),
-
-            CKEditor5Classic::make('Terms and Conditions')
-                ->options([
-                    'toolbar' => [
-                        'heading',
-                        '|',
-                        'bold',
-                        'italic',
-                        'link',
-                        'bulletedList',
-                        'numberedList',
-                        'blockQuote',
-                    ],
-                ]),
-
-                CKEditor5Classic::make('Contact Us')
-                ->options([
-                    'toolbar' => [
-                        'heading',
-                        '|',
-                        'bold',
-                        'italic',
-                        'link',
-                        'bulletedList',
-                        'numberedList',
-                        'blockQuote',
-                    ],
-                ]),
-
-                CKEditor5Classic::make('About Us')
-                ->options([
-                    'toolbar' => [
-                        'heading',
-                        '|',
-                        'bold',
-                        'italic',
-                        'link',
-                        'bulletedList',
-                        'numberedList',
-                        'blockQuote',
-                    ],
-                ]),
-
-            Code::make('Facebook scripts'),
-
             Text::make('Copyright'),
 
             Number::make('VAT')->placeholder('in %'),

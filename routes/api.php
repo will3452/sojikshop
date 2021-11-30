@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\ApiAddressController;
 use App\Models\Cart;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\BuyingRequest;
 use Illuminate\Support\Facades\Log;
@@ -10,14 +10,16 @@ use App\Supports\Order as OrderSupport;
 use App\Http\Controllers\ApiCartController;
 use App\Http\Controllers\ProfileController;
 use App\Supports\Invoice as InvoiceSupport;
+use App\Http\Controllers\ApiOrderController;
+use App\Http\Controllers\ApiAddressController;
 use App\Http\Controllers\ApiProductController;
 use App\Http\Controllers\ApiProfileController;
-use App\Http\Controllers\ApiWishlistController;
-use App\Http\Controllers\ApiAuthenticationController;
-use App\Http\Controllers\ApiBuyingServiceController;
 use App\Http\Controllers\ApiCheckoutController;
 use App\Http\Controllers\ApiFeedbackController;
-use App\Http\Controllers\ApiOrderController;
+use App\Http\Controllers\ApiWishlistController;
+use App\Http\Controllers\ApiBestSellerController;
+use App\Http\Controllers\ApiBuyingServiceController;
+use App\Http\Controllers\ApiAuthenticationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,6 +70,17 @@ Route::middleware('auth:sanctum')->group(function () {
 
     //buying request
     Route::post('/buying-request', [ApiBuyingServiceController::class, 'submitForm']);
+});
+
+//best seller
+Route::get('/best-seller', [ApiBestSellerController::class, 'bestSeller']);
+
+Route::get('/pre-orders', function () {
+    $products = Product::where('is_pre_order', true)->get();
+
+    return response([
+        'products' => $products
+    ], 200);
 });
 
 Route::get('/profile-demo', [ApiProfileController::class, 'getProfileDemo']);
