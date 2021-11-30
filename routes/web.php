@@ -134,8 +134,7 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::post('return-order/{order}', [OrderController::class, 'postReturnOrder']);
     Route::view('out-of-stack', 'pre-orders');
 
-    //pre-orders
-    Route::get('/my-pre-orders', [myPreOrderController::class, 'list']);
+
 
     //pre-ordering
     Route::get('/preorder-set/{product}', [PreOrderController::class, 'setPreOrder']);
@@ -170,6 +169,9 @@ Route::middleware(['auth','verified'])->group(function () {
 });
 
 Route::get('my-requets', [BuyingServiceController::class, 'index'])->name('my-requests');
+
+//pre-orders
+Route::get('/my-pre-orders', [myPreOrderController::class, 'list']);
 
  //feedback here
  Route::get('/write-feedback/{order}', [FeedbackController::class, 'writeFeedback']);
