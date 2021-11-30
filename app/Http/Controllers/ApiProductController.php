@@ -40,6 +40,8 @@ class ApiProductController extends Controller
                 'product'=>[]
             ], 400);
         }
+        $product->discounted_price = $product->discounted_price;
+        $product->feedbacks = $product->feedbacks;
         return response([
             'product'=>$product,
         ], 200);
