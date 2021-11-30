@@ -11,7 +11,7 @@ class ApiBestSellerController extends Controller
     {
         $products = Product::where('sell_count', '!=', 0)->orderBy('sell_count', 'DESC')->take(10)->get();
         return response([
-            'response' => $products,
+            'products' => $products,
         ], 200);
     }
 }
