@@ -27,7 +27,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (auth()->user()->buyingRequests as $item)
+                    @foreach ($user->buyingRequests as $item)
                         <tr x-data="{
                             modalisopen:false,
                         }">

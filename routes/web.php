@@ -128,7 +128,7 @@ Route::middleware(['auth','verified'])->group(function () {
 
     //orders
     Route::get('my-orders', [OrderController::class, 'myOrders'])->name('my-orders');
-    Route::get('my-requets', [BuyingServiceController::class, 'index'])->name('my-requests');
+
     Route::post('mark-as-completed/{order}', [OrderController::class, 'markAsCompleted']);
     Route::get('return-order/{order}', [OrderController::class, 'returnOrder']);
     Route::post('return-order/{order}', [OrderController::class, 'postReturnOrder']);
@@ -168,6 +168,8 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::view('/terms', 'terms');
     Route::view('/data', 'data');
 });
+
+Route::get('my-requets', [BuyingServiceController::class, 'index'])->name('my-requests');
 
  //feedback here
  Route::get('/write-feedback/{order}', [FeedbackController::class, 'writeFeedback']);

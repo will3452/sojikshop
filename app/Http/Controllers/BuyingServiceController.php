@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BuyingRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\BuyingRequest;
 
 class BuyingServiceController extends Controller
 {
@@ -14,7 +15,13 @@ class BuyingServiceController extends Controller
 
     public function index()
     {
-        return view('my_requests');
+        if (request()->has('user_id')) {
+            $user = User::find(request()->user_id);
+        } else {
+            $user = auth()->user();
+        }
+
+        return view('my_requests', compact('user'));
     }
 
     public function submitForm()
