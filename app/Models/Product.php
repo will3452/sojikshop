@@ -49,6 +49,9 @@ class Product extends Model
 
     public function getDiscountedPriceAttribute()
     {
+        if (!$this->discounts()->first()) {
+            return false;
+        }
         return $this->price - (($this->discounts()->first()->discount->discount / 100) * $this->price);
     }
 
