@@ -77,7 +77,6 @@ Route::get('/best-seller', [ApiBestSellerController::class, 'bestSeller']);
 
 Route::get('/pre-orders', function () {
     $products = Product::where('is_pre_order', true)->get();
-
     return response([
         'products' => $products
     ], 200);
