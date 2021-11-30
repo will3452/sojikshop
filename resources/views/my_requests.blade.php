@@ -6,7 +6,7 @@
             <x-title>
                 My Buying Requests
             </x-title>
-            <table class=" text-center" id="myTable">
+            <table class="w-screen overflow-auto text-center" id="myTable">
                 <thead>
                     <tr>
                         <th class="border border-black bg-green-200">

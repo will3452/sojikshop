@@ -3,7 +3,7 @@
         <x-title>
             My Pre-Orders
         </x-title>
-        <div class="w-2/3 mx-auto">
+        <div class="w-2/3 mx-auto w-screen overflow-auto">
             <table class="text-center" id="myTable">
                 <thead>
                     <tr>
