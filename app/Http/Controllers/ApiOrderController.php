@@ -23,13 +23,14 @@ class ApiOrderController extends Controller
         } else {
             $orders = Order::where([
                 'user_id'=>auth()->user()->id,
-                'status'=>request()->active
+                'status'=>request()->active,
             ])->latest()->get();
         }
         foreach ($orders as $order) {
             $order->json_items = json_decode($order->items);
             foreach ($order->json_items->products as $item) {
                 $item->product_id = \App\Models\Product::where('name', $item->name)->first()->id;
+                $item->order_id = $order->id;
             }
             if (request()->active == Order::STATUS_DELIVERY) {
                 $order->delivery_info = $order->delivery;
