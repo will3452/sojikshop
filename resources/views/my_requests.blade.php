@@ -6,7 +6,7 @@
             <x-title>
                 My Buying Requests
             </x-title>
-            <div class="w-screen overflow-auto">
+            <div class="w-full overflow-auto">
                 <table class=" text-center" id="myTable">
                     <thead>
                         <tr>
