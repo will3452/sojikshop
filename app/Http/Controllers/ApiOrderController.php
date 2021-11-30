@@ -28,6 +28,9 @@ class ApiOrderController extends Controller
         }
         foreach ($orders as $order) {
             $order->json_items = json_decode($order->items);
+            foreach ($order->json_items->products as $item) {
+                $item->product_id = \App\Models\Product::where('name', $item->name)->first()->id;
+            }
             if (request()->active == Order::STATUS_DELIVERY) {
                 $order->delivery_info = $order->delivery;
                 $order->courier_info = $order->delivery->courier;
