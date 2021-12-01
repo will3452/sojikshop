@@ -14,6 +14,7 @@ class User extends Resource
 {
     public static $group = "User Management";
     public static $label = 'Account';
+    public static $displayInNavigation = false;
     /**
      * The model the resource corresponds to.
      *
