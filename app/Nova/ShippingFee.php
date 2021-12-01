@@ -12,7 +12,6 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 
 class ShippingFee extends Resource
 {
-
     public static function redirectAfterCreate(NovaRequest $request, $resource)
     {
         return  ('/resources/products/'.$resource->product_id);
@@ -21,6 +20,16 @@ class ShippingFee extends Resource
     public static function redirectAfterUpdate(NovaRequest $request, $resource)
     {
         return  ('/resources/products/'.$resource->product_id);
+    }
+
+    public function authorizedToUpdate(Request $request)
+    {
+        return false;
+    }
+
+    public function authorizedToView(Request $request)
+    {
+        return false;
     }
 
     public static $displayInNavigation = false;
@@ -61,10 +70,10 @@ class ShippingFee extends Resource
 
             Select::make('Region', 'region_id')
                 ->rules(['required'])
-                ->options(function(){
+                ->options(function () {
                     $product = \App\Models\Product::find(request()->viaResourceId);
                     return \App\Models\Region::whereNotIn('id', $product->shippingFees()->get()->pluck('region_id')->toArray() ?? [])->get()->pluck('name', 'id');
-                })->displayUsing(function(){
+                })->displayUsing(function () {
                     return \App\Models\Region::find($this->region_id)->name;
                 }),
 
