@@ -19,6 +19,7 @@ class CreateInAppNotificationsTable extends Migration
                 ->onDelete('cascade');
             $table->foreignId('user_id')
                 ->onDelete('cascade');
+            $table->string('title');
             $table->text('message');
             $table->timestamp('received_at')->nullable();
             $table->timestamps();
