@@ -20,6 +20,7 @@ use App\Http\Controllers\ApiWishlistController;
 use App\Http\Controllers\ApiBestSellerController;
 use App\Http\Controllers\ApiBuyingServiceController;
 use App\Http\Controllers\ApiAuthenticationController;
+use App\Http\Controllers\ApiInAppController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,6 +71,10 @@ Route::middleware('auth:sanctum')->group(function () {
 
     //buying request
     Route::post('/buying-request', [ApiBuyingServiceController::class, 'submitForm']);
+
+    //app notifications
+    Route::get('/get-notifications', [ApiInAppController::class, 'getUnreadNotifications']);
+    Route::post('/post-notification', [ApiInAppController::class, 'updateUnreadNotification']);
 });
 
 //best seller

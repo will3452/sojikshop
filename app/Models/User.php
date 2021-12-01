@@ -95,4 +95,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(BuyingRequest::class);
     }
+
+    public function inAppNotifications()
+    {
+        return $this->hasMany(InAppNotification::class);
+    }
 }
