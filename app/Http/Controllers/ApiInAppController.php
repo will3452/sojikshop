@@ -10,7 +10,9 @@ class ApiInAppController extends Controller
     public function getUnreadNotifications()
     {
         $notifications = auth()->user()->inAppNotifications()->whereNull('received_at')->get();
-
+        foreach ($notifications as $notification) {
+            $notification->markAsReceived();
+        }
         return response([
             'notifications' => $notifications,
         ], 200);
