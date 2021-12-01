@@ -55,7 +55,7 @@
             return actions.order.create({
                 purchase_units: [{
                     amount: {
-                        value: '{{$total + $shipping}}',
+                        value: `{{$total + $shipping + ($total * ((nova_get_setting('vat') ?? 12)/100))}}`,
                         currency:'PHP'
                     }
                 }],
