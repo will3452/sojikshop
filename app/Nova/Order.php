@@ -12,6 +12,7 @@ use App\Models\Order as ModelsOrder;
 use App\Nova\Actions\MarkAsDelivery;
 use App\Nova\Actions\MarkAsPackaging;
 use App\Nova\Actions\MarkAsReceived;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Maatwebsite\LaravelNovaExcel\Actions\DownloadExcel;
 
@@ -66,6 +67,8 @@ class Order extends Resource
             Date::make('Date', 'created_at')
                 ->sortable()
                 ->exceptOnForms(),
+
+            BelongsTo::make('User', 'user', User::class),
 
             Text::make('reference_number')
                 ->exceptOnForms(),
