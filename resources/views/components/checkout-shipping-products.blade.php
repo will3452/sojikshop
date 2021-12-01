@@ -66,7 +66,7 @@
                         Total
                     </th>
                     <td class="p-2 border-2">
-                        PHP {{ $total != null ? number_format(($total),2):'XXXX' }}
+                        PHP {{ $total+($total * ((nova_get_setting('vat') ?? 12)/100)) != null ? number_format(($total),2):'XXXX' }}
                     </td>
                 </tr>
                 <tr class="text-left">
@@ -74,7 +74,7 @@
                         Grand Total
                     </th>
                     <td class="p-2 border-2">
-                        PHP {{ $total != null ? number_format(($total + $shipping),2):'XXXX' }}
+                        PHP {{ $total != null ? number_format(($total + $shipping + $total * ((nova_get_setting('vat') ?? 12)/100)),2):'XXXX' }}
                     </td>
                 </tr>
             </table>
