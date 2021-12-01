@@ -107,7 +107,7 @@
                 ADD TO WISHLIST
                 </button>
             </form>
-            @else
+            @elseif($product->quantity == 0)
                 <div>
                     <a
                     href="{{route('my.wishlist')}}"
@@ -283,7 +283,7 @@
                             ADD TO WISHLIST
                             </button>
                         </form>
-                        @else
+                        @elseif($product->quantity == 0)
                             <div class="">
                                 <a
                                 href="{{route('my.wishlist')}}"
