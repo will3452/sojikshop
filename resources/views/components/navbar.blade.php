@@ -24,7 +24,7 @@
             <img src="/storage/{{nova_get_setting('logo')}}" alt="" class="mx-auto w-10 h-10 ">
         </a>
         @auth
-            <span class="font-bold">
+            <span class="font-bold text-blue-200">
                 Hello, {{auth()->user()->name}}
             </span>
         @endauth
