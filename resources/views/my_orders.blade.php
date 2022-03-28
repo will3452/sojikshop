@@ -129,7 +129,7 @@
                     <div class="mb-4">
                         No order found
                     </div>
-                    <a class="block text-sm mt-2 px-3 py-2 bg-blue-900 text-blue-900 w-1/2 mx-auto rounded-lg" href="/">SHOP NOW</a>
+                    <a class="block text-sm mt-2 px-3 py-2 bg-blue-900 text-blue-white w-1/2 mx-auto rounded-lg" href="/">SHOP NOW</a>
                 <li>
             @endforelse
         </ul>
