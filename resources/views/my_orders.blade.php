@@ -7,7 +7,7 @@
         </div>
         <div class="flex w-full relative -top-5 justify-between">
             <a x-data="{isHover:false}" x-on:mouseover="isHover=true"x-on:mouseleave="isHover=false" href="{{route('my-orders')}}?active=packaging" class="relative md:h-12 md:w-12 active block w-8 h-8 border-2 border-blue-900 {{request()->active!= 'packaging'? 'bg-white':'bg-blue-900'}} rounded-full flex items-center justify-center flex-col">
-                <span class="material-icons {{request()->active!= 'packaging'? 'text-blue-900':'text-blue-900'}}" style="font-size:16px;">
+                <span class="material-icons {{request()->active!= 'packaging'? 'text-blue-900':'text-white'}}" style="font-size:16px;">
                 inventory_2
                 </span>
                 <span x-show="isHover" class="uppercase text-xs font-bold absolute -top-5 text-blue-900">
@@ -16,7 +16,7 @@
             </a>
 
             <a x-data="{isHover:false}" x-on:mouseover="isHover=true"x-on:mouseleave="isHover=false" href="{{route('my-orders')}}?active=delivery" class="md:h-12 md:w-12 active block w-8 h-8 border-2 border-blue-900 {{request()->active!= 'delivery' ? 'bg-white':'bg-blue-900'}} rounded-full flex items-center justify-center">
-                <span class="material-icons {{request()->active!= 'delivery' ? 'text-blue-900':'text-blue-900'}}" style="font-size:16px;">
+                <span class="material-icons {{request()->active!= 'delivery' ? 'text-blue-900':'text-white'}}" style="font-size:16px;">
                 local_shipping
                 </span>
                 <span x-show="isHover" class="uppercase text-xs font-bold absolute -top-5 text-blue-900">
@@ -25,7 +25,7 @@
             </a>
 
             <a x-data="{isHover:false}" x-on:mouseover="isHover=true"x-on:mouseleave="isHover=false" href="{{route('my-orders')}}?active=feedback" class="md:h-12 md:w-12 active block w-8 h-8 border-2 border-blue-900 {{request()->active!= 'feedback' ? 'bg-white':'bg-blue-900'}} rounded-full flex items-center justify-center">
-                <span class="material-icons {{request()->active!= 'feedback' ? 'text-blue-900':'text-blue-900'}}" style="font-size:16px;">
+                <span class="material-icons {{request()->active!= 'feedback' ? 'text-blue-900':'text-white'}}" style="font-size:16px;">
                 question_answer
                 </span>
                 <span x-show="isHover" class="uppercase text-xs font-bold absolute -top-5 text-blue-900">
@@ -34,7 +34,7 @@
             </a>
 
             <a x-data="{isHover:false}" x-on:mouseover="isHover=true"x-on:mouseleave="isHover=false" href="{{route('my-orders')}}?active={{\App\Models\Order::STATUS_COMPLETED}}" class="relative md:h-12 md:w-12 active block w-8 h-8 border-2 border-blue-900 {{request()->active!= \App\Models\Order::STATUS_COMPLETED ? 'bg-white':'bg-blue-900'}} rounded-full flex items-center justify-center flex-col">
-                <span class="material-icons {{request()->active!= \App\Models\Order::STATUS_COMPLETED ? 'text-blue-900':'text-blue-900'}}" style="font-size:16px;">
+                <span class="material-icons {{request()->active!= \App\Models\Order::STATUS_COMPLETED ? 'text-blue-900':'text-white'}}" style="font-size:16px;">
                     check_circle
                 </span>
                 <span x-show="isHover" class="uppercase text-xs font-bold absolute -top-5 text-blue-900">
