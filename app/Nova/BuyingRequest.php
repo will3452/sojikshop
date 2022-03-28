@@ -63,7 +63,7 @@ class BuyingRequest extends Resource
                 }
 
                 if ($request->status == ModelsBuyingRequest::STATUS_FOUND) {
-                    return "<span class='px-4 py-2 rounded-3xl bg-green-300 text-green-900 uppercase font-black text-xs'>Found</span>";
+                    return "<span class='px-4 py-2 rounded-3xl bg-green-300 text-blue-200 uppercase font-black text-xs'>Found</span>";
                 }
 
                 if ($request->status == ModelsBuyingRequest::STATUS_NOT_FOUND) {
