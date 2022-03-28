@@ -6,11 +6,11 @@
     --primary-30: #dfc0c7;
     --primary-10: #fff;
     --logo: #BFDBFE;
-    --sidebar-icon: #dc5a78;
+    --sidebar-icon: #BFDBFE;
 }
 /* sample */
 .bg-grad-sidebar {
-    background: #30326e;
+    background: #1E40AF;
 }
 
 .card{
