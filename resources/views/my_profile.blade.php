@@ -84,7 +84,7 @@
                                 @endforeach
 
                                 @if (auth()->user()->addresses->isEmpty())
-                                    <div class="flex justify-center items-center w-full bg-green-100 rounded h-20 mt-2">
+                                    <div class="flex justify-center items-center w-full bg-blue-200 rounded h-20 mt-2">
                                         <div class="uppercase font-bold text-green-500">
                                             Empty
                                         </div>

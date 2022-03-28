@@ -1,6 +1,6 @@
 <div class="h-20 bg-blue-800 relative">
     <form action="{{route('search')}}" class="mx-auto md:w-1/2 md:left-1/4 w-full p-2 absolute -top-6">
-        <input type="text" name="keyword" required id="_search_bar" class="w-full p-3 rounded-full focus:bg-yellow-200 focus:outline-none">
+        <input type="text" name="keyword" required id="_search_bar" class="w-full p-3 rounded-full focus:bg-blue-200 focus:outline-none">
         <button class="absolute right-3 top-3 bg-blue-200 w-10 h-10 text-dark rounded-full">
             <span class="material-icons">
                 search

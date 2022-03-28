@@ -54,7 +54,7 @@
                             <td class="border border-black">
                                 <a
                                 href="{{url('invoices', ['invoice'=>$item->invoice_id])}}"
-                                class="text-xs uppercase bg-green-100 p-1 px-2 font-bold rounded">
+                                class="text-xs uppercase bg-blue-200 p-1 px-2 font-bold rounded">
                                     Receipt
                                 </a>
                             </td>

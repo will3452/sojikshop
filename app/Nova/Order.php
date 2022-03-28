@@ -88,13 +88,13 @@ class Order extends Resource
             Text::make('Location', function ($order) {
                 $location = json_decode($order->location);
                 $text = "
-                <p> Address : <span class='px-2 text-sm font-bold bg-green-100 text-blue-200 rounded-3xl'>$location->shipping_inline_address</span></p>
-                <p>Zip Code : <span class='px-2 text-sm font-bold bg-green-100 text-blue-200 rounded-3xl'>$location->shipping_postal_code</span></p>
-                <p>Shipping Street: <span class='px-2 text-sm font-bold bg-green-100 text-blue-200 rounded-3xl'>$location->shipping_street</span></p>
-                <p>Shipping barangay: <span class='px-2 text-sm font-bold bg-green-100 text-blue-200 rounded-3xl'>$location->shipping_barangay</span></p>
-                <p>Shipping city: <span class='px-2 text-sm font-bold bg-green-100 text-blue-200 rounded-3xl'>$location->shipping_city</span></p>
-                <p>Shipping Subdivision/bldg: <span class='px-2 text-sm font-bold bg-green-100 text-blue-200 rounded-3xl'>$location->shipping_building</span></p>
-                <p>Shipping House/Flr Number: <span class='px-2 text-sm font-bold bg-green-100 text-blue-200 rounded-3xl'>$location->shipping_house_number</span></p>";
+                <p> Address : <span class='px-2 text-sm font-bold bg-blue-200 text-blue-200 rounded-3xl'>$location->shipping_inline_address</span></p>
+                <p>Zip Code : <span class='px-2 text-sm font-bold bg-blue-200 text-blue-200 rounded-3xl'>$location->shipping_postal_code</span></p>
+                <p>Shipping Street: <span class='px-2 text-sm font-bold bg-blue-200 text-blue-200 rounded-3xl'>$location->shipping_street</span></p>
+                <p>Shipping barangay: <span class='px-2 text-sm font-bold bg-blue-200 text-blue-200 rounded-3xl'>$location->shipping_barangay</span></p>
+                <p>Shipping city: <span class='px-2 text-sm font-bold bg-blue-200 text-blue-200 rounded-3xl'>$location->shipping_city</span></p>
+                <p>Shipping Subdivision/bldg: <span class='px-2 text-sm font-bold bg-blue-200 text-blue-200 rounded-3xl'>$location->shipping_building</span></p>
+                <p>Shipping House/Flr Number: <span class='px-2 text-sm font-bold bg-blue-200 text-blue-200 rounded-3xl'>$location->shipping_house_number</span></p>";
 
                 return "<div class='leading-7' >$text</div>";
             })
