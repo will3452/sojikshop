@@ -344,7 +344,7 @@ textarea.form-input:read-only,
 }
 
 .btn-primary {
-  @apply .bg-primary .text-white;
+  @apply .bg-primary .text-blue-900;
 }
 
 .btn-primary:not([disabled]):not(.btn-disabled):hover {
@@ -352,7 +352,7 @@ textarea.form-input:read-only,
 }
 
 .btn-danger {
-  @apply .bg-danger .text-white;
+  @apply .bg-danger .text-blue-900;
 }
 
 .btn-outline {
@@ -740,7 +740,7 @@ textarea.form-input:read-only,
 }
 
 .nova {
-  @apply text-white py-2 rounded-lg shadow-lg;
+  @apply text-blue-900 py-2 rounded-lg shadow-lg;
 }
 
 .toasted.default {
@@ -764,7 +764,7 @@ textarea.form-input:read-only,
 }
 
 .nova-action {
-  @apply text-white .py-0;
+  @apply text-blue-900 .py-0;
 }
 
 .toasted .action {

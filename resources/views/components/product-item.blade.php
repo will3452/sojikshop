@@ -22,15 +22,15 @@
         "
         >
         @if ($product->is_pre_order)
-            <div class="absolute bg-yellow-500 transform rotate-45 w-40 text-center text-xs p-1 font-bold text-white uppercase top-8 -right-8">
+            <div class="absolute bg-yellow-500 transform rotate-45 w-40 text-center text-xs p-1 font-bold text-blue-900 uppercase top-8 -right-8">
                 Pre-Order
             </div>
         @elseif ($product->quantity <= 0)
-            <div class="absolute bg-gray-500 transform rotate-45 w-40 text-center text-xs p-1 font-bold text-white uppercase top-8 -right-8">
+            <div class="absolute bg-gray-500 transform rotate-45 w-40 text-center text-xs p-1 font-bold text-blue-900 uppercase top-8 -right-8">
                 Out-of-stock
             </div>
         @elseif($product->discounts()->count())
-            <div class="absolute bg-green-500 transform rotate-45 w-40 text-center text-xs p-1 font-bold text-white uppercase top-8 -right-8">
+            <div class="absolute bg-green-500 transform rotate-45 w-40 text-center text-xs p-1 font-bold text-blue-900 uppercase top-8 -right-8">
                 {{$product->discounts()->first()->discount->discount}} % Off
             </div>
         @endif
@@ -39,8 +39,8 @@
                 P {{ number_format($product->normal_price, 2) }}
             </div>
         <div class="
-        bg-green-200
-        px-2 absolute bottom-0 w-full text-center text-xs font-bold uppercase py-2 text-purple-900
+        bg-blue-800
+        px-2 absolute bottom-0 w-full text-center text-xs font-bold uppercase py-2 text-blue-900
         ">
             {{ \Str::limit($product->name, 25) }}
         </div>

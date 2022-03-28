@@ -14,7 +14,7 @@
         md:w-1/3
               ">
               @csrf
-            <h2 class="text-center uppercase font-bold text-2xl text-pink-700">
+            <h2 class="text-center uppercase font-bold text-2xl text-blue-700">
                 Register now
             </h2>
             <x-input name="name" required placeholder="Enter your Name"></x-input>
@@ -31,8 +31,8 @@
             class="
             mt-4
             p-2
-            bg-purple-900
-            text-white
+            bg-blue-900
+            text-blue-900
             w-full
             rounded-3xl
             "
@@ -43,7 +43,7 @@
                 or
             </div>
             <div class="flex justify-center">
-                <a href="{{ route('login') }}" class="inline-block text-center text-purple-500 border-purple-500 pb-2 border-b-2 px-4">
+                <a href="{{ route('login') }}" class="inline-block text-center text-blue-500 border-blue-500 pb-2 border-b-2 px-4">
                     LOGIN
                 </a>
             </div>

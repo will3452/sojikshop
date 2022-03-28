@@ -58,5 +58,5 @@
     <input type="hidden" name="fallback_shipping_option_is_default_0" value="1"> --}}
 
     {{-- button --}}
-    <input type="submit" value="Pay With Paypal" class="uppercase font-bold cursor-pointer rounded px-4 p-2 m-3 bg-green-500 text-white text-xs">
+    <input type="submit" value="Pay With Paypal" class="uppercase font-bold cursor-pointer rounded px-4 p-2 m-3 bg-green-500 text-blue-900 text-xs">
 </form> --}}

@@ -5,7 +5,7 @@
         TRACKING PAGE
     </x-title>
     <form action="" class="flex md:w-1/2 w-11/12 mx-auto">
-        <input type="search" name="tracking_number" value="{{request()->tracking_number}}" class="border-2 border-purple-700 w-full p-2" placeholder="Enter Tracking number here">
+        <input type="search" name="tracking_number" value="{{request()->tracking_number}}" class="border-2 border-blue-700 w-full p-2" placeholder="Enter Tracking number here">
 
     </form>
 

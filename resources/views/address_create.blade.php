@@ -91,7 +91,7 @@
             <input type="text" value="" name="house_number" required   class="mt-2 w-full p-2 rounded border-2 border-pink-600">
         </div>
 
-        <button class="p-2 text-sm text-white bg-pink-500 rounded px-4 uppercase font-bold">Add</button>
+        <button class="p-2 text-sm text-blue-900 bg-blue-200 rounded px-4 uppercase font-bold">Add</button>
 
     </form>
 </x-layout>

@@ -46,7 +46,7 @@
                 <input  required type="file" accept="image/*" name="item_image">
             </div>
 
-            <button class="px-4 py-2 bg-purple-900 text-white uppercase rounded-3xl w-full text-center font-bold">
+            <button class="px-4 py-2 bg-blue-900 text-blue-900 uppercase rounded-3xl w-full text-center font-bold">
                 Submit
             </button>
 

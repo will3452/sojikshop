@@ -42,7 +42,7 @@
 
     {{-- button --}}
     <div class="flex justify-between items-center">
-        <a href="/my-cart" class="cursor-pointer rounded-lg px-4 py-2 m-3 bg-gray-900 text-white text-xs">Back To Your Cart</a>
-        <input type="submit" value="Pay With Paypal" class="font-bold cursor-pointer rounded-lg px-4 py-2 m-3 bg-green-500 text-white text-xs">
+        <a href="/my-cart" class="cursor-pointer rounded-lg px-4 py-2 m-3 bg-gray-900 text-blue-900 text-xs">Back To Your Cart</a>
+        <input type="submit" value="Pay With Paypal" class="font-bold cursor-pointer rounded-lg px-4 py-2 m-3 bg-green-500 text-blue-900 text-xs">
     </div>
 </form>

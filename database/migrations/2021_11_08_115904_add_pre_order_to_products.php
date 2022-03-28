@@ -14,7 +14,7 @@ class AddPreOrderToProducts extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->boolean('is_pre_order')->dafult(false);
+            $table->boolean('is_pre_order')->nullable();
         });
     }
 
@@ -27,7 +27,6 @@ class AddPreOrderToProducts extends Migration
     {
         Schema::table('products', function (Blueprint $table) {
             $table->dropColumn('is_pre_order');
-            ;
         });
     }
 }

@@ -15,12 +15,12 @@
         >
           <icon
             type="filter"
-            :class="filtersAreApplied ? 'text-white' : 'text-80'"
+            :class="filtersAreApplied ? 'text-blue-900' : 'text-80'"
           />
 
           <span
             v-if="filtersAreApplied"
-            class="ml-2 font-bold text-white text-80"
+            class="ml-2 font-bold text-blue-900 text-80"
           >
             {{ activeFilterCount }}
           </span>

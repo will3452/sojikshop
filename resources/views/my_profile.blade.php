@@ -15,7 +15,7 @@
                     <div x-bind:class="{'bg-pink-300':editable}" class="w-10 h-5 rounded-3xl bg-gray-300 cursor-pointer relative" x-on:click="editable=!editable">
                         <div class="w-5 h-5 rounded-full bg-gray-900 absolute" x-bind:class="{'hidden':editable}">
                         </div>
-                        <div class="w-5 h-5 rounded-full bg-pink-600 absolute right-0" x-bind:class="{'hidden':!editable}">
+                        <div class="w-5 h-5 rounded-full bg-blue-200 text-blue-900 absolute right-0" x-bind:class="{'hidden':!editable}">
                         </div>
                     </div>
                 </div>
@@ -71,13 +71,13 @@
                                             @if (!$address->is_default)
                                             <form action="/set-default-address/{{$address->id}}" method="POST">
                                                 @csrf
-                                                <button class="text-white bg-pink-500 rounded p-1">set as default</button>
+                                                <button class="text-blue-900 bg-blue-200 rounded p-1">set as default</button>
                                             </form>
                                             @endif
                                             <form class="ml-2" action="/delete-address/{{$address->id}}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="text-white bg-red-500 rounded p-1">remove</button>
+                                                <button class="text-blue-900 bg-red-500 rounded p-1">remove</button>
                                             </form>
                                         </div>
                                     </li>
@@ -131,7 +131,7 @@
                             </label>
                             <input type="file" value="{{auth()->user()->image}}" name="picture" class="mt-2 w-full p-2 rounded border-2 border-pink-600">
                         </div>
-                        <button class="text-white bg-pink-600 rounded px-2 py-1">Save</button>
+                        <button class="text-blue-900 bg-blue-200 text-blue-900 rounded px-2 py-1">Save</button>
                     </form>
                 </template>
             </div>

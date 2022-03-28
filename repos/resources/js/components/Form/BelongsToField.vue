@@ -39,7 +39,7 @@
             <div>
               <div
                 class="text-sm font-semibold leading-5 text-90"
-                :class="{ 'text-white': selected }"
+                :class="{ 'text-blue-900': selected }"
               >
                 {{ option.display }}
               </div>
@@ -47,7 +47,7 @@
               <div
                 v-if="field.withSubtitles"
                 class="mt-1 text-xs font-semibold leading-5 text-80"
-                :class="{ 'text-white': selected }"
+                :class="{ 'text-blue-900': selected }"
               >
                 <span v-if="option.subtitle">{{ option.subtitle }}</span>
                 <span v-else>{{ __('No additional information...') }}</span>

@@ -142,7 +142,7 @@
             >
               <icon
                 type="edit"
-                class="text-white"
+                class="text-blue-900"
                 style="margin-top: -2px; margin-left: 3px"
               />
             </router-link>

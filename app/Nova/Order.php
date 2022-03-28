@@ -77,7 +77,7 @@ class Order extends Resource
                 $list = "<ul>";
                 foreach (json_decode($order->items)->products as $item) {
                     $product = $item->quantity. 'x - '.$item->name . ' - PHP' . ($item->price * $item->quantity);
-                    $list .= "<li class='p-2 rounded px-4 mb-2 shadow flex justify-between items-center'><img class='w-10 h-10 rounded-full shadow border-2 border-purple-100' src='/storage/$item->image' />$product</li>";
+                    $list .= "<li class='p-2 rounded px-4 mb-2 shadow flex justify-between items-center'><img class='w-10 h-10 rounded-full shadow border-2 border-blue-100' src='/storage/$item->image' />$product</li>";
                 }
                 return $list. '</ul>';
             })
@@ -116,7 +116,7 @@ class Order extends Resource
                 }
 
                 if ($order->status == ModelsOrder::STATUS_FEEDBACK) {
-                    return "<span class='px-4 py-2 rounded-3xl bg-purple-300 text-purple-900 uppercase font-black text-xs'>Received</span>";
+                    return "<span class='px-4 py-2 rounded-3xl bg-blue-300 text-blue-900 uppercase font-black text-xs'>Received</span>";
                 }
 
                 if ($order->status == ModelsOrder::STATUS_COMPLETED) {

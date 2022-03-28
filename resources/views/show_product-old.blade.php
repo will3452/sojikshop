@@ -6,10 +6,10 @@
             src="/storage/{{ $product->image }}"
             alt="">
             <div class="text-center">
-                <h1 class="font-black text-3xl text-purple-700 mb-4">
+                <h1 class="font-black text-3xl text-blue-700 mb-4">
                     P {{ number_format($product->price, 2) }}
                 </h1>
-                <h2 class=" font-bold px-8 text-purple-900">
+                <h2 class=" font-bold px-8 text-blue-900">
                     {{ $product->name }}
                 </h2>
             </div>
@@ -35,9 +35,9 @@
                     p-1
                     font-thin
                     text-sm
-                    text-purple-900
+                    text-blue-900
                     border-b-2
-                    border-purple-900
+                    border-blue-900
                     shadow-xl
                     "
                     @click="showMore = true"
@@ -53,9 +53,9 @@
                     p-1
                     font-thin
                     text-sm
-                    text-purple-900
+                    text-blue-900
                     border-b-2
-                    border-purple-900
+                    border-blue-900
                     shadow-xl
                     "
                     @click="showMore = false"
@@ -80,13 +80,13 @@
                 type="submit"
                 class="
                 font-bold
-                text-white
+                text-blue-900
                 flex
                 items-center
                 justify-between
                 py-2
                 px-8
-                bg-pink-600
+                bg-blue-200 text-blue-900
                 rounded-xl
                 animate-pulse
                 text-xs
@@ -102,7 +102,7 @@
                     type="submit"
                     class="
                     font-bold
-                    text-white
+                    text-blue-900
                     flex
                     items-center
                     justify-between
@@ -133,7 +133,7 @@
                 type="submit"
                 class="
                 font-bold
-                text-white
+                text-blue-900
                 flex
                 items-center
                 justify-between

@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="h-5 bg-green-200"></div>
+    <div class="h-5 bg-blue-800"></div>
     <x-search-bar></x-search-bar>
     <x-title>
         {{$category->name}}
@@ -10,7 +10,7 @@
         @empty
             <div class="h-40 flex flex-col justify-center items-center text-gray-700">
                 No products
-                <a href="/" class="p-2 text-xs p-2 rounded-lg bg-purple-900 text-white mt-2">
+                <a href="/" class="p-2 text-xs p-2 rounded-lg bg-blue-900 text-blue-900 mt-2">
                     Return to Home
                 </a>
             </div>

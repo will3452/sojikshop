@@ -8,7 +8,7 @@
             </script>
           @endif
       @endauth
-    <div class="md:hidden fixed w-full h-12 bottom-0 left-0 right-0 bg-purple-900 flex items-center justify-around px-2">
+    <div class="md:hidden fixed w-full h-12 bottom-0 left-0 right-0 bg-blue-900 flex items-center justify-around px-2">
         @if (!$product->carts()->where('user_id', auth()->id())->exists())
                 @if ($product->quantity != 0)
                     <form
@@ -20,13 +20,13 @@
                     type="submit"
                     class="
                     font-bold
-                    text-white
+                    text-blue-900
                     flex
                     items-center
                     justify-between
                     py-2
                     px-4
-                    bg-pink-600
+                    bg-blue-200 text-blue-900
                     rounded-xl
                     text-xs
                     "
@@ -44,13 +44,13 @@
                     href="/preorder-set/{{$product->id}}"
                     class="
                     font-bold
-                    text-white
+                    text-blue-900
                     flex
                     items-center
                     justify-between
                     py-2
                     px-4
-                    bg-pink-600
+                    bg-blue-200 text-blue-900
                     rounded-xl
                     text-xs
                     uppercase
@@ -66,13 +66,13 @@
                 type="submit"
                 class="
                 font-bold
-                text-white
+                text-blue-900
                 flex
                 items-center
                 justify-between
                 py-2
                 px-4
-                bg-pink-600
+                bg-blue-200 text-blue-900
                 rounded-xl
                 text-xs
                 "
@@ -92,7 +92,7 @@
                 type="submit"
                 class="
                 font-bold
-                text-white
+                text-blue-900
                 flex
                 items-center
                 justify-between
@@ -135,7 +135,7 @@
             <img src="/storage/{{ $product->image }}" alt="" class="w-full">
         </div>
         <div class="px-2">
-            <h1 class="text-center font-bold text-lg text-purple-900 md:text-left">
+            <h1 class="text-center font-bold text-lg text-blue-900 md:text-left">
                 {{$product->name}}
             </h1>
             <div class="text-2xl text-center font-bold text-gray-900 md:text-left">
@@ -186,13 +186,13 @@
                                 type="submit"
                                 class="
                                 font-bold
-                                text-white
+                                text-blue-900
                                 flex
                                 items-center
                                 justify-between
                                 py-2
                                 px-8
-                                bg-pink-600
+                                bg-blue-200 text-blue-900
                                 rounded
                                 text-xs
                                 mr-2
@@ -214,7 +214,7 @@
                                 class="
                                 uppercase
                                 font-bold
-                                text-white
+                                text-blue-900
                                 flex
                                 items-center
                                 justify-between
@@ -238,7 +238,7 @@
                                 type="submit"
                                 class="
                                 font-bold
-                                text-white
+                                text-blue-900
                                 flex
                                 items-center
                                 justify-between
@@ -267,7 +267,7 @@
                             type="submit"
                             class="
                             font-bold
-                            text-white
+                            text-blue-900
                             flex
                             items-center
                             justify-between

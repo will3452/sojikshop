@@ -2,22 +2,22 @@
     <x-title>
         Pay Buying Request
     </x-title>
-    <div class="hidden h-screen w-screen bg-gradient-to-r from-pink-600 to-purple-900 fixed top-0 z-50 flex flex-col justify-center items-center"
+    <div class="hidden h-screen w-screen bg-gradient-to-r from-pink-600 to-blue-900 fixed top-0 z-50 flex flex-col justify-center items-center"
     style="z-index:90000 !important;"
     id="backdrop">
         <img src="/storage/{{nova_get_setting('logo')}}" alt="" class="w-32 h-32 animate-bounce rounded-full shadow">
-        <p class="uppercase text-white font-bold tracking-widest">
+        <p class="uppercase text-blue-900 font-bold tracking-widest">
             Loading, Please Wait
         </p>
     </div>
 
     @if (auth()->user()->addresses()->count())
         <div class="text-sm mx-2 shadow-lg rounded overflow-hidden mx-auto md:w-10/12 mb-2">
-            <div class="p-2 bg-purple-900 text-white font-bold uppercase flex justify-between">
+            <div class="p-2 bg-blue-900 text-blue-900 font-bold uppercase flex justify-between">
                 <div>
                     Address
                 </div>
-                <a href="/add-new-address" class="text-white text-xs p-1 bg-pink-500 rounded">
+                <a href="/add-new-address" class="text-blue-900 text-xs p-1 bg-blue-200 rounded">
                     Add Address
                 </a>
             </div>
@@ -34,7 +34,7 @@
             </div>
         </div>
         <div class="text-sm mx-2 shadow-lg rounded overflow-hidden mx-auto md:w-10/12">
-            <div class="p-2 bg-purple-900 text-white font-bold uppercase">
+            <div class="p-2 bg-blue-900 text-blue-900 font-bold uppercase">
                 Order Information
             </div>
             <div class="p-2 md:flex">

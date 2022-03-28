@@ -24,7 +24,7 @@
           slot="option"
           slot-scope="{ option, selected }"
           class="flex items-center text-sm font-semibold leading-5 text-90"
-          :class="{ 'text-white': selected }"
+          :class="{ 'text-blue-900': selected }"
         >
           {{ option.label }}
         </div>

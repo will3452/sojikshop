@@ -12,7 +12,7 @@ w-10
 h-10
 animate-bounce
 ">
-<span class="material-icons text-purple-900 ">
+<span class="material-icons text-blue-200 ">
     arrow_upward
 </span>
 </div> --}}

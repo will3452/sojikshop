@@ -3,41 +3,41 @@
         My Orders
     </x-title>
     <div class="w-full px-4 mx-auto relative mt-5 md:w-1/2 ">
-        <div id="line" class="w-full h-1 bg-green-200 rounded">
+        <div id="line" class="w-full h-1 bg-blue-800 rounded">
         </div>
         <div class="flex w-full relative -top-5 justify-between">
-            <a x-data="{isHover:false}" x-on:mouseover="isHover=true"x-on:mouseleave="isHover=false" href="{{route('my-orders')}}?active=packaging" class="relative md:h-12 md:w-12 active block w-8 h-8 border-2 border-purple-900 {{request()->active!= 'packaging'? 'bg-white':'bg-purple-900'}} rounded-full flex items-center justify-center flex-col">
-                <span class="material-icons {{request()->active!= 'packaging'? 'text-purple-900':'text-white'}}" style="font-size:16px;">
+            <a x-data="{isHover:false}" x-on:mouseover="isHover=true"x-on:mouseleave="isHover=false" href="{{route('my-orders')}}?active=packaging" class="relative md:h-12 md:w-12 active block w-8 h-8 border-2 border-blue-900 {{request()->active!= 'packaging'? 'bg-white':'bg-blue-900'}} rounded-full flex items-center justify-center flex-col">
+                <span class="material-icons {{request()->active!= 'packaging'? 'text-blue-900':'text-blue-900'}}" style="font-size:16px;">
                 inventory_2
                 </span>
-                <span x-show="isHover" class="uppercase text-xs font-bold absolute -top-5 text-purple-900">
+                <span x-show="isHover" class="uppercase text-xs font-bold absolute -top-5 text-blue-900">
                     packaging
                 </span>
             </a>
 
-            <a x-data="{isHover:false}" x-on:mouseover="isHover=true"x-on:mouseleave="isHover=false" href="{{route('my-orders')}}?active=delivery" class="md:h-12 md:w-12 active block w-8 h-8 border-2 border-purple-900 {{request()->active!= 'delivery' ? 'bg-white':'bg-purple-900'}} rounded-full flex items-center justify-center">
-                <span class="material-icons {{request()->active!= 'delivery' ? 'text-purple-900':'text-white'}}" style="font-size:16px;">
+            <a x-data="{isHover:false}" x-on:mouseover="isHover=true"x-on:mouseleave="isHover=false" href="{{route('my-orders')}}?active=delivery" class="md:h-12 md:w-12 active block w-8 h-8 border-2 border-blue-900 {{request()->active!= 'delivery' ? 'bg-white':'bg-blue-900'}} rounded-full flex items-center justify-center">
+                <span class="material-icons {{request()->active!= 'delivery' ? 'text-blue-900':'text-blue-900'}}" style="font-size:16px;">
                 local_shipping
                 </span>
-                <span x-show="isHover" class="uppercase text-xs font-bold absolute -top-5 text-purple-900">
+                <span x-show="isHover" class="uppercase text-xs font-bold absolute -top-5 text-blue-900">
                     Delivery
                 </span>
             </a>
 
-            <a x-data="{isHover:false}" x-on:mouseover="isHover=true"x-on:mouseleave="isHover=false" href="{{route('my-orders')}}?active=feedback" class="md:h-12 md:w-12 active block w-8 h-8 border-2 border-purple-900 {{request()->active!= 'feedback' ? 'bg-white':'bg-purple-900'}} rounded-full flex items-center justify-center">
-                <span class="material-icons {{request()->active!= 'feedback' ? 'text-purple-900':'text-white'}}" style="font-size:16px;">
+            <a x-data="{isHover:false}" x-on:mouseover="isHover=true"x-on:mouseleave="isHover=false" href="{{route('my-orders')}}?active=feedback" class="md:h-12 md:w-12 active block w-8 h-8 border-2 border-blue-900 {{request()->active!= 'feedback' ? 'bg-white':'bg-blue-900'}} rounded-full flex items-center justify-center">
+                <span class="material-icons {{request()->active!= 'feedback' ? 'text-blue-900':'text-blue-900'}}" style="font-size:16px;">
                 question_answer
                 </span>
-                <span x-show="isHover" class="uppercase text-xs font-bold absolute -top-5 text-purple-900">
+                <span x-show="isHover" class="uppercase text-xs font-bold absolute -top-5 text-blue-900">
                     Feedback
                 </span>
             </a>
 
-            <a x-data="{isHover:false}" x-on:mouseover="isHover=true"x-on:mouseleave="isHover=false" href="{{route('my-orders')}}?active={{\App\Models\Order::STATUS_COMPLETED}}" class="relative md:h-12 md:w-12 active block w-8 h-8 border-2 border-purple-900 {{request()->active!= \App\Models\Order::STATUS_COMPLETED ? 'bg-white':'bg-purple-900'}} rounded-full flex items-center justify-center flex-col">
-                <span class="material-icons {{request()->active!= \App\Models\Order::STATUS_COMPLETED ? 'text-purple-900':'text-white'}}" style="font-size:16px;">
+            <a x-data="{isHover:false}" x-on:mouseover="isHover=true"x-on:mouseleave="isHover=false" href="{{route('my-orders')}}?active={{\App\Models\Order::STATUS_COMPLETED}}" class="relative md:h-12 md:w-12 active block w-8 h-8 border-2 border-blue-900 {{request()->active!= \App\Models\Order::STATUS_COMPLETED ? 'bg-white':'bg-blue-900'}} rounded-full flex items-center justify-center flex-col">
+                <span class="material-icons {{request()->active!= \App\Models\Order::STATUS_COMPLETED ? 'text-blue-900':'text-blue-900'}}" style="font-size:16px;">
                     check_circle
                 </span>
-                <span x-show="isHover" class="uppercase text-xs font-bold absolute -top-5 text-purple-900">
+                <span x-show="isHover" class="uppercase text-xs font-bold absolute -top-5 text-blue-900">
                     Completed
                 </span>
             </a>
@@ -49,7 +49,7 @@
                 <li class="shadow-lg p-2 py-4 rounded-lg " x-data="{isShow:false}">
                     <div class="flex items-center justify-between">
                         <div>
-                            <span class="font-bold text-purple-900">
+                            <span class="font-bold text-blue-900">
                                 {{$order->reference_number}}
                             </span>
                             <div class="text-xs text-gray-600">
@@ -69,7 +69,7 @@
                     </div>
                     <div class="mt-2" x-show="isShow">
                         @if (request()->active == \App\Models\Order::STATUS_DELIVERY)
-                            <div class="bg-pink-200 rounded p-2 text-sm">
+                            <div class="bg-blue-200 rounded p-2 text-sm">
                                 <div class="font-bold">
                                     Location your Order?
                                 </div>
@@ -100,25 +100,25 @@
                         @endforeach
                         <a
                         href="{{url('invoices', ['invoice'=>$order->invoice ? $order->invoice->id : '-'])}}"
-                        class="text-xs uppercase font-bold p-2 block bg-green-200 text-white text-center mt-2 rounded">
+                        class="text-xs uppercase font-bold p-2 block bg-blue-800 text-blue-900 text-center mt-2 rounded">
                             View Receipt
                         </a>
                         @if ($order->status == \App\Models\Order::STATUS_FEEDBACK)
                        <form action="/mark-as-completed/{{$order->id}}" method="POST" class="w-full">
                         @csrf
                         <button
-                        class="w-full text-xs border-2 border-purple-900 uppercase font-bold p-2 block bg-purple-900 text-white text-center mt-2 rounded">
+                        class="w-full text-xs border-2 border-blue-900 uppercase font-bold p-2 block bg-blue-900 text-blue-900 text-center mt-2 rounded">
                             Mark as Completed
                        </button>
                        </form>
                         <a
                         href="/write-feedback/{{$order->id}}"
-                        class="text-xs border-2 border-purple-900 uppercase font-bold p-2 block bg-white text-purple-900 text-center mt-2 rounded">
+                        class="text-xs border-2 border-blue-900 uppercase font-bold p-2 block bg-white text-blue-900 text-center mt-2 rounded">
                             Write Feedback
                         </a>
                         <a
                         href="/return-order/{{$order->id}}"
-                        class="text-xs border-2 border-red-900 uppercase font-bold p-2 block bg-red-500 text-white text-center mt-2 rounded">
+                        class="text-xs border-2 border-red-900 uppercase font-bold p-2 block bg-red-500 text-blue-900 text-center mt-2 rounded">
                             Return Order
                         </a>
                         @endif
@@ -129,7 +129,7 @@
                     <div class="mb-4">
                         No order found
                     </div>
-                    <a class="block text-sm mt-2 px-3 py-2 bg-purple-900 text-white w-1/2 mx-auto rounded-lg" href="/">SHOP NOW</a>
+                    <a class="block text-sm mt-2 px-3 py-2 bg-blue-900 text-blue-900 w-1/2 mx-auto rounded-lg" href="/">SHOP NOW</a>
                 <li>
             @endforelse
         </ul>

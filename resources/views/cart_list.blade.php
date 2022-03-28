@@ -13,7 +13,7 @@
                         YOUR CART IS EMPTY
                     </span>
                     <div>
-                        <a href="/" class="text-white rounded-lg animate-bounce block px-3 py-2 bg-purple-900 mt-4">
+                        <a href="/" class="text-blue-900 rounded-lg animate-bounce block px-3 py-2 bg-blue-900 mt-4">
                             GO SHOP NOW!
                         </a>
                     </div>
@@ -23,10 +23,10 @@
         </ul>
         @if (count($carts))
             <div class="flex justify-between">
-                <a href="/" class="rounded-lg px-4 m-3 py-2 bg-purple-700 text-white text-xs">
+                <a href="/" class="rounded-lg px-4 m-3 py-2 bg-blue-700 text-blue-900 text-xs">
                     Continue Shopping
                 </a>
-                <a class="cursor-pointer rounded-lg px-4 py-2 m-3 bg-pink-700 text-white text-xs" href="{{route('checkout')}}">
+                <a class="cursor-pointer rounded-lg px-4 py-2 m-3 bg-pink-700 text-blue-900 text-xs" href="{{route('checkout')}}">
                     Proceed to Checkout
                 </a>
             </div>

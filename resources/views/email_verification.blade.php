@@ -9,7 +9,7 @@
         <input type="text" name="code[]" id="code{{$i+1}}" step="{{$i+1}}" maxlength="1" required class="codebox text-2xl font-bold text-center border-2 border-pink-600 p-2 mt-4 rounded block w-16">
         @endfor
        </div>
-        <button class="mt-2 p-2 text-center bg-purple-900 text-white font-bold uppercase rounded-3xl w-full">Verify</button>
+        <button class="mt-2 p-2 text-center bg-blue-900 text-blue-900 font-bold uppercase rounded-3xl w-full">Verify</button>
         <a class="block mt-4 text-center" href="/get-new-code">Get New Code?</a>
         <script>
             let tboxes = document.getElementsByClassName('codebox');

@@ -42,16 +42,16 @@
         <table class="w-full mt-2 text-left border p-2 text-sm" id="myTable">
             <thead>
                 <tr>
-                    <th class="text-purple-900 border p-1 mx-2">
+                    <th class="text-blue-900 border p-1 mx-2">
                         Description
                     </th>
-                    <th class="text-purple-900 border p-1 mx-2">
+                    <th class="text-blue-900 border p-1 mx-2">
                         Quantity
                     </th>
-                    <th class="text-purple-900 border p-1 mx-2">
+                    <th class="text-blue-900 border p-1 mx-2">
                         Unit Price
                     </th>
-                    <th class="text-purple-900 border p-1 mx-2">
+                    <th class="text-blue-900 border p-1 mx-2">
                         Total Price
                     </th>
                 </tr>
@@ -105,6 +105,6 @@
         </table>
     </div>
     <div class="text-center mt-2">
-        <button id="printbutton" class="px-4 py-2 font-bold rounded bg-green-200 uppercase text-sm" onclick="window.print()" >print</button>
+        <button id="printbutton" class="px-4 py-2 font-bold rounded bg-blue-800 uppercase text-sm" onclick="window.print()" >print</button>
     </div>
 </x-layout>

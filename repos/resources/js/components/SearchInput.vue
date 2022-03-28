@@ -119,7 +119,7 @@
           :class="{
             [`search-input-item-${index}`]: true,
             'hover:bg-30': index !== selected,
-            'bg-primary text-white': index === selected,
+            'bg-primary text-blue-900': index === selected,
           }"
         >
           <slot
