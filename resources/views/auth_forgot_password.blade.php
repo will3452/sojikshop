@@ -12,7 +12,7 @@
             <form action="{{route('forgot.password')}}" method="POST">
                 @csrf
                 <x-input name="email" required placeholder="Enter your email here"></x-input>
-                <button class="block bg-blue-900 text-blue-900 rounded-3xl font-bold w-full p-3 mt-4">
+                <button class="block bg-blue-900 text-white rounded-3xl font-bold w-full p-3 mt-4">
                     Send Password Reset Link
                 </button>
             </form>

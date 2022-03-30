@@ -13,7 +13,7 @@
 
     @if (auth()->user()->addresses()->count())
         <div class="text-sm mx-2 shadow-lg rounded overflow-hidden mx-auto md:w-10/12 mb-2">
-            <div class="p-2 bg-blue-900 text-blue-900 font-bold uppercase flex justify-between">
+            <div class="p-2 bg-blue-900 text-white font-bold uppercase flex justify-between">
                 <div>
                     Address
                 </div>
@@ -34,7 +34,7 @@
             </div>
         </div>
         <div class="text-sm mx-2 shadow-lg rounded overflow-hidden mx-auto md:w-10/12">
-            <div class="p-2 bg-blue-900 text-blue-900 font-bold uppercase">
+            <div class="p-2 bg-blue-900 text-white font-bold uppercase">
                 Order Information
             </div>
             <div class="p-2 md:flex">

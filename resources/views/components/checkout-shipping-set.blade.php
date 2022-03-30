@@ -2,7 +2,7 @@
 
 <div>
     <div class="text-sm mx-2 shadow-lg rounded overflow-hidden mx-auto md:w-2/3">
-        <div class="p-2 bg-blue-900 text-blue-900 font-bold uppercase">
+        <div class="p-2 bg-blue-900 text-white font-bold uppercase">
             Shipping Address (Under Maintenance)
         </div>
         <div class="p-2">

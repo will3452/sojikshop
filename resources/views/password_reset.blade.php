@@ -14,7 +14,7 @@
                 <x-input name="email" required placeholder="Enter your email here"></x-input>
                 <x-input name="password" type="password" required placeholder="New Password"></x-input>
                 <x-input name="password_confirmation" type="password" required placeholder="Confirm New Password"></x-input>
-                <button class="block bg-blue-900 text-blue-900 rounded-3xl font-bold w-full p-3 mt-4">
+                <button class="block bg-blue-900 text-white rounded-3xl font-bold w-full p-3 mt-4">
                     Update Password
                 </button>
             </form>

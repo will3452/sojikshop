@@ -107,7 +107,7 @@
                        <form action="/mark-as-completed/{{$order->id}}" method="POST" class="w-full">
                         @csrf
                         <button
-                        class="w-full text-xs border-2 border-blue-900 uppercase font-bold p-2 block bg-blue-900 text-blue-900 text-center mt-2 rounded">
+                        class="w-full text-xs border-2 border-blue-900 uppercase font-bold p-2 block bg-blue-900 text-white text-center mt-2 rounded">
                             Mark as Completed
                        </button>
                        </form>
