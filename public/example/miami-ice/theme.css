@@ -11,6 +11,11 @@
 /* sample */
 .bg-grad-sidebar {
     background: #1E40AF;
+    color: #fff !important;
+}
+
+.uppercase.tracking-wide {
+    color:#fff !important;
 }
 
 .card{
