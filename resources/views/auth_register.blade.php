@@ -32,7 +32,7 @@
             mt-4
             p-2
             bg-blue-900
-            text-blue-900
+            text-white
             w-full
             rounded-3xl
             "
