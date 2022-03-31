@@ -24,7 +24,7 @@
                     <a href="/products/{{$item->product->id}}"
                         class="
                             bg-blue-900
-                            text-blue-900
+                            text-white
                             p-1
                             px-2
                             rounded-lg

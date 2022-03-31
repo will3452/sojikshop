@@ -100,7 +100,7 @@
                         @endforeach
                         <a
                         href="{{url('invoices', ['invoice'=>$order->invoice ? $order->invoice->id : '-'])}}"
-                        class="text-xs uppercase font-bold p-2 block bg-blue-800 text-blue-900 text-center mt-2 rounded">
+                        class="text-xs uppercase font-bold p-2 block bg-blue-800 text-white text-center mt-2 rounded">
                             View Receipt
                         </a>
                         @if ($order->status == \App\Models\Order::STATUS_FEEDBACK)
