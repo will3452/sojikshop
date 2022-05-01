@@ -40,7 +40,7 @@
             </div>
         <div class="
         bg-green-200
-        px-2 absolute bottom-0 w-full text-center text-xs font-bold uppercase py-2 text-blue-200
+        px-2 absolute bottom-0 w-full text-center text-xs font-bold uppercase py-2 text-blue-900
         ">
             {{ \Str::limit($product->name, 25) }}
         </div>

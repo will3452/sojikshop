@@ -29,7 +29,7 @@
             class="
             mt-4
             p-2
-            bg-blue-900
+            bg-pink-600
             text-white
             w-full
             rounded-3xl
