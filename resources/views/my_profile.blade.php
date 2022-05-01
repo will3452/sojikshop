@@ -131,7 +131,7 @@
                             </label>
                             <input type="file" value="{{auth()->user()->image}}" name="picture" class="mt-2 w-full p-2 rounded border-2 border-pink-600">
                         </div>
-                        <button class="text-blue-900 bg-blue-200 text-blue-900 rounded px-2 py-1">Save</button>
+                        <button class="bg-green-200 text-green-900rounded px-2 py-1">Save</button>
                     </form>
                 </template>
             </div>

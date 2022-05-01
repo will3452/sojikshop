@@ -13,7 +13,7 @@
                         YOUR CART IS EMPTY
                     </span>
                     <div>
-                        <a href="/" class="text-blue-200 rounded-lg animate-bounce block px-3 py-2 bg-blue-900 mt-4">
+                        <a href="/" class="text-white rounded-lg animate-bounce block px-3 py-2 bg-pink-600 mt-4">
                             GO SHOP NOW!
                         </a>
                     </div>

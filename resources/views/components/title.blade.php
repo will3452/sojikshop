@@ -3,7 +3,7 @@
 class="
   text-center text-2xl
   py-4
-  text-blue-900
+  text-pink-900
   uppercase
   md:text-4xl md:py-10
   font-bold
