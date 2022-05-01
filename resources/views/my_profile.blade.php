@@ -15,7 +15,7 @@
                     <div x-bind:class="{'bg-pink-300':editable}" class="w-10 h-5 rounded-3xl bg-gray-300 cursor-pointer relative" x-on:click="editable=!editable">
                         <div class="w-5 h-5 rounded-full bg-gray-900 absolute" x-bind:class="{'hidden':editable}">
                         </div>
-                        <div class="w-5 h-5 rounded-full bg-blue-200 text-blue-900 absolute right-0" x-bind:class="{'hidden':!editable}">
+                        <div class="w-5 h-5 rounded-full bg-green-200 text-blue-900 absolute right-0" x-bind:class="{'hidden':!editable}">
                         </div>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
                                             @if (!$address->is_default)
                                             <form action="/set-default-address/{{$address->id}}" method="POST">
                                                 @csrf
-                                                <button class="text-blue-900 bg-blue-200 rounded p-1">set as default</button>
+                                                <button class="text-blue-900 bg-green-200 rounded p-1">set as default</button>
                                             </form>
                                             @endif
                                             <form class="ml-2" action="/delete-address/{{$address->id}}" method="POST">
@@ -84,7 +84,7 @@
                                 @endforeach
 
                                 @if (auth()->user()->addresses->isEmpty())
-                                    <div class="flex justify-center items-center w-full bg-blue-200 rounded h-20 mt-2">
+                                    <div class="flex justify-center items-center w-full bg-green-200 rounded h-20 mt-2">
                                         <div class="uppercase font-bold text-green-500">
                                             Empty
                                         </div>

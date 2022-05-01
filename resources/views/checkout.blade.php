@@ -17,7 +17,7 @@
                 <div>
                     Address
                 </div>
-                <a href="/add-new-address" class="text-blue-900 text-xs p-1 bg-blue-200 rounded">
+                <a href="/add-new-address" class="text-green-900 text-xs p-1 bg-green-200 rounded">
                     Add Address
                 </a>
             </div>

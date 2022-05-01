@@ -17,7 +17,7 @@
                 <div>
                     Address
                 </div>
-                <a href="/add-new-address" class="text-blue-900 text-xs p-1 bg-blue-200 rounded">
+                <a href="/add-new-address" class="text-green-900 text-xs p-1 bg-green-200 rounded">
                     Add Address
                 </a>
             </div>
@@ -40,7 +40,7 @@
             <div class="p-2 md:flex">
                 <div class="md:w-2/3">
                     <table class="w-full border-2">
-                        <thead class="bg-blue-200">
+                        <thead class="bg-green-200">
                             <tr>
                                 <th>
                                     Quantity
@@ -67,7 +67,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <div class="p-2 bg-blue-200 rounded my-2">
+                    <div class="p-2 bg-green-200 rounded my-2">
                         {{nova_get_setting('checkout_vat_note') ?? 'The VAT is already included in the total.'}}
                     </div>
                     <table class="w-full border-2 mt-2">

@@ -26,7 +26,7 @@
                     justify-between
                     py-2
                     px-4
-                    bg-blue-200 text-blue-900
+                    bg-green-200 text-blue-900
                     rounded-xl
                     text-xs
                     "
@@ -50,7 +50,7 @@
                     justify-between
                     py-2
                     px-4
-                    bg-blue-200 text-blue-900
+                    bg-green-200 text-blue-900
                     rounded-xl
                     text-xs
                     uppercase
@@ -72,7 +72,7 @@
                 justify-between
                 py-2
                 px-4
-                bg-blue-200 text-blue-900
+                bg-green-200 text-blue-900
                 rounded-xl
                 text-xs
                 "
@@ -192,7 +192,7 @@
                                 justify-between
                                 py-2
                                 px-8
-                                bg-blue-200 text-blue-900
+                                bg-green-200 text-green-900
                                 rounded
                                 text-xs
                                 mr-2
@@ -238,13 +238,13 @@
                                 type="submit"
                                 class="
                                 font-bold
-                                text-blue-900
+                                text-white
                                 flex
                                 items-center
                                 justify-between
                                 py-2
                                 px-8
-                                bg-blue-600
+                                bg-pink-600
                                 rounded
                                 text-xs
                                 mr-2

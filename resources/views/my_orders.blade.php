@@ -69,7 +69,7 @@
                     </div>
                     <div class="mt-2" x-show="isShow">
                         @if (request()->active == \App\Models\Order::STATUS_DELIVERY)
-                            <div class="bg-blue-200 rounded p-2 text-sm">
+                            <div class="bg-green-200 rounded p-2 text-sm">
                                 <div class="font-bold">
                                     Location your Order?
                                 </div>

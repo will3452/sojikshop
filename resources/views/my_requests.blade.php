@@ -33,7 +33,7 @@
                                 modalisopen:false,
                             }">
                                 <template x-if="modalisopen">
-                                    <div class="fixed w-screen h-screen bg-blue-200 top-0 bottom-0 left-0 right-0 z-40 flex justify-center items-center">
+                                    <div class="fixed w-screen h-screen bg-green-200 top-0 bottom-0 left-0 right-0 z-40 flex justify-center items-center">
                                         <div class="bg-white shadow-lg p-4 rounded w-full md:w-1/2 relative">
                                             <button x-on:click="modalisopen = false" class="transform block absolute -top-2 -right-2 rotate-45 font-bold bg-red-300 w-10 h-10 rounded-full text-xl">+</button>
                                             <div class="mt-2">
@@ -91,7 +91,7 @@
                                         <a>--</a>
                                     @else
                                         @if ($item->status != \App\Models\BuyingRequest::STATUS_PAID)
-                                            <button x-on:click="modalisopen = true" class="p-2 py-1  text-sm font-bold rounded bg-blue-200">
+                                            <button x-on:click="modalisopen = true" class="p-2 py-1  text-sm font-bold rounded bg-green-200">
                                                 View To Pay
                                             </button>
                                         @else

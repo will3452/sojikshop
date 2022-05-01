@@ -86,7 +86,7 @@
                 justify-between
                 py-2
                 px-8
-                bg-blue-200 text-blue-900
+                bg-green-200 text-blue-900
                 rounded-xl
                 animate-pulse
                 text-xs
