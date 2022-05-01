@@ -24,7 +24,7 @@
             <img src="/storage/{{nova_get_setting('logo')}}" alt="" class="mx-auto w-10 h-10 ">
         </a>
         @auth
-            <span class="font-bold text-blue-200" style="font-style: italic;">
+            <span class="font-bold text-green-900" style="font-style: italic;">
                 Hello, {{auth()->user()->name}}
             </span>
         @endauth
@@ -52,16 +52,16 @@
     </div>
     <div x-show="isShow" class="shadow-2xl bg-white w-2/3 md:w-1/5 z-50 fixed top-11 md:top-20 border-t-4 border-pink-500 right-0 rounded-b-xl text-center uppercase">
         @guest
-        <a href="{{ route('login') }}" class="block hover:bg-blue-900 hover:text-blue-200 py-2">Login</a>
-        <a href="{{ route('register') }}" class="block hover:bg-blue-900 hover:text-blue-200 py-2">Register</a>
+        <a href="{{ route('login') }}" class="block hover:bg-green-900 hover:text-whitepy-2">Login</a>
+        <a href="{{ route('register') }}" class="block hover:bg-green-900 hover:text-whitepy-2">Register</a>
         @endguest
 
         @auth
-        <a href="/profile" class="block hover:bg-blue-900 hover:text-blue-200 py-2">Profile</a>
-        <a href="{{ route('my-requests') }}" class="block hover:bg-blue-900 hover:text-blue-200 py-2">My Requests</a>
-        <a href="{{ route('my-orders') }}" class="block hover:bg-blue-900 hover:text-blue-200 py-2">My Orders</a>
-        <a href="/my-pre-orders" class="block hover:bg-blue-900 hover:text-blue-200 py-2">Pre-Orders</a>
-        <a href="{{ route('logout') }}" class="block hover:bg-blue-900 hover:text-blue-200 py-2">Logout</a>
+        <a href="/profile" class="block hover:bg-green-900 hover:text-whitepy-2">Profile</a>
+        <a href="{{ route('my-requests') }}" class="block hover:bg-green-900 hover:text-whitepy-2">My Requests</a>
+        <a href="{{ route('my-orders') }}" class="block hover:bg-green-900 hover:text-whitepy-2">My Orders</a>
+        <a href="/my-pre-orders" class="block hover:bg-green-900 hover:text-whitepy-2">Pre-Orders</a>
+        <a href="{{ route('logout') }}" class="block hover:bg-green-900 hover:text-whitepy-2">Logout</a>
         @endauth
     </div>
     </nav>
