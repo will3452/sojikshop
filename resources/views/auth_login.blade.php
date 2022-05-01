@@ -14,7 +14,7 @@
         md:w-1/3
         ">
             @csrf
-            <h2 class="text-center uppercase font-bold text-2xl text-blue-700">
+            <h2 class="text-center uppercase font-bold text-2xl text-pink-700">
                 LOGIN NOW
             </h2>
             @if(session('error'))
@@ -41,7 +41,7 @@
                 or
             </div>
             <div class="flex justify-center">
-                <a href="{{ route('register') }}" class="inline-block text-center text-blue-500 border-pink-500 pb-2 border-b-2 px-4">
+                <a href="{{ route('register') }}" class="inline-block text-center text-pink-500 border-pink-500 pb-2 border-b-2 px-4">
                     CREATE AN ACCOUNT
                 </a>
             </div>

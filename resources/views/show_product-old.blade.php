@@ -6,7 +6,7 @@
             src="/storage/{{ $product->image }}"
             alt="">
             <div class="text-center">
-                <h1 class="font-black text-3xl text-blue-700 mb-4">
+                <h1 class="font-black text-3xl text-pink-700 mb-4">
                     P {{ number_format($product->price, 2) }}
                 </h1>
                 <h2 class=" font-bold px-8 text-blue-900">
