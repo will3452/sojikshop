@@ -22,9 +22,6 @@
             visibility: hidden;
             transition: visibility 500ms;
         }
-         div {
-             font-family: monospace !important;
-         }
     </style>
 </head>
   <body class="">
