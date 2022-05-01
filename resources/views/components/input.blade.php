@@ -2,7 +2,7 @@
 <input
 {{ $attributes->merge([
     'name'=>$name,
-    'class'=>'mt-4 border-2 border-blue-500 w-full p-2 placeholder-blue-300'
+    'class'=>'mt-4 border-2 border-pink-500 w-full p-2 placeholder-pink-300'
 ]) }}
 value="{{ old($name) ?? '' }}"
 >

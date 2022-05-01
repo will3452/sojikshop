@@ -43,7 +43,7 @@
                 or
             </div>
             <div class="flex justify-center">
-                <a href="{{ route('login') }}" class="inline-block text-center text-blue-500 border-blue-500 pb-2 border-b-2 px-4">
+                <a href="{{ route('login') }}" class="inline-block text-center text-blue-500 border-pink-500 pb-2 border-b-2 px-4">
                     LOGIN
                 </a>
             </div>

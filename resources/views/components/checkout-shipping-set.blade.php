@@ -21,7 +21,7 @@
                         <input type="text"
                         id="address"
                         required
-                        class="w-full md:w-11/12 p-2 border-2 border-blue-500"
+                        class="w-full md:w-11/12 p-2 border-2 border-pink-500"
                         name="address"
                         value="{{$address ?? auth()->user()->address}}">
                     </div>
@@ -29,22 +29,22 @@
                 <div class="w-full px-2 mb-2 flex">
                     <div class="w-4/12">
                         <label for="">Zip Code</label>
-                        <input type="text" required name="zip" class="w-11/12 p-2 border-2 border-blue-500">
+                        <input type="text" required name="zip" class="w-11/12 p-2 border-2 border-pink-500">
                     </div>
                     <div class="w-4/12">
                         <label for="">State</label>
-                        <input type="text" required name="state" class="w-11/12 p-2 border-2 border-blue-500">
+                        <input type="text" required name="state" class="w-11/12 p-2 border-2 border-pink-500">
                     </div>
                     <div class="w-4/12">
                         <label for="">City</label>
-                        <input type="text" required name="city" class="w-11/12 p-2 border-2 border-blue-500">
+                        <input type="text" required name="city" class="w-11/12 p-2 border-2 border-pink-500">
                     </div>
                 </div>
                 <div class="w-full px-2 mb-2">
                     <label for="">Shipping Area</label>
                     <select name="area"
                     required
-                    class="w-full p-2 border-2 border-blue-500 mt-2"
+                    class="w-full p-2 border-2 border-pink-500 mt-2"
                     >
                         @foreach (\App\Models\Area::get() as $xarea)
                             <option {{$area != $xarea->id?:'selected'}} value="{{$xarea->id}}">{{$xarea->code}} - {{$xarea->description}}</option>

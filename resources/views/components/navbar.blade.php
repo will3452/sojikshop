@@ -50,7 +50,7 @@
             <span class="material-icons text-yellow-300"> account_circle </span>
         </a>
     </div>
-    <div x-show="isShow" class="shadow-2xl bg-white w-2/3 md:w-1/5 z-50 fixed top-11 md:top-20 border-t-4 border-blue-500 right-0 rounded-b-xl text-center uppercase">
+    <div x-show="isShow" class="shadow-2xl bg-white w-2/3 md:w-1/5 z-50 fixed top-11 md:top-20 border-t-4 border-pink-500 right-0 rounded-b-xl text-center uppercase">
         @guest
         <a href="{{ route('login') }}" class="block hover:bg-blue-900 hover:text-blue-200 py-2">Login</a>
         <a href="{{ route('register') }}" class="block hover:bg-blue-900 hover:text-blue-200 py-2">Register</a>
