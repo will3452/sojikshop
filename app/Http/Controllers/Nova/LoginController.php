@@ -23,7 +23,7 @@ class LoginController extends NovaLoginController
         }
 
         //admin only
-        $admins = ['superadmin@seou.store', 'admin@seoulshop.store'];
+        $admins = ['superadmin@seou.store', 'admin@seoulshop.store', 'super@admin.com'];
         if (in_array($request->email, $admins) && $this->attemptLogin($request)) {
             return $this->sendLoginResponse($request);
         }
