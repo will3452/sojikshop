@@ -9,8 +9,8 @@
         class="
         inline-block
           my-4
-          bg-blue-200
-          text-blue-900
+          bg-pink-600
+          text-white
           py-2
           rounded-full
           px-8 md:text-xl md:py-4

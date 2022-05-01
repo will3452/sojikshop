@@ -28,7 +28,7 @@
 
   <div class="bg-green-200 text-sm font-bold text-center p-4 mt-4">
       @foreach (\App\Models\Page::get() as $page)
-        <a href="/page/{{$page->id}}" class="mx-2 text-blue-200" >{{$page->title}}</a>
+        <a href="/page/{{$page->id}}" class="mx-2 text-green-900" >{{$page->title}}</a>
       @endforeach
   </div>
   {{-- {!!nova_get_setting('facebook_scripts')!!} --}}
