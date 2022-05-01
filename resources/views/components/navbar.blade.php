@@ -12,7 +12,7 @@
         items-center
         p-2
         md:p-6
-        bg-blue-800
+        bg-green-200
         z-50
     "
     >

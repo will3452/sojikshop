@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="h-5 bg-blue-800"></div>
+    <div class="h-5 bg-green-200"></div>
     <x-search-bar></x-search-bar>
     <h2 class="text-center text-gray-600 text-base mt-2">
         Search Keyword : <span class="italic font-bold">"{{request()->keyword}}"</span>

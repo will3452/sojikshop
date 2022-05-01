@@ -39,7 +39,7 @@
                 P {{ number_format($product->normal_price, 2) }}
             </div>
         <div class="
-        bg-blue-800
+        bg-green-200
         px-2 absolute bottom-0 w-full text-center text-xs font-bold uppercase py-2 text-blue-200
         ">
             {{ \Str::limit($product->name, 25) }}

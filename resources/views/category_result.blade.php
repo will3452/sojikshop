@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="h-5 bg-blue-800"></div>
+    <div class="h-5 bg-green-200"></div>
     <x-search-bar></x-search-bar>
     <x-title>
         {{$category->name}}

@@ -1,6 +1,6 @@
 <!-- Featured -->
 <div>
-    <div class="bg-blue-800 text-center p-10 my-4 md:py-10 ">
+    <div class="bg-green-200 text-center p-10 my-4 md:py-10 ">
       <h2 class="font-bold text-2xl text-blue-900 md:text-4xl md:font-thin mb-4">
         {{nova_get_setting('buy_service_message')}}
       </h2>

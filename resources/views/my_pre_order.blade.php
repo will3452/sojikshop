@@ -7,25 +7,25 @@
             <table class="text-center" id="myTable">
                 <thead>
                     <tr>
-                        <th class="border border-black bg-blue-800">
+                        <th class="border border-black bg-green-200">
                             Date
                         </th>
-                        <th class="border border-black bg-blue-800">
+                        <th class="border border-black bg-green-200">
                             Ref #
                         </th>
-                        <th class="border border-black bg-blue-800">
+                        <th class="border border-black bg-green-200">
                             Product
                         </th>
-                        <th class="border border-black bg-blue-800">
+                        <th class="border border-black bg-green-200">
                             Price
                         </th>
-                        <th class="border border-black bg-blue-800">
+                        <th class="border border-black bg-green-200">
                             Quantity
                         </th>
-                        <th class="border border-black bg-blue-800">
+                        <th class="border border-black bg-green-200">
                             Total
                         </th>
-                        <th class="border border-black bg-blue-800">
+                        <th class="border border-black bg-green-200">
                             Action
                         </th>
                     </tr>

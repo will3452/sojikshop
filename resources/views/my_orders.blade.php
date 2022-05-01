@@ -3,7 +3,7 @@
         My Orders
     </x-title>
     <div class="w-full px-4 mx-auto relative mt-5 md:w-1/2 ">
-        <div id="line" class="w-full h-1 bg-blue-800 rounded">
+        <div id="line" class="w-full h-1 bg-green-200 rounded">
         </div>
         <div class="flex w-full relative -top-5 justify-between">
             <a x-data="{isHover:false}" x-on:mouseover="isHover=true"x-on:mouseleave="isHover=false" href="{{route('my-orders')}}?active=packaging" class="relative md:h-12 md:w-12 active block w-8 h-8 border-2 border-blue-900 {{request()->active!= 'packaging'? 'bg-white':'bg-blue-900'}} rounded-full flex items-center justify-center flex-col">
@@ -100,7 +100,7 @@
                         @endforeach
                         <a
                         href="{{url('invoices', ['invoice'=>$order->invoice ? $order->invoice->id : '-'])}}"
-                        class="text-xs uppercase font-bold p-2 block bg-blue-800 text-white text-center mt-2 rounded">
+                        class="text-xs uppercase font-bold p-2 block bg-green-200 text-white text-center mt-2 rounded">
                             View Receipt
                         </a>
                         @if ($order->status == \App\Models\Order::STATUS_FEEDBACK)

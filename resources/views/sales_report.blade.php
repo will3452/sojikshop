@@ -64,7 +64,7 @@
         </table>
     </div>
     <div class="text-center mt-2">
-        <button id="printbutton" class="px-4 py-2 font-bold rounded bg-blue-800 uppercase text-sm" onclick="window.print()" >print</button>
+        <button id="printbutton" class="px-4 py-2 font-bold rounded bg-green-200 uppercase text-sm" onclick="window.print()" >print</button>
     </div>
 
 

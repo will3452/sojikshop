@@ -35,7 +35,7 @@
             <input type="hidden" name="receiver_id" value="{{$user->id}}"/>
             <textarea name="content" id="" class="w-full border rounded"></textarea>
             <div>
-                <button class="mx-2 bg-blue-800 p-2 rounded">send</button>
+                <button class="mx-2 bg-green-200 p-2 rounded">send</button>
             </div>
         </form>
     </div>

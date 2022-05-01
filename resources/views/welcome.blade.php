@@ -26,7 +26,7 @@
     @endforeach
   </x-product-container-slider>
 
-  <div class="bg-blue-800 text-sm font-bold text-center p-4 mt-4">
+  <div class="bg-green-200 text-sm font-bold text-center p-4 mt-4">
       @foreach (\App\Models\Page::get() as $page)
         <a href="/page/{{$page->id}}" class="mx-2 text-blue-200" >{{$page->title}}</a>
       @endforeach

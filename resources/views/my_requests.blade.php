@@ -10,19 +10,19 @@
                 <table class=" text-center" id="myTable">
                     <thead>
                         <tr>
-                            <th class="border border-black bg-blue-800">
+                            <th class="border border-black bg-green-200">
                                 Date
                             </th>
-                            <th class="border border-black bg-blue-800">
+                            <th class="border border-black bg-green-200">
                                 Product Details
                             </th>
-                            <th class="border border-black bg-blue-800">
+                            <th class="border border-black bg-green-200">
                                 Quotation
                             </th>
-                            <th class="border border-black bg-blue-800">
+                            <th class="border border-black bg-green-200">
                                 Status
                             </th>
-                            <th class="border border-black bg-blue-800">
+                            <th class="border border-black bg-green-200">
                                 Action
                             </th>
                         </tr>
