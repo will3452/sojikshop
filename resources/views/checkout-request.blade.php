@@ -6,14 +6,14 @@
     style="z-index:90000 !important;"
     id="backdrop">
         <img src="/storage/{{nova_get_setting('logo')}}" alt="" class="w-32 h-32 animate-bounce rounded-full shadow">
-        <p class="uppercase text-blue-900 font-bold tracking-widest">
+        <p class="uppercase text-pink-900 font-bold tracking-widest">
             Loading, Please Wait
         </p>
     </div>
 
     @if (auth()->user()->addresses()->count())
         <div class="text-sm mx-2 shadow-lg rounded overflow-hidden mx-auto md:w-10/12 mb-2">
-            <div class="p-2 bg-blue-900 text-white font-bold uppercase flex justify-between">
+            <div class="p-2 bg-pink-600 text-white font-bold uppercase flex justify-between">
                 <div>
                     Address
                 </div>
@@ -34,7 +34,7 @@
             </div>
         </div>
         <div class="text-sm mx-2 shadow-lg rounded overflow-hidden mx-auto md:w-10/12">
-            <div class="p-2 bg-blue-900 text-white font-bold uppercase">
+            <div class="p-2 bg-pink-600 text-white font-bold uppercase">
                 Order Information
             </div>
             <div class="p-2 md:flex">

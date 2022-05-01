@@ -25,7 +25,7 @@
                 <input type="file" name="attachment" required accept="image/*">
             </div>
             <div>
-                <button class="p-2 bg-blue-900 text-white font-bold rounded w-full">
+                <button class="p-2 bg-pink-600 text-white font-bold rounded w-full">
                     SUBMIT
                 </button>
             </div>

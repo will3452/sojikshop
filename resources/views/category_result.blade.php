@@ -10,7 +10,7 @@
         @empty
             <div class="h-40 flex flex-col justify-center items-center text-gray-700">
                 No products
-                <a href="/" class="p-2 text-xs p-2 rounded-lg bg-blue-900 text-white mt-2">
+                <a href="/" class="p-2 text-xs p-2 rounded-lg bg-pink-600 text-white mt-2">
                     Return to Home
                 </a>
             </div>

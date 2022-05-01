@@ -37,7 +37,7 @@
             <textarea name="message[]" required class="w-full border-2 border-pink-600 rounded p-2" placeholder="Please Write Feedback for {{$orderProduct->product->name}} here."></textarea>
         </div>
         @endforeach
-        <button class="w-full text-center font-bold uppercase bg-blue-900 text-white rounded-3xl py-2 px-5">
+        <button class="w-full text-center font-bold uppercase bg-pink-600 text-white rounded-3xl py-2 px-5">
             Submit
         </button>
     </form>

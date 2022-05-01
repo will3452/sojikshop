@@ -1,6 +1,6 @@
 @props(['shipping'=>0, 'product'=>[],'total'=>0])
 <div class="text-sm mx-2 shadow-lg rounded overflow-hidden mx-auto md:w-10/12">
-    <div class="p-2 bg-blue-900 text-white font-bold uppercase">
+    <div class="p-2 bg-pink-600 text-white font-bold uppercase">
         Product Information
     </div>
     <div class="p-2 md:flex">
