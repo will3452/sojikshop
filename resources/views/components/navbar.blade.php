@@ -18,7 +18,7 @@
     >
     <div class="flex items-center">
         {{-- <a href="/" class="transform rotate-90 block">
-        <span class="material-icons text-blue-200 "> polymer </span>
+        <span class="material-icons text-pink-600 "> polymer </span>
         </a> --}}
         <a href="/" title="Home" class="mx-1">
             <img src="/storage/{{nova_get_setting('logo')}}" alt="" class="mx-auto w-10 h-10 ">
@@ -32,19 +32,19 @@
     <div>
         @auth
         <a href="/chat/1#latest" class="px-2">
-            <span class="material-icons text-blue-200"> mail </span>
+            <span class="material-icons text-pink-600"> mail </span>
         </a>
         @endauth
         <a href="{{route('my.wishlist')}}" class="px-2">
-        <span class="material-icons text-blue-200"> favorite </span>
+        <span class="material-icons text-pink-600"> favorite </span>
         <x-dot type="heart"></x-dot>
         </a>
         <a href="/my-cart" class="px-2">
-        <span class="material-icons text-blue-200"> shopping_cart </span>
+        <span class="material-icons text-pink-600"> shopping_cart </span>
         <x-dot type="cart"></x-dot>
         </a>
         <a href="#" class="px-2 items-center" @click.prevent="isShow = !isShow" x-show="!isShow">
-        <span class="material-icons text-blue-200"> account_circle </span>
+        <span class="material-icons text-pink-600"> account_circle </span>
         </a>
         <a href="#" class="px-2 items-center" @click.prevent="isShow = !isShow" x-show="isShow">
             <span class="material-icons text-yellow-300"> account_circle </span>
